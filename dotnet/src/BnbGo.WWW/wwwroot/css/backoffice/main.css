@@ -9,6 +9,10 @@
     padding: 20px;
     color: #F44336;
 }
+#header h1 a {
+    text-decoration: none;
+    color: #F44336;
+}
 #header ul {
     float: right;
     color: #757575;

@@ -1,0 +1,9 @@
+@model ICollection<BnbGo.Models.Country>
+@{
+    ViewBag.Title = "Room Management";
+    ViewBag.SubTitle = "Manage all your countries via this platform";
+    ViewBag.Description = "Select an country to edit ...";
+    Layout = "~/Areas/Backoffice/Views/Shared/_Layout.cshtml";
+}
+    
+@Html.Partial("_ListPartial", @Model)
