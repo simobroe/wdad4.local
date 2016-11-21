@@ -56,6 +56,7 @@ namespace BnbGo.Db
                     context.Regions.AddRange(new List<Region>()
                     {
                         new Region { Name = "Oost Vlaanderen", Description = "Oost Vlaanderen", CountryId =1 },
+                        new Region { Name = "West Vlaanderen", Description = "West Vlaanderen", CountryId =1 },
                     });
                     await context.SaveChangesAsync();
                 }
@@ -66,6 +67,7 @@ namespace BnbGo.Db
                     context.Cities.AddRange(new List<City>()
                     {
                         new City { Name = "Gent", Description = "Gent", RegionId =1 },
+                        new City { Name = "Brugge", Description = "Brugge", RegionId =2 },
                     });
                     await context.SaveChangesAsync();
                 }

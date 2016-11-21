@@ -1,0 +1,29 @@
+@model ICollection<BnbGo.Models.Region>
+@Html.AntiForgeryToken()
+@if (Model != null && Model.Count() > 0)
+{
+      <table>
+        <thead>
+          <tr>
+            <th>Region</th>
+            <th>Description</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach (var region in Model)
+          {
+            <tr>
+              <td>@region.Name</td>
+              <td>@region.Description</td>
+              <td><i class="fa fa-pencil"> </i><i class="fa fa-trash-o"></i> <i class="fa fa-trash"></i></td>
+            </tr>
+          }
+        </tbody>
+      </table>
+}
+else
+{
+    <p>No Countries in the database!</p>
+}
+</div>
