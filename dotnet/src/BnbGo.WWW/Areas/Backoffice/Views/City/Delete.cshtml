@@ -1,0 +1,31 @@
+@model BnbGo.Models.ViewModels.ActionCityViewModel
+@{
+    ViewBag.Title = "City Management";
+    ViewBag.SubTitle = "Manage all your cities via this platform";
+    ViewBag.Description = "Select an city to edit ...";
+    Layout = "~/Areas/Backoffice/Views/Shared/_Layout.cshtml";
+}
+<div class="">
+    @Html.Partial("_QuickActionsPartial")
+</div>
+<div class="">
+    <div class="">
+        <div class="">
+          <div class="">
+            <h2 class="">
+                @Model.Action an existing city</text>
+            </h2>
+          </div>
+          <div class="">
+            <p>Do you wish to @Model.Action the city @Model.BaseEntity.Name?</p>
+            <form asp-controller="City" asp-action="Delete" method="post" asp-antiforgery="true">
+                <input asp-for="BaseEntity.Id" type="hidden">
+                <input asp-for="BaseEntity.Name" type="hidden">
+                <input asp-for="BaseEntity.Description" type="hidden">
+                <input asp-for="ActionType" type="hidden">
+                <button type="submit" class="">@Model.Action</button>
+            </form>
+          </div>
+        </div>
+    </div>
+</div>

@@ -8,7 +8,7 @@ using BnbGo.Db;
 namespace BnbGo.Db.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20161121115420_Initial Commit")]
+    [Migration("20161121142908_Initial Commit")]
     partial class InitialCommit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

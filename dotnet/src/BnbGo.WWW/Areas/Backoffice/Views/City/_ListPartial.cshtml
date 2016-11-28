@@ -5,8 +5,8 @@
       <table>
         <thead>
           <tr>
-            <th>City</th>
-            <th>Description</th>
+            <th>@Html.ActionLink("City", "Index", new { sortOrder = ViewBag.NameSortParm })</th>
+            <th>Region</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -15,8 +15,27 @@
           {
             <tr>
               <td>@city.Name</td>
-              <td>@city.Description</td>
-              <td><i class="fa fa-pencil"> </i><i class="fa fa-trash-o"></i> <i class="fa fa-trash"></i></td>
+              <td>@city.RegionId</td>
+              <td>
+                <a asp-controller="City" asp-action="Edit" asp-route-id="@city.Id">
+                  <i class="fa fa-pencil" role="presentation"></i>
+                </a>
+                @if (@city.DeletedAt != null)
+                {
+                    <a asp-controller="city" asp-action="Delete" asp-route-id="@city.Id" asp-route-actionType="5" data-is-softdelete="true">
+                      <i class="fa fa-trash-o"></i>
+                    </a>
+                }
+                else
+                {
+                    <a asp-controller="city" asp-action="Delete" asp-route-id="@city.Id" asp-route-actionType="4">
+                      <i class="fa fa-trash"></i>
+                    </a>
+                }
+                <a asp-controller="city" asp-action="Delete" asp-route-id="@city.Id" asp-route-actionType="3">
+                  <i class="fa fa-ban"></i>
+                </a>
+            </td>
             </tr>
           }
         </tbody>

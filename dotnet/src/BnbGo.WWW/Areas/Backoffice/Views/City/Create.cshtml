@@ -1,0 +1,39 @@
+@model BnbGo.Models.ViewModels.CityViewModel
+@{
+    ViewBag.Title = "City Management";
+    ViewBag.SubTitle = "Manage all the cities on your SAAS platform";
+    ViewBag.Description = "Create a city via the form or go back to the list of cities.";
+    Layout = "~/Areas/Backoffice/Views/Shared/_Layout.cshtml";
+}
+<div class="">
+    @Html.Partial("_QuickActionsPartial")
+</div>
+<div class="">
+    <div class="">
+        <div class="">
+          <div class="">
+            <h2 class="">Create a new city</h2>
+          </div>
+          <div class="">
+            <form asp-controller="City" asp-action="Create" method="post" asp-antiforgery="true">
+                <div class="">
+                    <input class="" asp-for="City.Name">
+                    <label class="" asp-for="City.Name">Name</label>
+                    <span class="" asp-for="City.Name" ></span>
+                </div>
+                <div class="">
+                    <input class="" asp-for="City.Description">
+                    <label class="" asp-for="City.Description">Description</label>
+                    <span class="" asp-for="City.Description"></span>
+                </div>
+                <div class="">
+                    <input class="" asp-for="City.RegionId">
+                    <label class="" asp-for="City.RegionId">Region</label>
+                    <span class="" asp-for="City.RegionId"></span>
+                </div>
+                <button type="submit" class="">Save</button>
+            </form>
+          </div>
+        </div>
+    </div>
+</div>
