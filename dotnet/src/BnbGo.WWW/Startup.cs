@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,7 +13,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
 using OpenIddict;
-using BnbGo.Services;
 using BnbGo.Models;
 using BnbGo.Models.Security;
 using BnbGo.Db;
@@ -79,10 +79,6 @@ namespace BnbGo.WWW
             services.AddSingleton(Configuration);
             services.AddTransient<ApplicationDbContext, ApplicationDbContext>();
             services.AddTransient<UserManager<ApplicationUser>, UserManager<ApplicationUser>>();
-
-            // Add application services.
-            services.AddTransient<IEmailSender, AuthMessageSender>();
-            services.AddTransient<ISmsSender, AuthMessageSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -107,6 +103,20 @@ namespace BnbGo.WWW
             app.UseOAuthValidation(); // Access tokens, protect the API-endpoints
 
             app.UseIdentity();
+
+            // angular 2
+            app.Use(async (context, next) =>
+            {
+                await next();
+
+                if (context.Response.StatusCode == 404
+                    && !Path.HasExtension(context.Request.Path.Value))
+                {
+                    context.Request.Path = "/index.html";
+                    await next();
+                }
+            });
+
 
             // Add external authentication middleware below. To configure them please see https://go.microsoft.com/fwlink/?LinkID=532715
 

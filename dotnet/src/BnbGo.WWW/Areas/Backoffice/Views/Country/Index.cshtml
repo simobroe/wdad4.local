@@ -5,5 +5,6 @@
     ViewBag.Description = "Select an country to edit ...";
     Layout = "~/Areas/Backoffice/Views/Shared/_Layout.cshtml";
 }
-    
+
+@Html.Partial("_QuickActionsPartial")
 @Html.Partial("_ListPartial", @Model)

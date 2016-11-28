@@ -1,0 +1,45 @@
+@model BnbGo.Models.ViewModels.CountryViewModel
+@{
+    ViewBag.Title = "Country Management";
+    ViewBag.SubTitle = "Manage all the Countries on your SAAS platform";
+    ViewBag.Description = "Create a Country via the form or go back to the list of locations.";
+    Layout = "~/Areas/Backoffice/Views/Shared/_Layout.cshtml";
+}
+<div class="">
+    @Html.Partial("_QuickActionsPartial")
+</div>
+<div class="">
+    <div class="">
+        <div class="">
+          <div class="">
+            <h2 class="">Edit an existing Country</h2>
+          </div>
+          <div class="">
+            <form asp-controller="Country" asp-action="Edit" method="post" asp-antiforgery="true">
+                <input asp-for="Country.Id" type="hidden">
+                <div class="">
+                    <input class="" asp-for="Country.Name">
+                    <label class="" asp-for="Country.Name">Name</label>
+                    <span class="" asp-for="Country.Name" ></span>
+                </div>
+                <div class="">
+                    <input class="" asp-for="Country.Description">
+                    <label class="" asp-for="Country.Description">Description</label>
+                    <span class="" asp-for="Country.Description"></span>
+                </div>
+                <div class="">
+                    <input class="" asp-for="Country.Iso2">
+                    <label class="" asp-for="Country.Iso2">Iso2</label>
+                    <span class="" asp-for="Country.Iso2"></span>
+                </div>
+                <div class="">
+                    <label class="" asp-for="Country.CurrencyType">CurrencyType</label>
+                    <select asp-for="Country.CurrencyTypeId" asp-items="Model.CurrencyTypes"></select> 
+                    <span class="" asp-for="Country.CurrencyType"></span>
+                </div>
+                <button type="submit" class="">Save</button>
+            </form>
+          </div>
+        </div>
+    </div>
+</div>

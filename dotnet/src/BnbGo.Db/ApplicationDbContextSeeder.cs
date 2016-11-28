@@ -45,7 +45,7 @@ namespace BnbGo.Db
                 {
                     context.Countries.AddRange(new List<Country>()
                     {
-                        new Country { Name = "Belgium", Description = "European country", Iso2 = "BE", CurrencyTypeId = 1 }
+                        new Country { Name = "Belgium", Description = "European country", Iso2 = "BE", CurrencyTypeId = 1 },
                     });
                     await context.SaveChangesAsync();
                 }

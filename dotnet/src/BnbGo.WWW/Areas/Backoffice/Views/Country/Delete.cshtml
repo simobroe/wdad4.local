@@ -1,0 +1,31 @@
+@model BnbGo.Models.ViewModels.ActionCountryViewModel
+@{
+    ViewBag.Title = "Country Management";
+    ViewBag.SubTitle = "Manage all the Countries on your SAAS platform";
+    ViewBag.Description = "Create an Country via the form or go back to the list of locations.";
+    Layout = "~/Areas/Backoffice/Views/Shared/_Layout.cshtml";
+}
+<div class="">
+    @Html.Partial("_QuickActionsPartial")
+</div>
+<div class="">
+    <div class="">
+        <div class="">
+          <div class="">
+            <h2 class="">
+                @Model.Action an existing country</text>
+            </h2>
+          </div>
+          <div class="">
+            <p>Do you wish to @Model.Action the country @Model.BaseEntity.Name?</p>
+            <form asp-controller="Country" asp-action="Delete" method="post" asp-antiforgery="true">
+                <input asp-for="BaseEntity.Id" type="hidden">
+                <input asp-for="BaseEntity.Name" type="hidden">
+                <input asp-for="BaseEntity.Description" type="hidden">
+                <input asp-for="ActionType" type="hidden">
+                <button type="submit" class="">@Model.Action</button>
+            </form>
+          </div>
+        </div>
+    </div>
+</div>

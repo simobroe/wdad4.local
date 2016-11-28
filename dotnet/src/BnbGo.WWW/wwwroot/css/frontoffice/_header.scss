@@ -1,0 +1,30 @@
+// get all style variables
+@import '../layout/style';
+
+#header {
+    background-color: #ffffff;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23);
+    margin-bottom: 36px !important;
+}
+#header h1 {
+    font-size: 26px;
+    padding: 20px;
+    color: $color_primary;
+}
+#header h1 a {
+    text-decoration: none;
+    color: $color_primary;
+}
+#header ul {
+    float: right;
+    color: $color_font_secondary;
+    li {
+        display: inline-block;
+        cursor: pointer;
+        padding: 23px;
+        font-size: 20px;
+    }
+    li:hover {
+    color: $color_font_primary;
+    }
+}

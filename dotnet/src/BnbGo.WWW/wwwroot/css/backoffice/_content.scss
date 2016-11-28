@@ -1,0 +1,39 @@
+// get all style variables
+@import '../layout/style';
+
+#content_info h1 {
+    margin-top: 12px;
+    font-size: 21px;
+    color: $color_font_primary;
+    margin-bottom: 12px
+}
+
+#content_info h2 {
+    font-size: 18px;
+    color: $color_font_secondary;
+}
+
+#content_body table {
+    margin-top: 18px;
+    font-size: 16px;
+    border-collapse: collapse;
+    th {
+        background-color: $color_primary;
+        border: 1px solid $color_primary;
+        color: #ffffff;
+        padding: 12px;
+    }
+    tr {
+        border: 1px solid $color_border;
+    }
+     td {
+        padding: 12px;
+    }
+    td i {
+        padding: 0 12px;
+        cursor: pointer;
+    }
+    td i:hover {
+        color: $color_primary;
+    }
+}
