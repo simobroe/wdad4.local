@@ -15,9 +15,9 @@ namespace BnbGo.Models.Security
     public class ApplicationUser : IdentityUser<Guid> 
     {
         // basic user information
-        public string FirstName { get; set; }
-        public string SurName { get; set; }
-        public string Email { get; set; }
+        public String FirstName { get; set; }
+        public String SurName { get; set; }
+        public String PlainPassword  { get; set; }
         public GenderType Gender { get; set; }
         public Nullable<DateTime> DayOfBirth { get; set; }
         // link with country
@@ -39,8 +39,6 @@ namespace BnbGo.Models.Security
         public DateTime CreatedAt { get; set; }
         public Nullable<DateTime> UpdatedAt { get; set; }
         public Nullable<DateTime> DeletedAt { get; set; }
-        // user roles
-        public List<UserRole> Roles { get; set; }
         // user Comments
         public List<Comment> Comments { get; set; }
         // ratings

@@ -35,6 +35,21 @@ namespace BnbGo.Db
             
             base.OnModelCreating(builder);
             /// MODELS 
+
+            // Model: ApplicationUser
+            builder.Entity<ApplicationUser>()
+                .Ignore(u => u.PlainPassword);
+
+            builder.Entity<ApplicationUser>()
+                .Property(u => u.CreatedAt)
+                .HasDefaultValueSql("now()")
+                .ValueGeneratedOnAdd();
+
+            builder.Entity<ApplicationUser>()
+                .Property(u => u.UpdatedAt)
+                .HasDefaultValueSql("now()")
+                .ValueGeneratedOnAddOrUpdate();
+
             // Model: Country
             builder.Entity<Country>()
                 .HasKey(o => o.Id);

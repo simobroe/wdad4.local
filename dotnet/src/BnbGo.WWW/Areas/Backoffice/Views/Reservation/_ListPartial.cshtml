@@ -1,0 +1,33 @@
+@model ICollection<BnbGo.Models.Reservation>
+@Html.AntiForgeryToken()
+@if (Model != null && Model.Count() > 0)
+{
+      <table>
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Room</th>
+            <th>Arrival</th>
+            <th>Departure</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach (var Reservation in Model)
+          {
+            <tr>
+              <td>@Reservation.UserId</td>
+              <td>@Reservation.RoomId</td>
+              <td>@Reservation.Arrival</td>
+              <td>@Reservation.Departure</td>
+              <td><i class="fa fa-pencil"> </i><i class="fa fa-trash-o"></i> <i class="fa fa-trash"></i></td>
+            </tr>
+          }
+        </tbody>
+      </table>
+}
+else
+{
+    <p>No reservations in the database!</p>
+}
+</div>

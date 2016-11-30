@@ -1,0 +1,8 @@
+@model ICollection<BnbGo.Models.RentType>
+@{
+    ViewBag.Title = "Rent type Management";
+    ViewBag.SubTitle = "Manage all your rent types via this platform";
+    ViewBag.Description = "Select an rent type to edit ...";
+    Layout = "~/Areas/Backoffice/Views/Shared/_Layout.cshtml";
+}
+@Html.Partial("_ListPartial", @Model)

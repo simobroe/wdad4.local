@@ -5,8 +5,4 @@
     ViewBag.Description = "Select an room to edit ...";
     Layout = "~/Areas/Backoffice/Views/Shared/_Layout.cshtml";
 }
-<h1>List of Rooms</h1>
-<div>
-    
-    @Html.Partial("_ListPartial", @Model)
-</div>
+@Html.Partial("_ListPartial", @Model)
