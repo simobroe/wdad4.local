@@ -1,0 +1,9 @@
+@model ICollection<BnbGo.Models.CurrencyType>
+@{
+    ViewBag.Title = "Reservation Management";
+    ViewBag.SubTitle = "Manage all your reservations via this platform";
+    ViewBag.Description = "Select an reservation to edit ...";
+    Layout = "~/Areas/Backoffice/Views/Shared/_Layout.cshtml";
+}
+    
+@Html.Partial("_ListPartial", @Model)

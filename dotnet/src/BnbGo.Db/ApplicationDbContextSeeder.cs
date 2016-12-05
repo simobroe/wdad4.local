@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Bogus;
 using Bogus.DataSets;
@@ -22,6 +24,7 @@ namespace BnbGo.Db
             BitConverter.GetBytes(value).CopyTo(bytes, 0);
             return new Guid(bytes);
         }
+
         public static async void Initialize(IServiceProvider serviceProvider)
         {
             using(var context = serviceProvider.GetService<ApplicationDbContext>()) 
@@ -114,35 +117,36 @@ namespace BnbGo.Db
                     await context.SaveChangesAsync();
                 }
 
-                // Person
-                /*
-                if(!context.Users.Any()) 
-                {
-                    var personSkeleton = new Faker<BnbGo.Models.Security.ApplicationUser>()
+                
+                // Users
+                if(!context.Users.Any()) {
+                    var personSkeleton = new Faker<ApplicationUser>()
                         .RuleFor(p => p.Id, f => Guid.NewGuid())
-                        .RuleFor(p => p.FirstName, f => f.Person.FirstName)
-                        .RuleFor(p => p.SurName, f => f.Person.LastName)
+                        .RuleFor(p => p.FirstName, f => f.Name.FirstName())
+                        .RuleFor(p => p.SurName, f => f.Name.LastName())
+                        .RuleFor(p => p.UserName, (f, p) => f.Internet.UserName(p.FirstName, p.SurName))
                         .RuleFor(p => p.Email, f => f.Person.Email)
+                        .RuleFor(p => p.PlainPassword, f => GenerateAlwaysTheSamePassword())
                         .RuleFor(p => p.DayOfBirth, f => GenerateDateTime(1970, 1987, 1, 13, 1, 32))
                         .RuleFor(p => p.Gender, f => f.PickRandom<GenderType>())
                         .FinishWith((f, p) =>
                         {
-                            Console.WriteLine("User Created! Id={0}", p.Id);
+                            Console.WriteLine("User Created! Name={0}", p.UserName);
                         });
                         
-                    var persons = new List<BnbGo.Models.Security.ApplicationUser>();
-                    for(var i = 0;i<50;i++) {
+                    var persons = new List<ApplicationUser>();
+                    for(var i = 0;i<5;i++) {
                         var person = personSkeleton.Generate();
+                        person.CountryId = 1;
+                        person.RegionId = 1;
+                        person.CityId = 1;
                         persons.Add(person);
                     }
                     context.Users.AddRange(persons);
                     await context.SaveChangesAsync();
-
                 }
-                */
 
                 // Rooms
-                /*
                 if(!context.Rooms.Any()) 
                 {
                     var lorem = new Bogus.DataSets.Lorem(locale: "en");
@@ -166,6 +170,7 @@ namespace BnbGo.Db
                         room.RoomTypeId = 1;
                         room.RentTypeId = 1;
                         room.RoomStateId = 1;
+                        room.UserId = new Guid("052a2d57-b994-4fc4-9557-8f814f9f1d11");
                         room.CityId = 1;
                         rooms.Add(room);
                     }
@@ -173,10 +178,8 @@ namespace BnbGo.Db
                     await context.SaveChangesAsync();
 
                 }
-                */
 
                 // Reservations
-                /*
                 if(!context.Reservations.Any()) 
                 {
                     var lorem = new Bogus.DataSets.Lorem(locale: "en");
@@ -197,14 +200,13 @@ namespace BnbGo.Db
                         reservation.RoomId = random.Next(4,50);
                         reservation.PriceTotal = 1;
                         reservation.AmountOfGuests = 1;
+                        reservation.UserId = new Guid("052a2d57-b994-4fc4-9557-8f814f9f1d11");
                         reservations.Add(reservation);
                     }
                     context.Reservations.AddRange(reservations);
                     await context.SaveChangesAsync();
 
                 }
-                */
-
             }
         }
 
@@ -218,5 +220,11 @@ namespace BnbGo.Db
                 return GenerateDateTime(yFrom, yTo, mFrom, mTo, dFrom, dTo);
             }
         }
+
+        private static string GenerateAlwaysTheSamePassword()
+        {
+            return "Rode_Biet_2016";
+        }
+
     }
 }

@@ -1,0 +1,8 @@
+@model ICollection<BnbGo.Models.Facility>
+@{
+    ViewBag.Title = "Facility Management";
+    ViewBag.SubTitle = "Manage all your facilities via this platform";
+    ViewBag.Description = "Select an facility to edit ...";
+    Layout = "~/Areas/Backoffice/Views/Shared/_Layout.cshtml";
+}
+@Html.Partial("_ListPartial", @Model)

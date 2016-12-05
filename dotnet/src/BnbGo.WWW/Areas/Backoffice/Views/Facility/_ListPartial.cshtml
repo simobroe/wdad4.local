@@ -1,4 +1,4 @@
-@model ICollection<BnbGo.Models.Room>
+@model ICollection<BnbGo.Models.Facility>
 @Html.AntiForgeryToken()
 @if (Model != null && Model.Count() > 0)
 {
@@ -7,18 +7,14 @@
           <tr>
             <th>Name</th>
             <th>Description</th>
-            <th>User</th>
-            <th>City</th>
           </tr>
         </thead>
         <tbody>
-          @foreach (var room in Model)
+          @foreach (var facility in Model)
           {
             <tr>
-              <td>@room.Name</td>
-              <td>@room.Description</td>
-              <td>@room.UserId</td>
-              <td>@room.CityId</td>
+              <td>@facility.Name</td>
+              <td>@facility.Description</td>
             </tr>
           }
         </tbody>
@@ -26,6 +22,6 @@
 }
 else
 {
-    <p>No Rooms in the database!</p>
+    <p>No facilities in the database!</p>
 }
 </div>

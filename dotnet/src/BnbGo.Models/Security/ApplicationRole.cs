@@ -14,7 +14,5 @@ namespace BnbGo.Models.Security
         public DateTime CreatedAt { get; set; }
         public Nullable<DateTime> UpdatedAt { get; set; }
         public Nullable<DateTime> DeletedAt { get; set; }
-        // users with this Role
-        public List<UserRole> Users { get; set; }
     }
 }

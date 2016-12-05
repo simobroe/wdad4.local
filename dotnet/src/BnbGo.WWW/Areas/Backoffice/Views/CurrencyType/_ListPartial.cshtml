@@ -1,25 +1,19 @@
-@model ICollection<BnbGo.Models.Security.ApplicationUser>
+@model ICollection<BnbGo.Models.CurrencyType>
 @Html.AntiForgeryToken()
 @if (Model != null && Model.Count() > 0)
 {
       <table>
         <thead>
           <tr>
-            <th>FirstName</th>
-            <th>SurName</th>
-            <th>Email</th>
-            <th>Gender</th>
+            <th>Currency</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          @foreach (var user in Model)
+          @foreach (var currency in Model)
           {
             <tr>
-              <td>@user.FirstName</td>
-              <td>@user.SurName</td>
-              <td>@user.Email</td>
-              <td>@user.Gender</td>
+              <td>@currency.Name</td>
               <td><i class="fa fa-pencil"> </i><i class="fa fa-trash-o"></i> <i class="fa fa-trash"></i></td>
             </tr>
           }
@@ -28,6 +22,6 @@
 }
 else
 {
-    <p>No Users in the database!</p>
+    <p>No currency types in the database!</p>
 }
 </div>
