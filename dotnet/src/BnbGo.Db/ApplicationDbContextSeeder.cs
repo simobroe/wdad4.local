@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -18,6 +19,8 @@ namespace BnbGo.Db
     
     public class ApplicationDbContextSeeder 
     {
+
+        
         public static Guid ToGuid(int value)
         {
             byte[] bytes = new byte[16];
@@ -48,7 +51,7 @@ namespace BnbGo.Db
                 {
                     context.Countries.AddRange(new List<Country>()
                     {
-                        new Country { Name = "Belgium", Description = "European country", Iso2 = "BE", CurrencyTypeId = 1 },
+                        new Country { Name = "Belgium", Description = "Belgium", Iso2 = "BE", CurrencyTypeId = 1},
                     });
                     await context.SaveChangesAsync();
                 }
@@ -170,7 +173,7 @@ namespace BnbGo.Db
                         room.RoomTypeId = 1;
                         room.RentTypeId = 1;
                         room.RoomStateId = 1;
-                        room.UserId = new Guid("052a2d57-b994-4fc4-9557-8f814f9f1d11");
+                        room.UserId = new Guid("1995e59b-6545-4b00-b0a1-07761acba9d9");
                         room.CityId = 1;
                         rooms.Add(room);
                     }
@@ -200,7 +203,7 @@ namespace BnbGo.Db
                         reservation.RoomId = random.Next(4,50);
                         reservation.PriceTotal = 1;
                         reservation.AmountOfGuests = 1;
-                        reservation.UserId = new Guid("052a2d57-b994-4fc4-9557-8f814f9f1d11");
+                        reservation.UserId = new Guid("1995e59b-6545-4b00-b0a1-07761acba9d9");
                         reservations.Add(reservation);
                     }
                     context.Reservations.AddRange(reservations);

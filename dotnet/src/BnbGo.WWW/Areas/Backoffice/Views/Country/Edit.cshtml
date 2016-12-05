@@ -1,45 +1,33 @@
 @model BnbGo.Models.ViewModels.CountryViewModel
 @{
     ViewBag.Title = "Country Management";
-    ViewBag.SubTitle = "Manage all the Countries on your SAAS platform";
-    ViewBag.Description = "Create a Country via the form or go back to the list of locations.";
+    ViewBag.SubTitle = "Edit existing country";
+    ViewBag.Description = "Edit a Country via the form or go back to the list of locations.";
     Layout = "~/Areas/Backoffice/Views/Shared/_Layout.cshtml";
 }
-<div class="">
-    @Html.Partial("_QuickActionsPartial")
-</div>
-<div class="">
-    <div class="">
-        <div class="">
-          <div class="">
-            <h2 class="">Edit an existing Country</h2>
-          </div>
-          <div class="">
-            <form asp-controller="Country" asp-action="Edit" method="post" asp-antiforgery="true">
-                <input asp-for="Country.Id" type="hidden">
-                <div class="">
-                    <input class="" asp-for="Country.Name">
-                    <label class="" asp-for="Country.Name">Name</label>
-                    <span class="" asp-for="Country.Name" ></span>
-                </div>
-                <div class="">
-                    <input class="" asp-for="Country.Description">
-                    <label class="" asp-for="Country.Description">Description</label>
-                    <span class="" asp-for="Country.Description"></span>
-                </div>
-                <div class="">
-                    <input class="" asp-for="Country.Iso2">
-                    <label class="" asp-for="Country.Iso2">Iso2</label>
-                    <span class="" asp-for="Country.Iso2"></span>
-                </div>
-                <div class="">
-                    <label class="" asp-for="Country.CurrencyType">CurrencyType</label>
-                    <select asp-for="Country.CurrencyTypeId" asp-items="Model.CurrencyTypes"></select> 
-                    <span class="" asp-for="Country.CurrencyType"></span>
-                </div>
-                <button type="submit" class="">Save</button>
-            </form>
-          </div>
-        </div>
+<div id="submenu" class="col col-xl-12 col-la-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="col col-xl-3 col-la-3 col-md-6 col-sm-6 col-xs-6">
+        <a class="button" asp-controller="Country" asp-action="Index">Overview</a>
     </div>
 </div>
+
+<form id="editForm" class="mid col col-xl-6 col-la-8 col-md-12 col-sm-12 col-xs-12" asp-controller="Country" asp-action="Edit" method="post" asp-antiforgery="true">
+    <input asp-for="Country.Id" type="hidden">
+    <div class="col col-xl-12 col-md-12 col-la-12 col-sm-12 col-xs-12">
+        <label asp-for="Country.Name">Name</label>
+        <input asp-for="Country.Name">
+    </div>
+    <div class="col col-xl-12 col-md-12 col-la-12 col-sm-12 col-xs-12">
+        <label asp-for="Country.Description">Description</label>
+        <input asp-for="Country.Description">
+    </div>
+    <div class="col col-xl-12 col-md-12 col-la-12 col-sm-12 col-xs-12">
+        <label asp-for="Country.Iso2">Iso2</label>
+        <input asp-for="Country.Iso2">
+    </div>
+    <div class="col col-xl-12 col-md-12 col-la-12 col-sm-12 col-xs-12">
+        <label asp-for="Country.CurrencyType">CurrencyType</label>
+        <select asp-for="Country.CurrencyTypeId" asp-items="Model.CurrencyTypes"></select> 
+    </div>
+    <button type="submit" class="button right col col-xl-4 col-la-4 col-md-6 col-sm-12 col-xs-12">Save changes</button>
+</form>

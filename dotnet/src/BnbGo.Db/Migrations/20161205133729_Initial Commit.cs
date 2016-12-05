@@ -402,7 +402,8 @@ namespace BnbGo.Db.Migrations
                     CityId = table.Column<long>(nullable: false),
                     ConcurrencyStamp = table.Column<string>(nullable: true),
                     CountryId = table.Column<int>(nullable: false),
-                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "now()")
+                        .Annotation("Npgsql:ValueGeneratedOnAdd", true),
                     DayOfBirth = table.Column<DateTime>(nullable: true),
                     DeletedAt = table.Column<DateTime>(nullable: true),
                     Email = table.Column<string>(maxLength: 256, nullable: true),
@@ -421,7 +422,7 @@ namespace BnbGo.Db.Migrations
                     SecurityStamp = table.Column<string>(nullable: true),
                     SurName = table.Column<string>(nullable: true),
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
-                    UpdatedAt = table.Column<DateTime>(nullable: true),
+                    UpdatedAt = table.Column<DateTime>(nullable: true, defaultValueSql: "now()"),
                     UserName = table.Column<string>(maxLength: 256, nullable: true)
                 },
                 constraints: table =>

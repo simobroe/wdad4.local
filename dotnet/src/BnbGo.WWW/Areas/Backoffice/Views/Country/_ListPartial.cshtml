@@ -2,12 +2,11 @@
 @Html.AntiForgeryToken()
 @if (Model != null && Model.Count() > 0)
 {
-      <table>
+      <table class="col col-xl-12 col-la-12 col-md-12 col-sm-12 col-xs-12">
         <thead>
           <tr>
+            <th>Iso code</th>
             <th>Country</th>
-            <th>Iso Code</th>
-            <th>Description</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -15,27 +14,29 @@
           @foreach (var country in Model)
           {
             <tr>
-              <td>@country.Name</td>
               <td>@country.Iso2</td>
-              <td>@country.Description</td>
+              <td>@country.Name</td>
               <td>
+                <a asp-controller="country" asp-action="Show" asp-route-id="@country.Id">
+                  <i class="fa fa-eye" title="View"></i>
+                </a>
                 <a asp-controller="country" asp-action="Edit" asp-route-id="@country.Id">
-                  <i class="fa fa-pencil"></i>
+                  <i class="fa fa-pencil" title="Edit"></i>
                 </a>
                 @if (@country.DeletedAt != null)
                 {
                     <a asp-controller="country" asp-action="Delete" asp-route-id="@country.Id" asp-route-actionType="5" data-is-softdelete="true">
-                      <i class="fa fa-trash-o"></i>
+                      <i class="fa fa-trash-o" title="revert delete"></i>
                     </a>
                 }
                 else
                 {
                     <a asp-controller="country" asp-action="Delete" asp-route-id="@country.Id" asp-route-actionType="4">
-                      <i class="fa fa-trash"></i>
+                      <i class="fa fa-trash" title="soft delete"></i>
                     </a>
                 }
                 <a asp-controller="country" asp-action="Delete" asp-route-id="@country.Id" asp-route-actionType="3">
-                  <i class="fa fa-ban"></i>
+                  <i class="fa fa-ban" title="delete forever"></i>
                 </a>
             </tr>
           }

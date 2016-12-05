@@ -48,7 +48,8 @@
     "BnbGo.Db": {
       "version": "1.0.0-*",
       "target": "project"
-    }
+    },
+    "cloudscribe.Web.Pagination": "1.0.2-*"
   },
 
   "tools": {

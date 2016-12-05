@@ -655,7 +655,9 @@ namespace BnbGo.Db.Migrations
 
                     b.Property<int>("CountryId");
 
-                    b.Property<DateTime>("CreatedAt");
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("now()");
 
                     b.Property<DateTime?>("DayOfBirth");
 
@@ -696,7 +698,9 @@ namespace BnbGo.Db.Migrations
 
                     b.Property<bool>("TwoFactorEnabled");
 
-                    b.Property<DateTime?>("UpdatedAt");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasDefaultValueSql("now()");
 
                     b.Property<string>("UserName")
                         .HasAnnotation("MaxLength", 256);

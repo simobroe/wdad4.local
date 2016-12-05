@@ -75,6 +75,9 @@ namespace BnbGo.WWW
 
             services.AddMvc();
 
+            // pagination
+            services.AddCloudscribePagination();
+
             // Dependency Injection (DI)
             services.AddSingleton(Configuration);
             services.AddTransient<ApplicationDbContext, ApplicationDbContext>();

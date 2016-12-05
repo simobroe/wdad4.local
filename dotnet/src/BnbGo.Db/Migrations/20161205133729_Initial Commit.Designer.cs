@@ -8,7 +8,7 @@ using BnbGo.Db;
 namespace BnbGo.Db.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20161205130306_Initial Commit")]
+    [Migration("20161205133729_Initial Commit")]
     partial class InitialCommit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -656,7 +656,9 @@ namespace BnbGo.Db.Migrations
 
                     b.Property<int>("CountryId");
 
-                    b.Property<DateTime>("CreatedAt");
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("now()");
 
                     b.Property<DateTime?>("DayOfBirth");
 
@@ -697,7 +699,9 @@ namespace BnbGo.Db.Migrations
 
                     b.Property<bool>("TwoFactorEnabled");
 
-                    b.Property<DateTime?>("UpdatedAt");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasDefaultValueSql("now()");
 
                     b.Property<string>("UserName")
                         .HasAnnotation("MaxLength", 256);

@@ -19,19 +19,41 @@ namespace BnbGo.WWW.Areas.Backoffice.Controllers
     {
         public CountryController(ApplicationDbContext applicationDbContext):base(applicationDbContext)
         {
+            
         }
 
-        public async Task<IActionResult> Index() 
+        public async Task<IActionResult> Index( string searchString) 
         {
-            var model = await ApplicationDbContext.Countries.OrderBy(o => o.Name).ToListAsync();
+            List<Country> countries = null;
+
+            if ( !String.IsNullOrEmpty(searchString)) {
+                countries = await ApplicationDbContext.Countries.Where(o => o.Name.Contains(searchString) || o.Iso2.Contains(searchString)).OrderBy(o => o.Name).ToListAsync();
+            } else {
+                countries = await ApplicationDbContext.Countries.OrderBy(o => o.Name).ToListAsync();
+            }
 
             if (this.Request.Headers["X-Requested-With"] == "XMLHttpRequest") 
             {
-                return PartialView("_ListPartial", model);
+                return PartialView("_ListPartial", countries);
+            }
+            
+            return View(countries);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Show(int id){
+
+            var model = await ApplicationDbContext.Countries
+                .Where(c => c.Id == id)
+                .ToListAsync();
+
+            if(this.Request.Headers["X-Requested-With"] == "XMLHttpRequest"){
+                return PartialView("_DetailPartial", model);
             }
             
             return View(model);
-        }
+
+            }
 
          public async Task<IActionResult> Create() 
         {  
@@ -237,7 +259,7 @@ namespace BnbGo.WWW.Areas.Backoffice.Controllers
                     return RedirectToAction("Index");
                 }
             }
-        }
+        }  
 
          private async Task<CountryViewModel> ViewModel(Country country = null) 
         {

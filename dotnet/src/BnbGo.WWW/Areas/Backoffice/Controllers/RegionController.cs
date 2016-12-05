@@ -21,7 +21,10 @@ namespace BnbGo.WWW.Areas.Backoffice.Controllers
 
         public async Task<IActionResult> Index() 
         {
-            var model = await ApplicationDbContext.Regions.OrderBy(o => o.Name).ToListAsync();
+            var model = await ApplicationDbContext.Regions
+                .OrderBy(o => o.Name)
+                .Include(c => c.Country)
+                .ToListAsync();
 
             if (this.Request.Headers["X-Requested-With"] == "XMLHttpRequest") 
             {
