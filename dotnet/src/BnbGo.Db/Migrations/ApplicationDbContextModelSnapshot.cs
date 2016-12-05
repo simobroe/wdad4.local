@@ -37,9 +37,7 @@ namespace BnbGo.Db.Migrations
 
                     b.Property<string>("Postal");
 
-                    b.Property<long>("RegionId");
-
-                    b.Property<int?>("RegionId1");
+                    b.Property<int>("RegionId");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .ValueGeneratedOnAddOrUpdate()
@@ -47,7 +45,7 @@ namespace BnbGo.Db.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RegionId1");
+                    b.HasIndex("RegionId");
 
                     b.ToTable("Cities");
                 });
@@ -877,7 +875,8 @@ namespace BnbGo.Db.Migrations
                 {
                     b.HasOne("BnbGo.Models.Region", "Region")
                         .WithMany("Cities")
-                        .HasForeignKey("RegionId1");
+                        .HasForeignKey("RegionId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("BnbGo.Models.Comment", b =>

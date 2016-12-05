@@ -89,7 +89,7 @@ namespace BnbGo.Db
                 .ValueGeneratedOnAddOrUpdate();
             
             // Model: City
-            builder.Entity<City>()
+                builder.Entity<City>()
                 .HasKey(o => o.Id);
 
             builder.Entity<City>()
@@ -392,6 +392,12 @@ namespace BnbGo.Db
             builder.Entity<ApplicationUser>()
                 .HasOne(l => l.Region)
                 .WithMany(o => o.Users)
+                .HasForeignKey(l => l.RegionId);
+
+            // Relationship between User and Region: 0 to many (n)
+            builder.Entity<City>()
+                .HasOne(l => l.Region)
+                .WithMany(o => o.Cities)
                 .HasForeignKey(l => l.RegionId);
 
             // Relationship between User and City: 0 to many (n)

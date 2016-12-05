@@ -717,25 +717,24 @@ namespace BnbGo.Db.Migrations
                     Description = table.Column<string>(maxLength: 511, nullable: false),
                     Name = table.Column<string>(maxLength: 255, nullable: false),
                     Postal = table.Column<string>(nullable: true),
-                    RegionId = table.Column<long>(nullable: false),
-                    RegionId1 = table.Column<int>(nullable: true),
+                    RegionId = table.Column<int>(nullable: false),
                     UpdatedAt = table.Column<DateTime>(nullable: true, defaultValueSql: "now()")
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Cities", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Cities_Regions_RegionId1",
-                        column: x => x.RegionId1,
+                        name: "FK_Cities_Regions_RegionId",
+                        column: x => x.RegionId,
                         principalTable: "Regions",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Cities_RegionId1",
+                name: "IX_Cities_RegionId",
                 table: "Cities",
-                column: "RegionId1");
+                column: "RegionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comment_RoomId",
@@ -964,7 +963,7 @@ namespace BnbGo.Db.Migrations
             migrationBuilder.DropPostgresExtension("uuid-ossp");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Cities_Regions_RegionId1",
+                name: "FK_Cities_Regions_RegionId",
                 table: "Cities");
 
             migrationBuilder.DropForeignKey(

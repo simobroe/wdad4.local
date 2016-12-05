@@ -8,5 +8,6 @@ namespace BnbGo.Models.ViewModels
     public class CityViewModel
     {
         public City City { get; set; }
+        public List<SelectListItem> Region { get; set; }
     }
 }

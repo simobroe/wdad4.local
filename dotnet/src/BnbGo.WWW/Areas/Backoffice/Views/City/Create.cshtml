@@ -27,7 +27,7 @@
                     <span class="" asp-for="City.Description"></span>
                 </div>
                 <div class="">
-                    <input class="" asp-for="City.RegionId">
+                    <select class="" asp-for="City.RegionId" asp-items="Model.Region"></select>
                     <label class="" asp-for="City.RegionId">Region</label>
                     <span class="" asp-for="City.RegionId"></span>
                 </div>

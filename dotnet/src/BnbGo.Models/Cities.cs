@@ -9,7 +9,7 @@ namespace BnbGo.Models
         // postal code
         public string Postal { get; set; }
         // link with region
-        public Int64 RegionId { get; set; }
+        public Int32 RegionId { get; set; }
         public Region Region { get; set; }
         // list with rooms in this city
         public List<Room> Rooms { get; set; }

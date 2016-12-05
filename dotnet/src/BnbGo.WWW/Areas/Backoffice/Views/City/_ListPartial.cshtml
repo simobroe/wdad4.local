@@ -1,4 +1,4 @@
-@model ICollection<BnbGo.Models.City>
+@model IEnumerable<BnbGo.Models.City>
 @Html.AntiForgeryToken()
 @if (Model != null && Model.Count() > 0)
 {
@@ -15,7 +15,7 @@
           {
             <tr>
               <td>@city.Name</td>
-              <td>@city.RegionId</td>
+              <td>@city.Region.Name</td>
               <td>
                 <a asp-controller="City" asp-action="Edit" asp-route-id="@city.Id">
                   <i class="fa fa-pencil" role="presentation"></i>
