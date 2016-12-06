@@ -145,6 +145,7 @@ namespace BnbGo.Db
                         person.CityId = 1;
                         persons.Add(person);
                     }
+
                     context.Users.AddRange(persons);
                     await context.SaveChangesAsync();
                 }
@@ -173,7 +174,7 @@ namespace BnbGo.Db
                         room.RoomTypeId = 1;
                         room.RentTypeId = 1;
                         room.RoomStateId = 1;
-                        room.UserId = new Guid("8c1e39eb-9496-4c4d-989d-a498ee894a66");
+                        room.UserId = new Guid("1995e59b-6545-4b00-b0a1-07761acba9d9");
                         room.CityId = 1;
                         rooms.Add(room);
                     }
@@ -203,7 +204,7 @@ namespace BnbGo.Db
                         reservation.RoomId = random.Next(4,50);
                         reservation.PriceTotal = 1;
                         reservation.AmountOfGuests = 1;
-                        reservation.UserId = new Guid("8c1e39eb-9496-4c4d-989d-a498ee894a66");
+                        reservation.UserId = new Guid("1995e59b-6545-4b00-b0a1-07761acba9d9");
                         reservations.Add(reservation);
                     }
                     context.Reservations.AddRange(reservations);

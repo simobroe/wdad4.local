@@ -1,0 +1,63 @@
+@model ICollection<BnbGo.Models.Reservation>
+@Html.AntiForgeryToken()
+@if (Model != null && Model.Count() > 0)
+{
+    <table class="col col-xl-12 col-la-12 col-md-12 col-sm-12 col-xs-12">
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+            @foreach (var reservation in Model)
+            {
+                <tr>
+                    <td>Id</td>
+                    <td>@reservation.Id</td>
+                </tr>
+                <tr>
+                    <td>Renter</td>
+                    <td>@reservation.User.FirstName @reservation.User.SurName</td>
+                </tr>
+                <tr>
+                    <td>Room</td>
+                    <td>@reservation.Room.Name</td>
+                </tr>
+                <tr>
+                    <td>Arrival</td>
+                    <td>@reservation.Arrival</td>
+                </tr>
+                <tr>
+                    <td>Departure</td>
+                    <td>@reservation.Departure</td>
+                </tr>
+                <tr>
+                    <td>Create date</td>
+                    <td>@reservation.CreatedAt</td>
+                </tr>
+                <tr>
+                    <td>Update date</td>
+                    @if (@reservation.UpdatedAt == null) {
+                        <td>Not Updated</td>
+                    } else {
+                        <td>@reservation.UpdatedAt</td>
+                    }
+                </tr>
+                <tr>
+                    <td>Delete date</td>
+                    @if (@reservation.DeletedAt == null) {
+                        <td>Not Deleted</td>
+                    } else {
+                        <td>@reservation.DeletedAt</td>
+                    }
+                </tr>
+            } 
+        </tbody>
+      </table>
+}
+else
+{
+    <p>No details available!</p>
+}
+</div>

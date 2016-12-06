@@ -9,6 +9,8 @@ namespace BnbGo.Models.ViewModels
     public class UserViewModel
     {
         public ApplicationUser User { get; set; }
+        public List<SelectListItem> Cities { get; set; }
         public List<SelectListItem> Regions { get; set; }
+        public List<SelectListItem> Countries { get; set; }
     }
 }

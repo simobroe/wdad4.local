@@ -1,0 +1,79 @@
+@model ICollection<BnbGo.Models.Security.ApplicationUser>
+@Html.AntiForgeryToken()
+@if (Model != null && Model.Count() > 0)
+{
+    <table class="col col-xl-12 col-la-12 col-md-12 col-sm-12 col-xs-12">
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>Id</td>
+                    <td>@user.Id</td>
+                </tr>
+                <tr>
+                    <td>First name</td>
+                    <td>@user.FirstName</td>
+                </tr>
+                <tr>
+                    <td>Last name</td>
+                    <td>@user.SurName</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>@user.Email</td>
+                </tr>
+                <tr>
+                    <td>Username</td>
+                    <td>@user.UserName</td>
+                </tr>
+                <tr>
+                    <td>Day of birth</td>
+                    <td>@user.DayOfBirth</td>
+                </tr>
+                <tr>
+                    <td>Country</td>
+                    <td>@user.Country.Name</td>
+                </tr>
+                <tr>
+                    <td>Region</td>
+                    <td>@user.Region.Name</td>
+                </tr>
+                <tr>
+                    <td>City</td>
+                    <td>@user.City.Name</td>
+                </tr>
+                <tr>
+                    <td>Create date</td>
+                    <td>@user.CreatedAt</td>
+                </tr>
+                <tr>
+                    <td>Update date</td>
+                    @if (@user.UpdatedAt == null) {
+                        <td>Not Updated</td>
+                    } else {
+                        <td>@user.UpdatedAt</td>
+                    }
+                </tr>
+                <tr>
+                    <td>Delete date</td>
+                    @if (@user.DeletedAt == null) {
+                        <td>Not Deleted</td>
+                    } else {
+                        <td>@user.DeletedAt</td>
+                    }
+                </tr>
+            } 
+        </tbody>
+      </table>
+}
+else
+{
+    <p>No details available!</p>
+}
+</div>

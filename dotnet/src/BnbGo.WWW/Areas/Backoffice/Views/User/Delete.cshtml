@@ -1,0 +1,33 @@
+@model BnbGo.Models.ViewModels.ActionUserViewModel
+@{
+    ViewBag.Title = "User Management";
+    ViewBag.SubTitle = "Manage all the users on your SAAS platform";
+    ViewBag.Description = "Create a user via the form or go back to the list of locations.";
+    Layout = "~/Areas/Backoffice/Views/Shared/_Layout.cshtml";
+}
+<div id="submenu">
+    <div class="col col-xl-3 col-la-3 col-md-6 col-sm-6 col-xs-6">
+        <a class="button" asp-controller="User" asp-action="Index">Overview</a>
+    </div>
+</div>
+<div class="">
+    <div class="">
+        <div class="">
+          <div class="">
+            <h2 class="">
+                @Model.Action an existing user</text>
+            </h2>
+          </div>
+          <div class="">
+            <p>Do you wish to @Model.Action the user @Model.ApplicationUser.FirstName @Model.ApplicationUser.SurName?</p>
+            <form asp-controller="User" asp-action="Delete" method="post" asp-antiforgery="true">
+                <input asp-for="ApplicationUser.Id" type="hidden">
+                <input asp-for="ApplicationUser.SurName" type="hidden">
+                <input asp-for="ApplicationUser.FirstName" type="hidden">
+                <input asp-for="ActionType" type="hidden">
+                <button type="submit" class="">@Model.Action</button>
+            </form>
+          </div>
+        </div>
+    </div>
+</div>
