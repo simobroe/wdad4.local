@@ -44,7 +44,7 @@ namespace BnbGo.WWW.Areas.Backoffice.Controllers
         public async Task<IActionResult> Show(int id){
 
             var model = await ApplicationDbContext.Countries
-                .Where(c => c.Id == id)
+                .Where(c => c.Id == id).Include(ct => ct.CurrencyType)
                 .ToListAsync();
 
             if(this.Request.Headers["X-Requested-With"] == "XMLHttpRequest"){

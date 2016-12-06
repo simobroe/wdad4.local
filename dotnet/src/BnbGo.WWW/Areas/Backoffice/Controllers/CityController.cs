@@ -68,7 +68,21 @@ namespace BnbGo.WWW.Areas.Backoffice.Controllers
             
             return View(model);
         }*/
-        
+         [HttpGet]
+        public async Task<IActionResult> Show(int id){
+
+            var model = await ApplicationDbContext.Cities
+                .Where(c => c.Id == id).Include(ct => ct.Region)
+                .ToListAsync();
+
+            if(this.Request.Headers["X-Requested-With"] == "XMLHttpRequest"){
+                return PartialView("_DetailPartial", model);
+            }
+            
+            return View(model);
+
+            }
+
        public async Task<IActionResult> Create() 
         {  
             var viewModel = await ViewModel();

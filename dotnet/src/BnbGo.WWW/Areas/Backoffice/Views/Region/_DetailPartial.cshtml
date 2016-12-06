@@ -1,4 +1,4 @@
-@model ICollection<BnbGo.Models.Country>
+@model ICollection<BnbGo.Models.Region>
 @Html.AntiForgeryToken()
 @if (Model != null && Model.Count() > 0)
 {
@@ -10,46 +10,42 @@
           </tr>
         </thead>
         <tbody>
-            @foreach (var country in Model)
+            @foreach (var region in Model)
             {
                 <tr>
                     <td>Id</td>
-                    <td>@country.Id</td>
+                    <td>@region.Id</td>
                 </tr>
                 <tr>
                     <td>Name</td>
-                    <td>@country.Name</td>
+                    <td>@region.Name</td>
                 </tr>
                 <tr>
                     <td>Description</td>
-                    <td>@country.Description</td>
+                    <td>@region.Description</td>
                 </tr>
                 <tr>
                     <td>Currency</td>
-                    <td>@country.CurrencyType.Name</td>
-                </tr>
-                <tr>
-                    <td>Isocode</td>
-                    <td>@country.Iso2</td>
+                    <td>@region.Country.Name</td>
                 </tr>
                 <tr>
                     <td>Create date</td>
-                    <td>@country.CreatedAt</td>
+                    <td>@region.CreatedAt</td>
                 </tr>
                 <tr>
                     <td>Update date</td>
-                    @if (@country.UpdatedAt == null) {
+                    @if (@region.UpdatedAt == null) {
                         <td>Not Updated</td>
                     } else {
-                        <td>@country.UpdatedAt</td>
+                        <td>@region.UpdatedAt</td>
                     }
                 </tr>
                 <tr>
                     <td>Delete date</td>
-                    @if (@country.DeletedAt == null) {
+                    @if (@region.DeletedAt == null) {
                         <td>Not Deleted</td>
                     } else {
-                        <td>@country.DeletedAt</td>
+                        <td>@region.DeletedAt</td>
                     }
                 </tr>
             } 
