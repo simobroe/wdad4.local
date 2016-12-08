@@ -1,0 +1,88 @@
+page-home {
+    #Intro {
+    font-size: 40px;
+    font-weight: 100;
+        text-align: center;
+        height: 100vh;
+        margin-top: 20vh;
+    }
+    #Intro h2 {
+        margin-bottom: 20px;
+    }
+    #Logo {
+        font-size: 50px;
+        font-weight: 700;
+        color: #f53d3d;
+        margin-bottom: 20px;
+    }
+    #Intro a{
+    color: #f53d3d;
+}
+#Intro a:visited {
+    color: #f53d3d;
+}
+#Intro a:hover {
+    color: #f53d3d;
+}
+    .botArrow {
+        position: absolute;
+        bottom: 10px;
+        left: 49vw;
+    }
+#Explore h1 {
+    font-size: 40px;
+    font-weight: 100;
+}
+ul{
+  width: calc(100% + 32px);
+  list-style:none;
+  padding:0;
+  text-align:center;
+  overflow:auto;
+  margin: 0;
+  margin-left: -16px;
+  margin-right: -16px;
+}
+li {
+  float: left;
+  width: 100%;
+}
+ul li a{
+  color: white;
+  font-weight: 700;
+  font-size: 30px;
+  background:#5A9BD5;
+  display:block;
+  width:100%;
+  height: 120px;
+  text-decoration:none;
+  transition: 0.4s;
+  margin: 0;
+  padding: 0;
+  padding-top: 80px;
+  text-align: right;
+}
+ul li a:hover{
+  //background-position: top;
+}
+.exploreTile {
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#Ghent {
+    background-image: url(../../../assets/tiles/ghent.jpg);
+}
+#London {
+    background-image: url(../../../assets/tiles/london.jpg);
+}
+#Istanbul {
+    background-image: url(../../../assets/tiles/istanbul.jpg);
+}
+#Budapest {
+    background-image: url(../../../assets/tiles/budapest.jpg);
+}
+#LosAngeles {
+    background-image: url(../../../assets/tiles/los-angeles.jpg);
+}
+}
