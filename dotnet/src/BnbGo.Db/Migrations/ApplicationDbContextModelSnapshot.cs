@@ -538,13 +538,15 @@ namespace BnbGo.Db.Migrations
 
                     b.Property<long>("FacilityId");
 
+                    b.Property<long>("Id");
+
                     b.HasKey("RoomId", "FacilityId");
 
                     b.HasIndex("FacilityId");
 
                     b.HasIndex("RoomId");
 
-                    b.ToTable("RoomFacility");
+                    b.ToTable("RoomFacilities");
                 });
 
             modelBuilder.Entity("BnbGo.Models.RoomState", b =>

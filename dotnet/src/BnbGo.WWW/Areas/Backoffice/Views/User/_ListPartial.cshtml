@@ -2,49 +2,48 @@
 @Html.AntiForgeryToken()
 @if (Model != null && Model.Count() > 0)
 {
-      <table class="col col-xl-12 col-la-12 col-md-12 col-sm-12 col-xs-12">
-        <thead>
-          <tr>
-            <th>First name</th>
-            <th>Last name</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach (var user in Model)
-          {
-            <tr>
-              <td>@user.FirstName</td>
-              <td>@user.SurName</td>
-              <td>
-                <a asp-controller="user" asp-action="Show" asp-route-id="@user.Id">
-                  <i class="fa fa-eye" title="View"></i>
+  <table class="col col-xl-12 col-la-12 col-md-12 col-sm-12 col-xs-12">
+    <thead>
+      <tr>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var user in Model)
+      {
+        <tr>
+          <td>@user.FirstName</td>
+          <td>@user.SurName</td>
+          <td>
+            <a asp-controller="user" asp-action="Show" asp-route-id="@user.Id">
+              <i class="fa fa-eye" title="View"></i>
+            </a>
+            <a asp-controller="user" asp-action="Edit" asp-route-id="@user.Id">
+              <i class="fa fa-pencil" title="Edit"></i>
+            </a>
+            @if (@user.DeletedAt != null)
+            {
+                <a asp-controller="user" asp-action="Delete" asp-route-id="@user.Id" asp-route-actionType="5" data-is-softdelete="true">
+                  <i class="fa fa-trash-o" title="revert delete"></i>
                 </a>
-                <a asp-controller="user" asp-action="Edit" asp-route-id="@user.Id">
-                  <i class="fa fa-pencil" title="Edit"></i>
+            }
+            else
+            {
+                <a asp-controller="user" asp-action="Delete" asp-route-id="@user.Id" asp-route-actionType="4">
+                  <i class="fa fa-trash" title="soft delete"></i>
                 </a>
-                @if (@user.DeletedAt != null)
-                {
-                    <a asp-controller="user" asp-action="Delete" asp-route-id="@user.Id" asp-route-actionType="5" data-is-softdelete="true">
-                      <i class="fa fa-trash-o" title="revert delete"></i>
-                    </a>
-                }
-                else
-                {
-                    <a asp-controller="user" asp-action="Delete" asp-route-id="@user.Id" asp-route-actionType="4">
-                      <i class="fa fa-trash" title="soft delete"></i>
-                    </a>
-                }
-                <a asp-controller="user" asp-action="Delete" asp-route-id="@user.Id" asp-route-actionType="3">
-                  <i class="fa fa-ban" title="delete forever"></i>
-                </a>
-            </tr>
-          }
-        </tbody>
-      </table>
+            }
+            <a asp-controller="user" asp-action="Delete" asp-route-id="@user.Id" asp-route-actionType="3">
+              <i class="fa fa-ban" title="delete forever"></i>
+            </a>
+        </tr>
+      }
+    </tbody>
+  </table>
 }
 else
 {
     <p>No Countries in the database!</p>
 }
-</div>

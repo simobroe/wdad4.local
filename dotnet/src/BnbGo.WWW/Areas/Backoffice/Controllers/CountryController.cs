@@ -27,9 +27,14 @@ namespace BnbGo.WWW.Areas.Backoffice.Controllers
             List<Country> countries = null;
 
             if ( !String.IsNullOrEmpty(searchString)) {
-                countries = await ApplicationDbContext.Countries.Where(o => o.Name.Contains(searchString) || o.Iso2.Contains(searchString)).OrderBy(o => o.Name).ToListAsync();
+                countries = await ApplicationDbContext.Countries
+                    .Where(o => o.Name.Contains(searchString) || o.Iso2.Contains(searchString))
+                    .OrderBy(o => o.Name)
+                    .ToListAsync();
             } else {
-                countries = await ApplicationDbContext.Countries.OrderBy(o => o.Name).ToListAsync();
+                countries = await ApplicationDbContext.Countries
+                    .OrderBy(o => o.Name)
+                    .ToListAsync();
             }
 
             if (this.Request.Headers["X-Requested-With"] == "XMLHttpRequest") 
@@ -44,7 +49,8 @@ namespace BnbGo.WWW.Areas.Backoffice.Controllers
         public async Task<IActionResult> Show(int id){
 
             var model = await ApplicationDbContext.Countries
-                .Where(c => c.Id == id).Include(ct => ct.CurrencyType)
+                .Where(c => c.Id == id)
+                .Include(ct => ct.CurrencyType)
                 .ToListAsync();
 
             if(this.Request.Headers["X-Requested-With"] == "XMLHttpRequest"){
@@ -74,6 +80,8 @@ namespace BnbGo.WWW.Areas.Backoffice.Controllers
                     throw new Exception();
                 }
                 
+                model.Country.Description = model.Country.Name;
+
                 ApplicationDbContext.Countries.Add(model.Country);
                 if (await ApplicationDbContext.SaveChangesAsync() == 0)
                 {
@@ -138,7 +146,7 @@ namespace BnbGo.WWW.Areas.Backoffice.Controllers
                 }
                     
                 originalModel.Name = model.Country.Name;
-                originalModel.Description = model.Country.Description;
+                originalModel.Description = model.Country.Name;
                 originalModel.Iso2 = model.Country.Iso2;
                 originalModel.CurrencyTypeId = model.Country.CurrencyTypeId;
                 

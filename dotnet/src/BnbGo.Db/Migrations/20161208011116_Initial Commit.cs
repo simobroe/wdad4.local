@@ -369,23 +369,24 @@ namespace BnbGo.Db.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "RoomFacility",
+                name: "RoomFacilities",
                 columns: table => new
                 {
                     RoomId = table.Column<long>(nullable: false),
-                    FacilityId = table.Column<long>(nullable: false)
+                    FacilityId = table.Column<long>(nullable: false),
+                    Id = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RoomFacility", x => new { x.RoomId, x.FacilityId });
+                    table.PrimaryKey("PK_RoomFacilities", x => new { x.RoomId, x.FacilityId });
                     table.ForeignKey(
-                        name: "FK_RoomFacility_Facilities_FacilityId",
+                        name: "FK_RoomFacilities_Facilities_FacilityId",
                         column: x => x.FacilityId,
                         principalTable: "Facilities",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_RoomFacility_Rooms_RoomId",
+                        name: "FK_RoomFacilities_Rooms_RoomId",
                         column: x => x.RoomId,
                         principalTable: "Rooms",
                         principalColumn: "Id",
@@ -845,13 +846,13 @@ namespace BnbGo.Db.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RoomFacility_FacilityId",
-                table: "RoomFacility",
+                name: "IX_RoomFacilities_FacilityId",
+                table: "RoomFacilities",
                 column: "FacilityId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RoomFacility_RoomId",
-                table: "RoomFacility",
+                name: "IX_RoomFacilities_RoomId",
+                table: "RoomFacilities",
                 column: "RoomId");
 
             migrationBuilder.CreateIndex(
@@ -984,7 +985,7 @@ namespace BnbGo.Db.Migrations
                 name: "ReservationDay");
 
             migrationBuilder.DropTable(
-                name: "RoomFacility");
+                name: "RoomFacilities");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");

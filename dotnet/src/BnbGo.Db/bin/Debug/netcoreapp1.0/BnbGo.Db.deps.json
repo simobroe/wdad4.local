@@ -14,7 +14,8 @@
           "Npgsql.EntityFrameworkCore.PostgreSQL": "1.0.1",
           "Npgsql.EntityFrameworkCore.PostgreSQL.Design": "1.0.1",
           "Bogus": "7.1.6",
-          "BnbGo.Models": "1.0.0"
+          "BnbGo.Models": "1.0.0",
+          "Newtonsoft.Json": "9.0.1"
         },
         "runtime": {
           "BnbGo.Db.dll": {}

@@ -19,6 +19,7 @@ namespace BnbGo.Db
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<Facility> Facilities { get; set; }
+        public DbSet<RoomFacility> RoomFacilities { get; set; }
         public DbSet<HouseType> HouseTypes { get; set; }
         public DbSet<RoomType> RoomTypes { get; set; }
         public DbSet<RentType> RentTypes { get; set; }
@@ -104,7 +105,7 @@ namespace BnbGo.Db
                 .ValueGeneratedOnAddOrUpdate();
             
             // Model: City
-                builder.Entity<City>()
+            builder.Entity<City>()
                 .HasKey(o => o.Id);
 
             builder.Entity<City>()

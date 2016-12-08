@@ -1,39 +1,27 @@
 @model BnbGo.Models.ViewModels.CityViewModel
 @{
-    ViewBag.Title = "City Management";
-    ViewBag.SubTitle = "Manage all the cities on your SAAS platform";
-    ViewBag.Description = "Create a city via the form or go back to the list of cities.";
+    ViewBag.Title = "Create a city";
+    ViewBag.SubTitle = "Create a new city";
     Layout = "~/Areas/Backoffice/Views/Shared/_Layout.cshtml";
 }
-<div class="">
-    @Html.Partial("_QuickActionsPartial")
-</div>
-<div class="">
-    <div class="">
-        <div class="">
-          <div class="">
-            <h2 class="">Create a new city</h2>
-          </div>
-          <div class="">
-            <form asp-controller="City" asp-action="Create" method="post" asp-antiforgery="true">
-                <div class="">
-                    <input class="" asp-for="City.Name">
-                    <label class="" asp-for="City.Name">Name</label>
-                    <span class="" asp-for="City.Name" ></span>
-                </div>
-                <div class="">
-                    <input class="" asp-for="City.Description">
-                    <label class="" asp-for="City.Description">Description</label>
-                    <span class="" asp-for="City.Description"></span>
-                </div>
-                <div class="">
-                    <select class="" asp-for="City.RegionId" asp-items="Model.Region"></select>
-                    <label class="" asp-for="City.RegionId">Region</label>
-                    <span class="" asp-for="City.RegionId"></span>
-                </div>
-                <button type="submit" class="">Save</button>
-            </form>
-          </div>
-        </div>
+
+<form id="createForm" class="mid col col-xl-6 col-la-8 col-md-12 col-sm-12 col-xs-12" asp-controller="City" asp-action="Create" method="post" asp-antiforgery="true">
+    <div class="col col-xl-12 col-md-12 col-la-12 col-sm-12 col-xs-12">
+        <label asp-for="City.Name">Name</label>
+        <input asp-for="City.Name">
     </div>
-</div>
+    <div class="col col-xl-12 col-md-12 col-la-12 col-sm-12 col-xs-12">
+        <label asp-for="City.Postal">Postal code</label>
+        <input asp-for="City.Postal">
+    </div>
+    <div class="col col-xl-12 col-md-12 col-la-12 col-sm-12 col-xs-12">
+        <label asp-for="City.Region">Region</label>
+        <select asp-for="City.RegionId" asp-items="Model.Regions"></select> 
+    </div>
+    <div id="submenu" class="col col-xl-12 col-la-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="col col-xl-6 col-la-6 col-md-6 col-sm-6 col-xs-6">
+            <a class="button" asp-controller="City" asp-action="Index">Cancel</a>
+        </div>
+        <button type="submit" class="button right col col-xl-6 col-la-6 col-md-6 col-sm-6 col-xs-6">Save</button>
+    </div>
+</form>

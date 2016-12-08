@@ -2,11 +2,11 @@
 @Html.AntiForgeryToken()
 @if (Model != null && Model.Count() > 0)
 {
-      <table>
+      <table class="col col-xl-12 col-la-12 col-md-12 col-sm-12 col-xs-12">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Description</th>
+            <th>Facility</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -14,7 +14,29 @@
           {
             <tr>
               <td>@facility.Name</td>
-              <td>@facility.Description</td>
+              <td>
+                <a asp-controller="facility" asp-action="Show" asp-route-id="@facility.Id">
+                  <i class="fa fa-eye" title="View"></i>
+                </a>
+                <a asp-controller="facility" asp-action="Edit" asp-route-id="@facility.Id">
+                  <i class="fa fa-pencil" title="Edit"></i>
+                </a>
+                @if (@facility.DeletedAt != null)
+                {
+                    <a asp-controller="facility" asp-action="Delete" asp-route-id="@facility.Id" asp-route-actionType="5" data-is-softdelete="true">
+                      <i class="fa fa-trash-o" title="revert delete"></i>
+                    </a>
+                }
+                else
+                {
+                    <a asp-controller="facility" asp-action="Delete" asp-route-id="@facility.Id" asp-route-actionType="4">
+                      <i class="fa fa-trash" title="soft delete"></i>
+                    </a>
+                }
+                <a asp-controller="facility" asp-action="Delete" asp-route-id="@facility.Id" asp-route-actionType="3">
+                  <i class="fa fa-ban" title="delete forever"></i>
+                </a>
+              </td>
             </tr>
           }
         </tbody>
@@ -22,6 +44,6 @@
 }
 else
 {
-    <p>No facilities in the database!</p>
+    <p>No Countries in the database!</p>
 }
 </div>

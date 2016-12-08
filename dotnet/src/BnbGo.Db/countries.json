@@ -1,0 +1,1254 @@
+{
+    "country": [
+        {
+            "Iso2": "AD",
+            "Name": "Andorra",
+            "Description": "EUR"
+        },
+        {
+            "Iso2": "AE",
+            "Name": "United Arab Emirates",
+            "Description": "AED"
+        },
+        {
+            "Iso2": "AF",
+            "Name": "Afghanistan",
+            "Description": "AFN"
+        },
+        {
+            "Iso2": "AG",
+            "Name": "Antigua and Barbuda",
+            "Description": "XCD"
+        },
+        {
+            "Iso2": "AI",
+            "Name": "Anguilla",
+            "Description": "XCD"
+        },
+        {
+            "Iso2": "AL",
+            "Name": "Albania",
+            "Description": "ALL"
+        },
+        {
+            "Iso2": "AM",
+            "Name": "Armenia",
+            "Description": "AMD"
+        },
+        {
+            "Iso2": "AO",
+            "Name": "Angola",
+            "Description": "AOA"
+        },
+        {
+            "Iso2": "AQ",
+            "Name": "Antarctica",
+            "Description": ""
+        },
+        {
+            "Iso2": "AR",
+            "Name": "Argentina",
+            "Description": "ARS"
+        },
+        {
+            "Iso2": "AS",
+            "Name": "American Samoa",
+            "Description": "USD"
+        },
+        {
+            "Iso2": "AT",
+            "Name": "Austria",
+            "Description": "EUR"
+        },
+        {
+            "Iso2": "AU",
+            "Name": "Australia",
+            "Description": "AUD"
+        },
+        {
+            "Iso2": "AW",
+            "Name": "Aruba",
+            "Description": "AWG"
+        },
+        {
+            "Iso2": "AX",
+            "Name": "Åland",
+            "Description": "EUR"
+        },
+        {
+            "Iso2": "AZ",
+            "Name": "Azerbaijan",
+            "Description": "AZN"
+        },
+        {
+            "Iso2": "BA",
+            "Name": "Bosnia and Herzegovina",
+            "Description": "BAM"
+        },
+        {
+            "Iso2": "BB",
+            "Name": "Barbados",
+            "Description": "BBD"
+        },
+        {
+            "Iso2": "BD",
+            "Name": "Bangladesh",
+            "Description": "BDT"
+        },
+        {
+            "Iso2": "BE",
+            "Name": "Belgium",
+            "Description": "EUR"
+        },
+        {
+            "Iso2": "BF",
+            "Name": "Burkina Faso",
+            "Description": "XOF"
+        },
+        {
+            "Iso2": "BG",
+            "Name": "Bulgaria",
+            "Description": "BGN"
+        },
+        {
+            "Iso2": "BH",
+            "Name": "Bahrain",
+            "Description": "BHD"
+        },
+        {
+            "Iso2": "BI",
+            "Name": "Burundi",
+            "Description": "BIF"
+        },
+        {
+            "Iso2": "BJ",
+            "Name": "Benin",
+            "Description": "XOF"
+        },
+        {
+            "Iso2": "BL",
+            "Name": "Saint Barthélemy",
+            "Description": "EUR"
+        },
+        {
+            "Iso2": "BM",
+            "Name": "Bermuda",
+            "Description": "BMD"
+        },
+        {
+            "Iso2": "BN",
+            "Name": "Brunei",
+            "Description": "BND"
+        },
+        {
+            "Iso2": "BO",
+            "Name": "Bolivia",
+            "Description": "BOB"
+        },
+        {
+            "Iso2": "BQ",
+            "Name": "Bonaire",
+            "Description": "USD"
+        },
+        {
+            "Iso2": "BR",
+            "Name": "Brazil",
+            "Description": "BRL"
+        },
+        {
+            "Iso2": "BS",
+            "Name": "Bahamas",
+            "Description": "BSD"
+        },
+        {
+            "Iso2": "BT",
+            "Name": "Bhutan",
+            "Description": "BTN"
+        },
+        {
+            "Iso2": "BV",
+            "Name": "Bouvet Island",
+            "Description": "NOK"
+        },
+        {
+            "Iso2": "BW",
+            "Name": "Botswana",
+            "Description": "BWP"
+        },
+        {
+            "Iso2": "BY",
+            "Name": "Belarus",
+            "Description": "BYR"
+        },
+        {
+            "Iso2": "BZ",
+            "Name": "Belize",
+            "Description": "BZD"
+        },
+        {
+            "Iso2": "CA",
+            "Name": "Canada",
+            "Description": "CAD"
+        },
+        {
+            "Iso2": "CC",
+            "Name": "Cocos [Keeling] Islands",
+            "Description": "AUD"
+        },
+        {
+            "Iso2": "CD",
+            "Name": "Democratic Republic of the Congo",
+            "Description": "CDF"
+        },
+        {
+            "Iso2": "CF",
+            "Name": "Central African Republic",
+            "Description": "XAF"
+        },
+        {
+            "Iso2": "CG",
+            "Name": "Republic of the Congo",
+            "Description": "XAF"
+        },
+        {
+            "Iso2": "CH",
+            "Name": "Switzerland",
+            "Description": "CHF"
+        },
+        {
+            "Iso2": "CI",
+            "Name": "Ivory Coast",
+            "Description": "XOF"
+        },
+        {
+            "Iso2": "CK",
+            "Name": "Cook Islands",
+            "Description": "NZD"
+        },
+        {
+            "Iso2": "CL",
+            "Name": "Chile",
+            "Description": "CLP"
+        },
+        {
+            "Iso2": "CM",
+            "Name": "Cameroon",
+            "Description": "XAF"
+        },
+        {
+            "Iso2": "CN",
+            "Name": "China",
+            "Description": "CNY"
+        },
+        {
+            "Iso2": "CO",
+            "Name": "Colombia",
+            "Description": "COP"
+        },
+        {
+            "Iso2": "CR",
+            "Name": "Costa Rica",
+            "Description": "CRC"
+        },
+        {
+            "Iso2": "CU",
+            "Name": "Cuba",
+            "Description": "CUP"
+        },
+        {
+            "Iso2": "CV",
+            "Name": "Cape Verde",
+            "Description": "CVE"
+        },
+        {
+            "Iso2": "CW",
+            "Name": "Curacao",
+            "Description": "ANG"
+        },
+        {
+            "Iso2": "CX",
+            "Name": "Christmas Island",
+            "Description": "AUD"
+        },
+        {
+            "Iso2": "CY",
+            "Name": "Cyprus",
+            "Description": "EUR"
+        },
+        {
+            "Iso2": "CZ",
+            "Name": "Czechia",
+            "Description": "CZK"
+        },
+        {
+            "Iso2": "DE",
+            "Name": "Germany",
+            "Description": "EUR"
+        },
+        {
+            "Iso2": "DJ",
+            "Name": "Djibouti",
+            "Description": "DJF"
+        },
+        {
+            "Iso2": "DK",
+            "Name": "Denmark",
+            "Description": "DKK"
+        },
+        {
+            "Iso2": "DM",
+            "Name": "Dominica",
+            "Description": "XCD"
+        },
+        {
+            "Iso2": "DO",
+            "Name": "Dominican Republic",
+            "Description": "DOP"
+        },
+        {
+            "Iso2": "DZ",
+            "Name": "Algeria",
+            "Description": "DZD"
+        },
+        {
+            "Iso2": "EC",
+            "Name": "Ecuador",
+            "Description": "USD"
+        },
+        {
+            "Iso2": "EE",
+            "Name": "Estonia",
+            "Description": "EUR"
+        },
+        {
+            "Iso2": "EG",
+            "Name": "Egypt",
+            "Description": "EGP"
+        },
+        {
+            "Iso2": "EH",
+            "Name": "Western Sahara",
+            "Description": "MAD"
+        },
+        {
+            "Iso2": "ER",
+            "Name": "Eritrea",
+            "Description": "ERN"
+        },
+        {
+            "Iso2": "ES",
+            "Name": "Spain",
+            "Description": "EUR"
+        },
+        {
+            "Iso2": "ET",
+            "Name": "Ethiopia",
+            "Description": "ETB"
+        },
+        {
+            "Iso2": "FI",
+            "Name": "Finland",
+            "Description": "EUR"
+        },
+        {
+            "Iso2": "FJ",
+            "Name": "Fiji",
+            "Description": "FJD"
+        },
+        {
+            "Iso2": "FK",
+            "Name": "Falkland Islands",
+            "Description": "FKP"
+        },
+        {
+            "Iso2": "FM",
+            "Name": "Micronesia",
+            "Description": "USD"
+        },
+        {
+            "Iso2": "FO",
+            "Name": "Faroe Islands",
+            "Description": "DKK"
+        },
+        {
+            "Iso2": "FR",
+            "Name": "France",
+            "Description": "EUR"
+        },
+        {
+            "Iso2": "GA",
+            "Name": "Gabon",
+            "Description": "XAF"
+        },
+        {
+            "Iso2": "GB",
+            "Name": "United Kingdom",
+            "Description": "GBP"
+        },
+        {
+            "Iso2": "GD",
+            "Name": "Grenada",
+            "Description": "XCD"
+        },
+        {
+            "Iso2": "GE",
+            "Name": "Georgia",
+            "Description": "GEL"
+        },
+        {
+            "Iso2": "GF",
+            "Name": "French Guiana",
+            "Description": "EUR"
+        },
+        {
+            "Iso2": "GG",
+            "Name": "Guernsey",
+            "Description": "GBP"
+        },
+        {
+            "Iso2": "GH",
+            "Name": "Ghana",
+            "Description": "GHS"
+        },
+        {
+            "Iso2": "GI",
+            "Name": "Gibraltar",
+            "Description": "GIP"
+        },
+        {
+            "Iso2": "GL",
+            "Name": "Greenland",
+            "Description": "DKK"
+        },
+        {
+            "Iso2": "GM",
+            "Name": "Gambia",
+            "Description": "GMD"
+        },
+        {
+            "Iso2": "GN",
+            "Name": "Guinea",
+            "Description": "GNF"
+        },
+        {
+            "Iso2": "GP",
+            "Name": "Guadeloupe",
+            "Description": "EUR"
+        },
+        {
+            "Iso2": "GQ",
+            "Name": "Equatorial Guinea",
+            "Description": "XAF"
+        },
+        {
+            "Iso2": "GR",
+            "Name": "Greece",
+            "Description": "EUR"
+        },
+        {
+            "Iso2": "GS",
+            "Name": "South Georgia and the South Sandwich Islands",
+            "Description": "GBP"
+        },
+        {
+            "Iso2": "GT",
+            "Name": "Guatemala",
+            "Description": "GTQ"
+        },
+        {
+            "Iso2": "GU",
+            "Name": "Guam",
+            "Description": "USD"
+        },
+        {
+            "Iso2": "GW",
+            "Name": "Guinea-Bissau",
+            "Description": "XOF"
+        },
+        {
+            "Iso2": "GY",
+            "Name": "Guyana",
+            "Description": "GYD"
+        },
+        {
+            "Iso2": "HK",
+            "Name": "Hong Kong",
+            "Description": "HKD"
+        },
+        {
+            "Iso2": "HM",
+            "Name": "Heard Island and McDonald Islands",
+            "Description": "AUD"
+        },
+        {
+            "Iso2": "HN",
+            "Name": "Honduras",
+            "Description": "HNL"
+        },
+        {
+            "Iso2": "HR",
+            "Name": "Croatia",
+            "Description": "HRK"
+        },
+        {
+            "Iso2": "HT",
+            "Name": "Haiti",
+            "Description": "HTG"
+        },
+        {
+            "Iso2": "HU",
+            "Name": "Hungary",
+            "Description": "HUF"
+        },
+        {
+            "Iso2": "ID",
+            "Name": "Indonesia",
+            "Description": "IDR"
+        },
+        {
+            "Iso2": "IE",
+            "Name": "Ireland",
+            "Description": "EUR"
+        },
+        {
+            "Iso2": "IL",
+            "Name": "Israel",
+            "Description": "ILS"
+        },
+        {
+            "Iso2": "IM",
+            "Name": "Isle of Man",
+            "Description": "GBP"
+        },
+        {
+            "Iso2": "IN",
+            "Name": "India",
+            "Description": "INR"
+        },
+        {
+            "Iso2": "IO",
+            "Name": "British Indian Ocean Territory",
+            "Description": "USD"
+        },
+        {
+            "Iso2": "IQ",
+            "Name": "Iraq",
+            "Description": "IQD"
+        },
+        {
+            "Iso2": "IR",
+            "Name": "Iran",
+            "Description": "IRR"
+        },
+        {
+            "Iso2": "IS",
+            "Name": "Iceland",
+            "Description": "ISK"
+        },
+        {
+            "Iso2": "IT",
+            "Name": "Italy",
+            "Description": "EUR"
+        },
+        {
+            "Iso2": "JE",
+            "Name": "Jersey",
+            "Description": "GBP"
+        },
+        {
+            "Iso2": "JM",
+            "Name": "Jamaica",
+            "Description": "JMD"
+        },
+        {
+            "Iso2": "JO",
+            "Name": "Jordan",
+            "Description": "JOD"
+        },
+        {
+            "Iso2": "JP",
+            "Name": "Japan",
+            "Description": "JPY"
+        },
+        {
+            "Iso2": "KE",
+            "Name": "Kenya",
+            "Description": "KES"
+        },
+        {
+            "Iso2": "KG",
+            "Name": "Kyrgyzstan",
+            "Description": "KGS"
+        },
+        {
+            "Iso2": "KH",
+            "Name": "Cambodia",
+            "Description": "KHR"
+        },
+        {
+            "Iso2": "KI",
+            "Name": "Kiribati",
+            "Description": "AUD"
+        },
+        {
+            "Iso2": "KM",
+            "Name": "Comoros",
+            "Description": "KMF"
+        },
+        {
+            "Iso2": "KN",
+            "Name": "Saint Kitts and Nevis",
+            "Description": "XCD"
+        },
+        {
+            "Iso2": "KP",
+            "Name": "North Korea",
+            "Description": "KPW"
+        },
+        {
+            "Iso2": "KR",
+            "Name": "South Korea",
+            "Description": "KRW"
+        },
+        {
+            "Iso2": "KW",
+            "Name": "Kuwait",
+            "Description": "KWD"
+        },
+        {
+            "Iso2": "KY",
+            "Name": "Cayman Islands",
+            "Description": "KYD"
+        },
+        {
+            "Iso2": "KZ",
+            "Name": "Kazakhstan",
+            "Description": "KZT"
+        },
+        {
+            "Iso2": "LA",
+            "Name": "Laos",
+            "Description": "LAK"
+        },
+        {
+            "Iso2": "LB",
+            "Name": "Lebanon",
+            "Description": "LBP"
+        },
+        {
+            "Iso2": "LC",
+            "Name": "Saint Lucia",
+            "Description": "XCD"
+        },
+        {
+            "Iso2": "LI",
+            "Name": "Liechtenstein",
+            "Description": "CHF"
+        },
+        {
+            "Iso2": "LK",
+            "Name": "Sri Lanka",
+            "Description": "LKR"
+        },
+        {
+            "Iso2": "LR",
+            "Name": "Liberia",
+            "Description": "LRD"
+        },
+        {
+            "Iso2": "LS",
+            "Name": "Lesotho",
+            "Description": "LSL"
+        },
+        {
+            "Iso2": "LT",
+            "Name": "Lithuania",
+            "Description": "EUR"
+        },
+        {
+            "Iso2": "LU",
+            "Name": "Luxembourg",
+            "Description": "EUR"
+        },
+        {
+            "Iso2": "LV",
+            "Name": "Latvia",
+            "Description": "EUR"
+        },
+        {
+            "Iso2": "LY",
+            "Name": "Libya",
+            "Description": "LYD"
+        },
+        {
+            "Iso2": "MA",
+            "Name": "Morocco",
+            "Description": "MAD"
+        },
+        {
+            "Iso2": "MC",
+            "Name": "Monaco",
+            "Description": "EUR"
+        },
+        {
+            "Iso2": "MD",
+            "Name": "Moldova",
+            "Description": "MDL"
+        },
+        {
+            "Iso2": "ME",
+            "Name": "Montenegro",
+            "Description": "EUR"
+        },
+        {
+            "Iso2": "MF",
+            "Name": "Saint Martin",
+            "Description": "EUR"
+        },
+        {
+            "Iso2": "MG",
+            "Name": "Madagascar",
+            "Description": "MGA"
+        },
+        {
+            "Iso2": "MH",
+            "Name": "Marshall Islands",
+            "Description": "USD"
+        },
+        {
+            "Iso2": "MK",
+            "Name": "Macedonia",
+            "Description": "MKD"
+        },
+        {
+            "Iso2": "ML",
+            "Name": "Mali",
+            "Description": "XOF"
+        },
+        {
+            "Iso2": "MM",
+            "Name": "Myanmar [Burma]",
+            "Description": "MMK"
+        },
+        {
+            "Iso2": "MN",
+            "Name": "Mongolia",
+            "Description": "MNT"
+        },
+        {
+            "Iso2": "MO",
+            "Name": "Macao",
+            "Description": "MOP"
+        },
+        {
+            "Iso2": "MP",
+            "Name": "Northern Mariana Islands",
+            "Description": "USD"
+        },
+        {
+            "Iso2": "MQ",
+            "Name": "Martinique",
+            "Description": "EUR"
+        },
+        {
+            "Iso2": "MR",
+            "Name": "Mauritania",
+            "Description": "MRO"
+        },
+        {
+            "Iso2": "MS",
+            "Name": "Montserrat",
+            "Description": "XCD"
+        },
+        {
+            "Iso2": "MT",
+            "Name": "Malta",
+            "Description": "EUR"
+        },
+        {
+            "Iso2": "MU",
+            "Name": "Mauritius",
+            "Description": "MUR"
+        },
+        {
+            "Iso2": "MV",
+            "Name": "Maldives",
+            "Description": "MVR"
+        },
+        {
+            "Iso2": "MW",
+            "Name": "Malawi",
+            "Description": "MWK"
+        },
+        {
+            "Iso2": "MX",
+            "Name": "Mexico",
+            "Description": "MXN"
+        },
+        {
+            "Iso2": "MY",
+            "Name": "Malaysia",
+            "Description": "MYR"
+        },
+        {
+            "Iso2": "MZ",
+            "Name": "Mozambique",
+            "Description": "MZN"
+        },
+        {
+            "Iso2": "NA",
+            "Name": "Namibia",
+            "Description": "NAD"
+        },
+        {
+            "Iso2": "NC",
+            "Name": "New Caledonia",
+            "Description": "XPF"
+        },
+        {
+            "Iso2": "NE",
+            "Name": "Niger",
+            "Description": "XOF"
+        },
+        {
+            "Iso2": "NF",
+            "Name": "Norfolk Island",
+            "Description": "AUD"
+        },
+        {
+            "Iso2": "NG",
+            "Name": "Nigeria",
+            "Description": "NGN"
+        },
+        {
+            "Iso2": "NI",
+            "Name": "Nicaragua",
+            "Description": "NIO"
+        },
+        {
+            "Iso2": "NL",
+            "Name": "Netherlands",
+            "Description": "EUR"
+        },
+        {
+            "Iso2": "NO",
+            "Name": "Norway",
+            "Description": "NOK"
+        },
+        {
+            "Iso2": "NP",
+            "Name": "Nepal",
+            "Description": "NPR"
+        },
+        {
+            "Iso2": "NR",
+            "Name": "Nauru",
+            "Description": "AUD"
+        },
+        {
+            "Iso2": "NU",
+            "Name": "Niue",
+            "Description": "NZD"
+        },
+        {
+            "Iso2": "NZ",
+            "Name": "New Zealand",
+            "Description": "NZD"
+        },
+        {
+            "Iso2": "OM",
+            "Name": "Oman",
+            "Description": "OMR"
+        },
+        {
+            "Iso2": "PA",
+            "Name": "Panama",
+            "Description": "PAB"
+        },
+        {
+            "Iso2": "PE",
+            "Name": "Peru",
+            "Description": "PEN"
+        },
+        {
+            "Iso2": "PF",
+            "Name": "French Polynesia",
+            "Description": "XPF"
+        },
+        {
+            "Iso2": "PG",
+            "Name": "Papua New Guinea",
+            "Description": "PGK"
+        },
+        {
+            "Iso2": "PH",
+            "Name": "Philippines",
+            "Description": "PHP"
+        },
+        {
+            "Iso2": "PK",
+            "Name": "Pakistan",
+            "Description": "PKR"
+        },
+        {
+            "Iso2": "PL",
+            "Name": "Poland",
+            "Description": "PLN"
+        },
+        {
+            "Iso2": "PM",
+            "Name": "Saint Pierre and Miquelon",
+            "Description": "EUR"
+        },
+        {
+            "Iso2": "PN",
+            "Name": "Pitcairn Islands",
+            "Description": "NZD"
+        },
+        {
+            "Iso2": "PR",
+            "Name": "Puerto Rico",
+            "Description": "USD"
+        },
+        {
+            "Iso2": "PS",
+            "Name": "Palestine",
+            "Description": "ILS"
+        },
+        {
+            "Iso2": "PT",
+            "Name": "Portugal",
+            "Description": "EUR"
+        },
+        {
+            "Iso2": "PW",
+            "Name": "Palau",
+            "Description": "USD"
+        },
+        {
+            "Iso2": "PY",
+            "Name": "Paraguay",
+            "Description": "PYG"
+        },
+        {
+            "Iso2": "QA",
+            "Name": "Qatar",
+            "Description": "QAR"
+        },
+        {
+            "Iso2": "RE",
+            "Name": "Réunion",
+            "Description": "EUR"
+        },
+        {
+            "Iso2": "RO",
+            "Name": "Romania",
+            "Description": "RON"
+        },
+        {
+            "Iso2": "RS",
+            "Name": "Serbia",
+            "Description": "RSD"
+        },
+        {
+            "Iso2": "RU",
+            "Name": "Russia",
+            "Description": "RUB"
+        },
+        {
+            "Iso2": "RW",
+            "Name": "Rwanda",
+            "Description": "RWF"
+        },
+        {
+            "Iso2": "SA",
+            "Name": "Saudi Arabia",
+            "Description": "SAR"
+        },
+        {
+            "Iso2": "SB",
+            "Name": "Solomon Islands",
+            "Description": "SBD"
+        },
+        {
+            "Iso2": "SC",
+            "Name": "Seychelles",
+            "Description": "SCR"
+        },
+        {
+            "Iso2": "SD",
+            "Name": "Sudan",
+            "Description": "SDG"
+        },
+        {
+            "Iso2": "SE",
+            "Name": "Sweden",
+            "Description": "SEK"
+        },
+        {
+            "Iso2": "SG",
+            "Name": "Singapore",
+            "Description": "SGD"
+        },
+        {
+            "Iso2": "SH",
+            "Name": "Saint Helena",
+            "Description": "SHP"
+        },
+        {
+            "Iso2": "SI",
+            "Name": "Slovenia",
+            "Description": "EUR"
+        },
+        {
+            "Iso2": "SJ",
+            "Name": "Svalbard and Jan Mayen",
+            "Description": "NOK"
+        },
+        {
+            "Iso2": "SK",
+            "Name": "Slovakia",
+            "Description": "EUR"
+        },
+        {
+            "Iso2": "SL",
+            "Name": "Sierra Leone",
+            "Description": "SLL"
+        },
+        {
+            "Iso2": "SM",
+            "Name": "San Marino",
+            "Description": "EUR"
+        },
+        {
+            "Iso2": "SN",
+            "Name": "Senegal",
+            "Description": "XOF"
+        },
+        {
+            "Iso2": "SO",
+            "Name": "Somalia",
+            "Description": "SOS"
+        },
+        {
+            "Iso2": "SR",
+            "Name": "Suriname",
+            "Description": "SRD"
+        },
+        {
+            "Iso2": "SS",
+            "Name": "South Sudan",
+            "Description": "SSP"
+        },
+        {
+            "Iso2": "ST",
+            "Name": "São Tomé and Príncipe",
+            "Description": "STD"
+        },
+        {
+            "Iso2": "SV",
+            "Name": "El Salvador",
+            "Description": "USD"
+        },
+        {
+            "Iso2": "SX",
+            "Name": "Sint Maarten",
+            "Description": "ANG"
+        },
+        {
+            "Iso2": "SY",
+            "Name": "Syria",
+            "Description": "SYP"
+        },
+        {
+            "Iso2": "SZ",
+            "Name": "Swaziland",
+            "Description": "SZL"
+        },
+        {
+            "Iso2": "TC",
+            "Name": "Turks and Caicos Islands",
+            "Description": "USD"
+        },
+        {
+            "Iso2": "TD",
+            "Name": "Chad",
+            "Description": "XAF"
+        },
+        {
+            "Iso2": "TF",
+            "Name": "French Southern Territories",
+            "Description": "EUR"
+        },
+        {
+            "Iso2": "TG",
+            "Name": "Togo",
+            "Description": "XOF"
+        },
+        {
+            "Iso2": "TH",
+            "Name": "Thailand",
+            "Description": "THB"
+        },
+        {
+            "Iso2": "TJ",
+            "Name": "Tajikistan",
+            "Description": "TJS"
+        },
+        {
+            "Iso2": "TK",
+            "Name": "Tokelau",
+            "Description": "NZD"
+        },
+        {
+            "Iso2": "TL",
+            "Name": "East Timor",
+            "Description": "USD"
+        },
+        {
+            "Iso2": "TM",
+            "Name": "Turkmenistan",
+            "Description": "TMT"
+        },
+        {
+            "Iso2": "TN",
+            "Name": "Tunisia",
+            "Description": "TND"
+        },
+        {
+            "Iso2": "TO",
+            "Name": "Tonga",
+            "Description": "TOP"
+        },
+        {
+            "Iso2": "TR",
+            "Name": "Turkey",
+            "Description": "TRY"
+        },
+        {
+            "Iso2": "TT",
+            "Name": "Trinidad and Tobago",
+            "Description": "TTD"
+        },
+        {
+            "Iso2": "TV",
+            "Name": "Tuvalu",
+            "Description": "AUD"
+        },
+        {
+            "Iso2": "TW",
+            "Name": "Taiwan",
+            "Description": "TWD"
+        },
+        {
+            "Iso2": "TZ",
+            "Name": "Tanzania",
+            "Description": "TZS"
+        },
+        {
+            "Iso2": "UA",
+            "Name": "Ukraine",
+            "Description": "UAH"
+        },
+        {
+            "Iso2": "UG",
+            "Name": "Uganda",
+            "Description": "UGX"
+        },
+        {
+            "Iso2": "UM",
+            "Name": "U.S. Minor Outlying Islands",
+            "Description": "USD"
+        },
+        {
+            "Iso2": "US",
+            "Name": "United States",
+            "Description": "USD"
+        },
+        {
+            "Iso2": "UY",
+            "Name": "Uruguay",
+            "Description": "UYU"
+        },
+        {
+            "Iso2": "UZ",
+            "Name": "Uzbekistan",
+            "Description": "UZS"
+        },
+        {
+            "Iso2": "VA",
+            "Name": "Vatican City",
+            "Description": "EUR"
+        },
+        {
+            "Iso2": "VC",
+            "Name": "Saint Vincent and the Grenadines",
+            "Description": "XCD"
+        },
+        {
+            "Iso2": "VE",
+            "Name": "Venezuela",
+            "Description": "VEF"
+        },
+        {
+            "Iso2": "VG",
+            "Name": "British Virgin Islands",
+            "Description": "USD"
+        },
+        {
+            "Iso2": "VI",
+            "Name": "U.S. Virgin Islands",
+            "Description": "USD"
+        },
+        {
+            "Iso2": "VN",
+            "Name": "Vietnam",
+            "Description": "VND"
+        },
+        {
+            "Iso2": "VU",
+            "Name": "Vanuatu",
+            "Description": "VUV"
+        },
+        {
+            "Iso2": "WF",
+            "Name": "Wallis and Futuna",
+            "Description": "XPF"
+        },
+        {
+            "Iso2": "WS",
+            "Name": "Samoa",
+            "Description": "WST"
+        },
+        {
+            "Iso2": "XK",
+            "Name": "Kosovo",
+            "Description": "EUR"
+        },
+        {
+            "Iso2": "YE",
+            "Name": "Yemen",
+            "Description": "YER"
+        },
+        {
+            "Iso2": "YT",
+            "Name": "Mayotte",
+            "Description": "EUR"
+        },
+        {
+            "Iso2": "ZA",
+            "Name": "South Africa",
+            "Description": "ZAR"
+        },
+        {
+            "Iso2": "ZM",
+            "Name": "Zambia",
+            "Description": "ZMW"
+        },
+        {
+            "Iso2": "ZW",
+            "Name": "Zimbabwe",
+            "Description": "ZWL"
+        }
+    ]
+}

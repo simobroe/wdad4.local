@@ -19,60 +19,40 @@ namespace BnbGo.WWW.Areas.Backoffice.Controllers
     {
         public CityController(ApplicationDbContext applicationDbContext):base(applicationDbContext)
         {
+            
         }
 
-/*
-        [HttpGet("{regionId:int}", Name = "GetRegionById")]
-        public async Task<IActionResult> GetRegionById(Int16 regionId)
+        public async Task<IActionResult> Index( string searchString) 
         {
-            var model = await ApplicationDbContext.Regions.FirstOrDefaultAsync(o => o.Id == regionId);
-            if (this.Request.Headers["X-Requested-With"] == "XMLHttpRequest") 
-            {
-                return PartialView("_ListPartial", model);
+            List<City> cities = null;
+
+            if ( !String.IsNullOrEmpty(searchString)) {
+                cities = await ApplicationDbContext.Cities
+                    .Where(o => o.Name.Contains(searchString))
+                    .OrderBy(o => o.Name)
+                    .Include(re => re.Region)
+                    .ToListAsync();
+            } else {
+                cities = await ApplicationDbContext.Cities
+                    .OrderBy(o => o.Name)
+                    .Include(re => re.Region)
+                    .ToListAsync();
             }
-            
-            return View(model);
-        }
-        */
-        public async Task<IActionResult> Index()
-{
-        var model = await ApplicationDbContext.Cities
-        .OrderBy(ci => ci.Name)
-        .Include(re => re.Region)
-        .ToListAsync();
-        /*var model = 
-        from c in ApplicationDbContext.Cities
-        join r in ApplicationDbContext.Regions on c.RegionId equals r.Id
-        orderby c.Name
-        select new CityRegion { City = c, Region = r };*/
-        if (this.Request.Headers["X-Requested-With"] == "XMLHttpRequest") 
-            {
-                return PartialView("_ListPartial", model);
-            }
-            
-            return View(model);
-}
-        /*public async Task<IActionResult> Index() 
-        {
-            var model = await ApplicationDbContext.Cities.OrderBy(o => o.Name).ToListAsync();
-/*var model = 
-        from c in ApplicationDbContext.Cities
-        join r in ApplicationDbContext.Regions on c.RegionId equals r.Id
-        orderby c.Name
-        select new CityRegion { City = c, Region = r };
 
             if (this.Request.Headers["X-Requested-With"] == "XMLHttpRequest") 
             {
-                return PartialView("_ListPartial", model);
+                return PartialView("_ListPartial", cities);
             }
             
-            return View(model);
-        }*/
-         [HttpGet]
+            return View(cities);
+        }
+
+        [HttpGet]
         public async Task<IActionResult> Show(int id){
 
             var model = await ApplicationDbContext.Cities
-                .Where(c => c.Id == id).Include(ct => ct.Region)
+                .Where(c => c.Id == id)
+                .Include(re => re.Region)
                 .ToListAsync();
 
             if(this.Request.Headers["X-Requested-With"] == "XMLHttpRequest"){
@@ -83,7 +63,7 @@ namespace BnbGo.WWW.Areas.Backoffice.Controllers
 
             }
 
-       public async Task<IActionResult> Create() 
+         public async Task<IActionResult> Create() 
         {  
             var viewModel = await ViewModel();
             
@@ -102,6 +82,8 @@ namespace BnbGo.WWW.Areas.Backoffice.Controllers
                     throw new Exception();
                 }
                 
+                model.City.Description = model.City.Name;
+
                 ApplicationDbContext.Cities.Add(model.City);
                 if (await ApplicationDbContext.SaveChangesAsync() == 0)
                 {
@@ -125,7 +107,7 @@ namespace BnbGo.WWW.Areas.Backoffice.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Edit(Int32? id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -138,12 +120,11 @@ namespace BnbGo.WWW.Areas.Backoffice.Controllers
             {
                 return RedirectToAction("Index");
             }
+
             var viewModel = await ViewModel(model);
-            //var viewModel = await ViewModel();
             
             return View(viewModel);
         }
-        
         
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -167,7 +148,8 @@ namespace BnbGo.WWW.Areas.Backoffice.Controllers
                 }
                     
                 originalModel.Name = model.City.Name;
-                originalModel.Description = model.City.Description;
+                originalModel.Description = model.City.Name;
+                originalModel.Postal = model.City.Postal;
                 originalModel.RegionId = model.City.RegionId;
                 
                 ApplicationDbContext.Cities.Attach(originalModel);
@@ -287,22 +269,9 @@ namespace BnbGo.WWW.Areas.Backoffice.Controllers
                     return RedirectToAction("Index");
                 }
             }
-        }
-        
-/*
-        private async Task<CityViewModel> ViewModel(City city = null) 
-        {
+        }  
 
-            var viewModel = new CityViewModel 
-            {
-                City = (city != null)?city:new City()
-            };
-
-            return viewModel;
-        }
-        */
-    
-        private async Task<CityViewModel> ViewModel(City city = null) 
+         private async Task<CityViewModel> ViewModel(City city = null) 
         {
             var regions = await ApplicationDbContext.Regions.Select(o => new SelectListItem { 
                 Value = o.Id.ToString(), 
@@ -312,7 +281,7 @@ namespace BnbGo.WWW.Areas.Backoffice.Controllers
             var viewModel = new CityViewModel 
             {
                 City = (city != null)?city:new City(),
-                Region = regions
+                Regions = regions
             };
 
             return viewModel;

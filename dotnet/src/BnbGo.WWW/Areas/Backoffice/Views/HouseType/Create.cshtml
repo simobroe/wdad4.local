@@ -1,0 +1,23 @@
+@model BnbGo.Models.ViewModels.HouseTypeViewModel
+@{
+    ViewBag.Title = "Create a house type";
+    ViewBag.SubTitle = "Create a new house type";
+    Layout = "~/Areas/Backoffice/Views/Shared/_Layout.cshtml";
+}
+
+<form id="createForm" class="mid col col-xl-6 col-la-8 col-md-12 col-sm-12 col-xs-12" asp-controller="HouseType" asp-action="Create" method="post" asp-antiforgery="true">
+    <div class="col col-xl-12 col-md-12 col-la-12 col-sm-12 col-xs-12">
+        <label asp-for="HouseType.Name">Name</label>
+        <input asp-for="HouseType.Name">
+    </div>
+    <div class="col col-xl-12 col-md-12 col-la-12 col-sm-12 col-xs-12">
+        <label asp-for="HouseType.Description">Description</label>
+        <input asp-for="HouseType.Description">
+    </div>
+    <div id="submenu" class="col col-xl-12 col-la-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="col col-xl-6 col-la-6 col-md-6 col-sm-6 col-xs-6">
+            <a class="button" asp-controller="HouseType" asp-action="Index">Cancel</a>
+        </div>
+        <button type="submit" class="button right col col-xl-6 col-la-6 col-md-6 col-sm-6 col-xs-6">Save</button>
+    </div>
+</form>

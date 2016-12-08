@@ -13,6 +13,7 @@ using Bogus.DataSets;
 using Bogus.Extensions;
 using BnbGo.Models;
 using BnbGo.Models.Security;
+using Newtonsoft.Json.Linq;
 
 namespace BnbGo.Db
 {
@@ -35,6 +36,9 @@ namespace BnbGo.Db
                 // Random instance
                 var random = new Random();
 
+                // user id's
+                List<Guid> UserIds = new List<Guid>();
+
                 // Currency
                 if (!context.CurrencyTypes.Any())
                 {
@@ -42,6 +46,8 @@ namespace BnbGo.Db
                     {
                         new CurrencyType { Name = "Euro", Description = "Euro"},
                         new CurrencyType { Name = "Dollar", Description = "Dollar"},
+                        new CurrencyType { Name = "Yen", Description = "Yen"},
+                        new CurrencyType { Name = "Pound", Description = "Pound"},
                     });
                     await context.SaveChangesAsync();
                 }
@@ -49,41 +55,121 @@ namespace BnbGo.Db
                 // Country
                 if (!context.Countries.Any())
                 {
-                    context.Countries.AddRange(new List<Country>()
+                    string json = File.ReadAllText("../BnbGo.Db/countries.json");
+                    dynamic countries = Newtonsoft.Json.JsonConvert.DeserializeObject(json);
+                    List<Country> countryList = new List<Country>();
+                    
+                    var countriesInJson = countries.country;
+                    foreach (var countryInJson in countriesInJson)
                     {
-                        new Country { Name = "Belgium", Description = "Belgium", Iso2 = "BE", CurrencyTypeId = 1},
-                    });
+                        short currentCurrency = 1;
+                        switch ((string)countryInJson.Description)
+                        {
+                            case "EUR":
+                                currentCurrency = 1;
+                                break;
+                            case "USD":
+                                currentCurrency = 2;
+                                break;
+                            case "JPY":
+                                currentCurrency = 3;
+                                break;
+                            case "GBP":
+                                currentCurrency = 4;
+                                break;
+                            default:
+                                currentCurrency = 1;
+                                break;
+                        };
+                        countryList.Add(new Country() {
+                            Name = countryInJson.Name,
+                            Description = countryInJson.Description,
+                            Iso2 = countryInJson.Iso2,
+                            CurrencyTypeId = currentCurrency
+                        });
+                    }
+
+                    context.Countries.AddRange(countryList);
+
                     await context.SaveChangesAsync();
                 }
-
+                
                 // Region
                 if (!context.Regions.Any())
                 {
                     context.Regions.AddRange(new List<Region>()
                     {
-                        new Region { Name = "Oost Vlaanderen", Description = "Oost Vlaanderen", CountryId =1 },
-                        new Region { Name = "West Vlaanderen", Description = "West Vlaanderen", CountryId =1 },
+                        // Belgium
+                        new Region { Name = "Oost Vlaanderen", Description = "Oost Vlaanderen", CountryId =176 },
+                        new Region { Name = "West Vlaanderen", Description = "West Vlaanderen", CountryId =176 },
+                        new Region { Name = "Antwerpen", Description = "Antwerpen", CountryId =176 },
+                        new Region { Name = "Limburg", Description = "Limburg", CountryId =176 },
+                        new Region { Name = "Vlaams Brabant", Description = "Vlaams Brabant", CountryId =176 },
+                        new Region { Name = "Waals Brabant", Description = "Waals Brabant", CountryId =176 },
+                        new Region { Name = "Henegouwen", Description = "Henegouwen", CountryId =176 },
+                        new Region { Name = "Luik", Description = "Luik", CountryId =176 },
+                        new Region { Name = "Luxemburg", Description = "Luxemburg", CountryId =176 },
+                        new Region { Name = "Namen", Description = "Namen", CountryId =176 },
+                        // Netherlands
+                        new Region { Name = "Groningen", Description = "Groningen", CountryId =9 },
+                        new Region { Name = "Friesland", Description = "Friesland", CountryId =9 },
+                        new Region { Name = "Drenthe", Description = "Drenthe", CountryId =9 },
+                        new Region { Name = "Overijssel", Description = "Overijssel", CountryId =9 },
+                        new Region { Name = "Flevoland", Description = "Flevoland", CountryId =9 },
+                        new Region { Name = "Gelderland", Description = "Gelderland", CountryId =9 },
+                        new Region { Name = "Utrecht", Description = "Utrecht", CountryId =9 },
+                        new Region { Name = "Noord-Holland", Description = "Noord-Holland", CountryId =9 },
+                        new Region { Name = "Zuid-Holland", Description = "Zuid-Holland", CountryId =9 },
+                        new Region { Name = "Zeeland", Description = "Zeeland", CountryId =9 },
+                        new Region { Name = "Noord-Brabant", Description = "Noord-Brabant", CountryId =9 },
+                        new Region { Name = "Limburg", Description = "Limburg", CountryId =9 },
+                        // France
+                        new Region { Name = "Normandië", Description = "Normandië", CountryId =231 },
+                        new Region { Name = "Bourgondië", Description = "Bourgondië", CountryId =231 },
+                        new Region { Name = "Provence", Description = "Provence", CountryId =231 },
+                        new Region { Name = "Île-de-france", Description = "Île-de-france", CountryId =231 },
                     });
                     await context.SaveChangesAsync();
                 }
-
+                
                 // City
                 if (!context.Cities.Any())
                 {
                     context.Cities.AddRange(new List<City>()
                     {
-                        new City { Name = "Gent", Description = "Gent", RegionId =1 },
-                        new City { Name = "Brugge", Description = "Brugge", RegionId =2 },
+                        new City { Name = "Gent", Description = "Gent", RegionId =1, Postal = "9000" },
+                        new City { Name = "Aalter", Description = "Aalter", RegionId =1, Postal = "9880" },
+                        new City { Name = "Nevele", Description = "Nevele", RegionId =1, Postal = "9850" },
+                        new City { Name = "Mariakerke", Description = "Mariakerke", RegionId =1, Postal = "9030" },
+                        new City { Name = "Drongen", Description = "Drongen", RegionId =1, Postal = "9031" },
+                        new City { Name = "Brugge", Description = "Brugge", RegionId =24, Postal = "8000" },
+                        new City { Name = "Poperinge", Description = "Poperinge", RegionId =24, Postal = "8970" },
+                        new City { Name = "Parijs", Description = "Parijs", RegionId =26, Postal = "57000" },
+                        new City { Name = "Amsterdam", Description = "Amsterdam", RegionId =8, Postal = "1000" },
                     });
                     await context.SaveChangesAsync();
                 }
-
+                
                 // HouseType
                 if (!context.HouseTypes.Any())
                 {
                     context.HouseTypes.AddRange(new List<HouseType>()
                     {
+                        new HouseType { Name = "Log Cabin", Description = "Log Cabin"},
+                        new HouseType { Name = "Farm", Description = "Farm"},
+                        new HouseType { Name = "Tree house", Description = "Tree house"},
+                        new HouseType { Name = "Bungalowe", Description = "Bungalow"},
+                        new HouseType { Name = "Iglo", Description = "Iglo"},
+                        new HouseType { Name = "Caravan", Description = "Caravan"},
+                        new HouseType { Name = "Cottage", Description = "Cottage"},
+                        new HouseType { Name = "Cave house", Description = "Cave house"},
+                        new HouseType { Name = "Palace", Description = "Palace"},
+                        new HouseType { Name = "Church", Description = "Church"},
+                        new HouseType { Name = "Tent", Description = "Tent"},
                         new HouseType { Name = "Villa", Description = "Villa"},
+                        new HouseType { Name = "Detached house", Description = "Detached house"},
+                        new HouseType { Name = "Semi detached house", Description = "Semi detached house"},
+                        new HouseType { Name = "Attached house", Description = "Attached house"},
                     });
                     await context.SaveChangesAsync();
                 }
@@ -93,7 +179,10 @@ namespace BnbGo.Db
                 {
                     context.RoomTypes.AddRange(new List<RoomType>()
                     {
-                        new RoomType { Name = "Single bed", Description = "Single bed", GuestAmount = 2, BedAmount = 1 },
+                        new RoomType { Name = "1 Single bed", Description = "Single bed", GuestAmount = 2, BedAmount = 1 },
+                        new RoomType { Name = "2 Single beds", Description = "Single bed", GuestAmount = 2, BedAmount = 2 },
+                        new RoomType { Name = "1 Double bed", Description = "Double bed", GuestAmount = 2, BedAmount = 1 },
+                        new RoomType { Name = "1 Double bed + 1 kid bed", Description = "Double bed + kid bed", GuestAmount = 3, BedAmount = 2 },
                     });
                     await context.SaveChangesAsync();
                 }
@@ -104,6 +193,9 @@ namespace BnbGo.Db
                     context.RentTypes.AddRange(new List<RentType>()
                     {
                         new RentType { Name = "Private room", Description = "Private room" },
+                        new RentType { Name = "Shared room", Description = "Shared room" },
+                        new RentType { Name = "Whole house", Description = "Whole house" },
+                        new RentType { Name = "Shared house", Description = "Shared house" },
                     });
                     await context.SaveChangesAsync();
                 }
@@ -116,6 +208,19 @@ namespace BnbGo.Db
                         new RoomState { Name = "Available", Description = "Available and visible" },
                         new RoomState { Name = "Blocked", Description = "Blocked by admins" },
                         new RoomState { Name = "Pending", Description = "Pending to be approved" },
+                    });
+                    await context.SaveChangesAsync();
+                }
+
+                // Facility
+                if (!context.Facilities.Any())
+                {
+                    context.Facilities.AddRange(new List<Facility>()
+                    {
+                        new Facility { Name = "Kitchen", Description = "make your own meal" },
+                        new Facility { Name = "Television", Description = "your own television on your room" },
+                        new Facility { Name = "Internet", Description = "internet through cable" },
+                        new Facility { Name = "Wifi", Description = "wireless internet" }
                     });
                     await context.SaveChangesAsync();
                 }
@@ -135,14 +240,31 @@ namespace BnbGo.Db
                         .FinishWith((f, p) =>
                         {
                             Console.WriteLine("User Created! Name={0}", p.UserName);
+                            UserIds.Add(p.Id);
                         });
                         
                     var persons = new List<ApplicationUser>();
                     for(var i = 0;i<5;i++) {
                         var person = personSkeleton.Generate();
-                        person.CountryId = 1;
-                        person.RegionId = 1;
-                        person.CityId = 1;
+                        var randomCountry = random.Next(1,3);
+                        switch (randomCountry)
+                        {
+                            case 1:
+                                person.CountryId = 176;
+                                person.RegionId = 1;
+                                person.CityId = 1;
+                                break;
+                            case 2:
+                                person.CountryId = 9;
+                                person.RegionId = 8;
+                                person.CityId = 9;
+                                break;
+                            case 3:
+                                person.CountryId = 231;
+                                person.RegionId = 26;
+                                person.CityId = 8;
+                                break;
+                        }
                         persons.Add(person);
                     }
 
@@ -165,17 +287,17 @@ namespace BnbGo.Db
                         });
                         
                     var rooms = new List<BnbGo.Models.Room>();
-                    for(var i = 0;i<50;i++) {
+                    for(var i = 0;i<12;i++) {
                         var room = roomSkeleton.Generate();
                         room.PriceBase = random.Next(25,300);
                         room.PriceExtraPerPerson = random.Next(0,200);
                         room.PricePerNight = random.Next(10,150);
-                        room.HouseTypeId = 1;
-                        room.RoomTypeId = 1;
-                        room.RentTypeId = 1;
-                        room.RoomStateId = 1;
-                        room.UserId = new Guid("1995e59b-6545-4b00-b0a1-07761acba9d9");
-                        room.CityId = 1;
+                        room.HouseTypeId = random.Next(1,15);
+                        room.RoomTypeId = random.Next(1,4);
+                        room.RentTypeId = random.Next(1,4);
+                        room.RoomStateId = random.Next(1,3);
+                        room.UserId = (Guid)UserIds[random.Next(UserIds.Count)];
+                        room.CityId = random.Next(1,9);
                         rooms.Add(room);
                     }
                     context.Rooms.AddRange(rooms);
@@ -199,17 +321,57 @@ namespace BnbGo.Db
                         });
                         
                     var reservations = new List<BnbGo.Models.Reservation>();
-                    for(var i = 0;i<50;i++) {
+                    for(var i = 0;i<8;i++) {
                         var reservation = reservationSkeleton.Generate();
-                        reservation.RoomId = random.Next(4,50);
-                        reservation.PriceTotal = 1;
-                        reservation.AmountOfGuests = 1;
-                        reservation.UserId = new Guid("1995e59b-6545-4b00-b0a1-07761acba9d9");
+                        reservation.RoomId = random.Next(1,12);
+                        reservation.PriceTotal = random.Next(75,185);
+                        reservation.AmountOfGuests = random.Next(1,3);
+                        reservation.UserId = (Guid)UserIds[random.Next(UserIds.Count)];
                         reservations.Add(reservation);
                     }
                     context.Reservations.AddRange(reservations);
                     await context.SaveChangesAsync();
 
+                }
+
+                // Rooms and Facilities
+                if (!context.RoomFacilities.Any())
+                {
+                    List<RoomFacility> roomfacilities = new List<RoomFacility>();
+
+                    for (var i = 1; i < 12; i++)
+                    {
+                        var facilityAmount = random.Next(1,4);
+
+                        switch (facilityAmount)
+                        {
+                            case 1:
+                                roomfacilities.Add(new RoomFacility() { RoomId = i, FacilityId = 1 });
+                                break;
+                            case 2:
+                                roomfacilities.Add(new RoomFacility() { RoomId = i, FacilityId = 1 });
+                                roomfacilities.Add(new RoomFacility() { RoomId = i, FacilityId = 2 });
+                                break;
+                            case 3:
+                                roomfacilities.Add(new RoomFacility() { RoomId = i, FacilityId = 1 });
+                                roomfacilities.Add(new RoomFacility() { RoomId = i, FacilityId = 2 });
+                                roomfacilities.Add(new RoomFacility() { RoomId = i, FacilityId = 3 });
+                                break;
+                            case 4:
+                                roomfacilities.Add(new RoomFacility() { RoomId = i, FacilityId = 1 });
+                                roomfacilities.Add(new RoomFacility() { RoomId = i, FacilityId = 2 });
+                                roomfacilities.Add(new RoomFacility() { RoomId = i, FacilityId = 3 });
+                                roomfacilities.Add(new RoomFacility() { RoomId = i, FacilityId = 4 });
+                                break;
+                            default:
+                                roomfacilities.Add(new RoomFacility() { RoomId = i, FacilityId = 1 });
+                                break;
+                        }
+                    }
+
+                    context.RoomFacilities.AddRange(roomfacilities);
+
+                    await context.SaveChangesAsync();
                 }
             }
         }

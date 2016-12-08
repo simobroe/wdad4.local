@@ -1,0 +1,55 @@
+@model ICollection<BnbGo.Models.HouseType>
+@Html.AntiForgeryToken()
+@if (Model != null && Model.Count() > 0)
+{
+    <table class="col col-xl-12 col-la-12 col-md-12 col-sm-12 col-xs-12">
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+            @foreach (var housetype in Model)
+            {
+                <tr>
+                    <td>Id</td>
+                    <td>@housetype.Id</td>
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td>@housetype.Name</td>
+                </tr>
+                <tr>
+                    <td>Description</td>
+                    <td>@housetype.Description</td>
+                </tr>
+                <tr>
+                    <td>Create date</td>
+                    <td>@housetype.CreatedAt</td>
+                </tr>
+                <tr>
+                    <td>Update date</td>
+                    @if (@housetype.UpdatedAt == null) {
+                        <td>Not Updated</td>
+                    } else {
+                        <td>@housetype.UpdatedAt</td>
+                    }
+                </tr>
+                <tr>
+                    <td>Delete date</td>
+                    @if (@housetype.DeletedAt == null) {
+                        <td>Not Deleted</td>
+                    } else {
+                        <td>@housetype.DeletedAt</td>
+                    }
+                </tr>
+            } 
+        </tbody>
+      </table>
+}
+else
+{
+    <p>No details available!</p>
+}
+</div>

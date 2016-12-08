@@ -5,6 +5,8 @@ namespace BnbGo.Models
 {
     public class RoomFacility
     {
+        public Int64 Id { get; set; }
+
         public Int64 RoomId { get; set; }
         public Room Room { get; set; }
 

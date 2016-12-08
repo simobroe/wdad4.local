@@ -1,8 +1,7 @@
 @model BnbGo.Models.ViewModels.CountryViewModel
 @{
-    ViewBag.Title = "Country Management";
+    ViewBag.Title = "Create a country";
     ViewBag.SubTitle = "Create a new country";
-    ViewBag.Description = "Create a Country via the form or go back to the list of locations.";
     Layout = "~/Areas/Backoffice/Views/Shared/_Layout.cshtml";
 }
 <div id="submenu" class="col col-xl-12 col-la-12 col-md-12 col-sm-12 col-xs-12">
@@ -17,10 +16,6 @@
         <input asp-for="Country.Name">
     </div>
     <div class="col col-xl-12 col-md-12 col-la-12 col-sm-12 col-xs-12">
-        <label asp-for="Country.Description">Description</label>
-        <input asp-for="Country.Description">
-    </div>
-    <div class="col col-xl-12 col-md-12 col-la-12 col-sm-12 col-xs-12">
         <label asp-for="Country.Iso2">Iso2</label>
         <input asp-for="Country.Iso2">
     </div>
@@ -28,5 +23,10 @@
         <label asp-for="Country.CurrencyType">Currency</label>
         <select asp-for="Country.CurrencyTypeId" asp-items="Model.CurrencyTypes"></select> 
     </div>
-    <button type="submit" class="button right col col-xl-4 col-la-4 col-md-6 col-sm-12 col-xs-12">Save</button>
+    <div id="submenu" class="col col-xl-12 col-la-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="col col-xl-6 col-la-6 col-md-6 col-sm-6 col-xs-6">
+            <a class="button" asp-controller="Country" asp-action="Index">Cancel</a>
+        </div>
+        <button type="submit" class="button right col col-xl-6 col-la-6 col-md-6 col-sm-6 col-xs-6">Save</button>
+    </div>
 </form>

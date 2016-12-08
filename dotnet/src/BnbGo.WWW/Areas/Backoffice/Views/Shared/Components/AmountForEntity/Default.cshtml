@@ -1,0 +1,16 @@
+@model BnbGo.Models.ViewModels.AmountForEntityViewModel
+
+<td>
+    @if(@Model.Amount != 1){@Model.PluralizeName}else{@Model.Name}
+</td>
+<td>
+    @Model.Amount
+</td>
+<td>
+    <a asp-controller="@Model.EntityType" asp-action="Index">
+        <i class="fa fa-eye" title="View"></i>
+    </a>
+    <a asp-controller="@Model.EntityType" asp-action="Create">
+        <i class="fa fa-pencil" title="Create"></i>
+    </a>
+</td>

@@ -56,6 +56,8 @@ namespace BnbGo.WWW.Areas.Backoffice.Controllers
                 .Include(hot => hot.HouseType)
                 .Include(rot => rot.RoomType)
                 .Include(ret => ret.RentType)
+                .Include(fac => fac.Facilities)
+                .ThenInclude(fac => fac.Facility)
                 .ToListAsync();
 
             if(this.Request.Headers["X-Requested-With"] == "XMLHttpRequest"){
