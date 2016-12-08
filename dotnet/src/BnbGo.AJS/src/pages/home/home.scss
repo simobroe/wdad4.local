@@ -3,11 +3,12 @@ page-home {
     font-size: 40px;
     font-weight: 100;
         text-align: center;
-        height: 100vh;
-        margin-top: 20vh;
+        height: calc(100vh - 20px);
+        padding-top: 20vh;
     }
     #Intro h2 {
         margin-bottom: 20px;
+    font-weight: 100;
     }
     #Logo {
         font-size: 50px;
@@ -17,6 +18,7 @@ page-home {
     }
     #Intro a{
     color: #f53d3d;
+  transition: 0.4s;
 }
 #Intro a:visited {
     color: #f53d3d;
@@ -24,13 +26,41 @@ page-home {
 #Intro a:hover {
     color: #f53d3d;
 }
+#Host a{
+    color: #f53d3d;
+  transition: 0.4s;
+}
+#Host a:visited {
+    color: #f53d3d;
+}
+#Host a:hover {
+    color: #f53d3d;
+}
     .botArrow {
         position: absolute;
-        bottom: 10px;
-        left: 49vw;
+        bottom: 5px;
+        left: 45vw;
+        font-size: 40px;
+    }
+    .upArrow {
+        position: absolute;
+        bottom: 40px;
+        left: 45vw;
+        font-size: 40px;
+    }
+    #Explore {
+        height: 100vh;
+        margin-top: -40px;
     }
 #Explore h1 {
     font-size: 40px;
+    font-weight: 100;
+}
+#Host {
+    position: relative;
+        height: calc(100vh - 20px);
+}
+#Host h1 {
     font-weight: 100;
 }
 ul{
@@ -71,18 +101,18 @@ ul li a:hover{
     background-position: center;
 }
 #Ghent {
-    background-image: url(../../../assets/tiles/ghent.jpg);
+    background-image: url(../../../assets/images/tiles/ghent.jpg);
 }
 #London {
-    background-image: url(../../../assets/tiles/london.jpg);
+    background-image: url(../../../assets/images/tiles/london.jpg);
 }
 #Istanbul {
-    background-image: url(../../../assets/tiles/istanbul.jpg);
+    background-image: url(../../../assets/images/tiles/istanbul.jpg);
 }
 #Budapest {
-    background-image: url(../../../assets/tiles/budapest.jpg);
+    background-image: url(../../../assets/images/tiles/budapest.jpg);
 }
 #LosAngeles {
-    background-image: url(../../../assets/tiles/los-angeles.jpg);
+    background-image: url(../../../assets/images/tiles/los-angeles.jpg);
 }
 }
