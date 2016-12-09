@@ -28,12 +28,13 @@ namespace BnbGo.WWW.Areas.Backoffice.Controllers
 
             if ( !String.IsNullOrEmpty(searchString)) {
                 rooms = await ApplicationDbContext.Rooms
-                    .Where(o => o.Name.Contains(searchString))
+                    .Where(o => o.Name.Contains(searchString) && o.RoomStateId == 1 )
                     .OrderBy(o => o.Name)
                     .Include(u => u.User)
                     .ToListAsync();
             } else {
                 rooms = await ApplicationDbContext.Rooms
+                    .Where(o => o.RoomStateId == 1)
                     .OrderBy(o => o.Name)
                     .Include(u => u.User)
                     .ToListAsync();
@@ -56,6 +57,8 @@ namespace BnbGo.WWW.Areas.Backoffice.Controllers
                 .Include(hot => hot.HouseType)
                 .Include(rot => rot.RoomType)
                 .Include(ret => ret.RentType)
+                .Include(loc => loc.Location)
+                .Include(cit => cit.City)
                 .Include(fac => fac.Facilities)
                 .ThenInclude(fac => fac.Facility)
                 .ToListAsync();
@@ -156,6 +159,9 @@ namespace BnbGo.WWW.Areas.Backoffice.Controllers
                 originalModel.HouseTypeId = model.Room.HouseTypeId;
                 originalModel.RoomTypeId = model.Room.RoomTypeId;
                 originalModel.RentTypeId = model.Room.RentTypeId;
+                originalModel.RoomStateId = model.Room.RoomStateId;
+                originalModel.LocationId = model.Room.LocationId;
+                originalModel.CityId = model.Room.CityId;
                 
                 ApplicationDbContext.Rooms.Attach(originalModel);
                 ApplicationDbContext.Entry(originalModel).State = EntityState.Modified;
@@ -278,19 +284,31 @@ namespace BnbGo.WWW.Areas.Backoffice.Controllers
 
          private async Task<RoomViewModel> ViewModel(Room room = null) 
         {
-            var users = await ApplicationDbContext.Users.Select(o => new SelectListItem { 
+            var users = await ApplicationDbContext.Users.OrderBy(u => u.FirstName).Select(o => new SelectListItem { 
                 Value = o.Id.ToString(), 
                 Text = o.FirstName + " " + o.SurName
             }).ToListAsync();
-            var roomtypes = await ApplicationDbContext.RoomTypes.Select(o => new SelectListItem { 
+            var roomtypes = await ApplicationDbContext.RoomTypes.OrderBy(u => u.Name).Select(o => new SelectListItem { 
                 Value = o.Id.ToString(), 
                 Text = o.Name
             }).ToListAsync();
-            var renttypes = await ApplicationDbContext.RentTypes.Select(o => new SelectListItem { 
+            var renttypes = await ApplicationDbContext.RentTypes.OrderBy(u => u.Name).Select(o => new SelectListItem { 
                 Value = o.Id.ToString(), 
                 Text = o.Name
             }).ToListAsync();
-            var housetypes = await ApplicationDbContext.HouseTypes.Select(o => new SelectListItem { 
+            var housetypes = await ApplicationDbContext.HouseTypes.OrderBy(u => u.Name).Select(o => new SelectListItem { 
+                Value = o.Id.ToString(), 
+                Text = o.Name
+            }).ToListAsync();
+            var roomstates = await ApplicationDbContext.RoomStates.OrderBy(u => u.Name).Select(o => new SelectListItem { 
+                Value = o.Id.ToString(), 
+                Text = o.Name
+            }).ToListAsync();
+            var locations = await ApplicationDbContext.Locations.OrderBy(u => u.Name).Select(o => new SelectListItem { 
+                Value = o.Id.ToString(), 
+                Text = o.Name + " " + o.Description
+            }).ToListAsync();
+            var cities = await ApplicationDbContext.Cities.OrderBy(u => u.Name).Select(o => new SelectListItem { 
                 Value = o.Id.ToString(), 
                 Text = o.Name
             }).ToListAsync();
@@ -301,7 +319,10 @@ namespace BnbGo.WWW.Areas.Backoffice.Controllers
                 Users = users,
                 HouseTypes = housetypes,
                 RoomTypes = roomtypes,
-                RentTypes = renttypes
+                RentTypes = renttypes,
+                RoomStates = roomstates,
+                Locations = locations,
+                Cities = cities
             };
 
             return viewModel;

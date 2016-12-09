@@ -1,0 +1,55 @@
+@model ICollection<BnbGo.Models.RatingType>
+@Html.AntiForgeryToken()
+@if (Model != null && Model.Count() > 0)
+{
+    <table class="col col-xl-12 col-la-12 col-md-12 col-sm-12 col-xs-12">
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+            @foreach (var ratingtype in Model)
+            {
+                <tr>
+                    <td>Id</td>
+                    <td>@ratingtype.Id</td>
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td>@ratingtype.Name</td>
+                </tr>
+                <tr>
+                    <td>Description</td>
+                    <td>@ratingtype.Description</td>
+                </tr>
+                <tr>
+                    <td>Create date</td>
+                    <td>@ratingtype.CreatedAt</td>
+                </tr>
+                <tr>
+                    <td>Update date</td>
+                    @if (@ratingtype.UpdatedAt == null) {
+                        <td>Not Updated</td>
+                    } else {
+                        <td>@ratingtype.UpdatedAt</td>
+                    }
+                </tr>
+                <tr>
+                    <td>Delete date</td>
+                    @if (@ratingtype.DeletedAt == null) {
+                        <td>Not Deleted</td>
+                    } else {
+                        <td>@ratingtype.DeletedAt</td>
+                    }
+                </tr>
+            } 
+        </tbody>
+      </table>
+}
+else
+{
+    <p>No details available!</p>
+}
+</div>

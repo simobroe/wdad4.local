@@ -15,5 +15,7 @@ namespace BnbGo.Models
         public List<Room> Rooms { get; set; }
         // list with users in this city
         public List<ApplicationUser> Users { get; set; }
+        // list with locations in this city
+        public List<Location> Locations { get; set; }
     }
 }

@@ -1,0 +1,20 @@
+@model ICollection<BnbGo.Models.Room>
+@{
+    ViewBag.Title = "Room detail page";
+    ViewBag.SubTitle = "All information about this specific room";
+    ViewBag.Description = "View this room";
+    Layout = "~/Areas/Backoffice/Views/Shared/_Layout.cshtml";
+}
+<div id="submenu">
+    <div class="col col-xl-3 col-la-3 col-md-6 col-sm-6 col-xs-6">
+        <a class="button" asp-controller="CanceledRoom" asp-action="Index">Overview</a>
+    </div>
+    @foreach (var room in Model)
+    {
+    <div class="col col-xl-3 col-la-3 col-md-6 col-sm-6 col-xs-6">
+        <a class="button" asp-controller="Room" asp-action="Edit" asp-route-id="@room.Id">Edit</a>
+    </div>
+    }
+</div>
+
+@Html.Partial("_DetailPartial", @Model)

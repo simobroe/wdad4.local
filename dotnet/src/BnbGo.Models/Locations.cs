@@ -6,11 +6,10 @@ namespace BnbGo.Models
 {
     public class Location : BaseEntity<Int32>
     {
-        // location specific information
-        public string Street { get; set; }
-        public string HouseNumber { get; set; }
         // link with room
-        public Int64 RoomId { get; set; }
-        public Room Room { get; set; }
+        public List<Room> Rooms { get; set; }
+        // link with city
+        public Int64 CityId { get; set; }
+        public City City { get; set; }
     }
 }

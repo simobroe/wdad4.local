@@ -179,6 +179,7 @@ C:\Users\simon\webdad4.local\dotnet\src\BnbGo.Models\Images.cs
 C:\Users\simon\webdad4.local\dotnet\src\BnbGo.Models\ImageTypes.cs
 C:\Users\simon\webdad4.local\dotnet\src\BnbGo.Models\Locations.cs
 C:\Users\simon\webdad4.local\dotnet\src\BnbGo.Models\Ratings.cs
+C:\Users\simon\webdad4.local\dotnet\src\BnbGo.Models\RatingTypes.cs
 C:\Users\simon\webdad4.local\dotnet\src\BnbGo.Models\Regions.cs
 C:\Users\simon\webdad4.local\dotnet\src\BnbGo.Models\RentTypes.cs
 C:\Users\simon\webdad4.local\dotnet\src\BnbGo.Models\ReservationDays.cs
@@ -197,6 +198,10 @@ C:\Users\simon\webdad4.local\dotnet\src\BnbGo.Models\ViewModels\ActionCountryVie
 C:\Users\simon\webdad4.local\dotnet\src\BnbGo.Models\ViewModels\ActionCurrencyTypeViewModel.cs
 C:\Users\simon\webdad4.local\dotnet\src\BnbGo.Models\ViewModels\ActionFacilityViewModel.cs
 C:\Users\simon\webdad4.local\dotnet\src\BnbGo.Models\ViewModels\ActionHouseTypeViewModel.cs
+C:\Users\simon\webdad4.local\dotnet\src\BnbGo.Models\ViewModels\ActionImageTypeViewModel.cs
+C:\Users\simon\webdad4.local\dotnet\src\BnbGo.Models\ViewModels\ActionImageViewModel.cs
+C:\Users\simon\webdad4.local\dotnet\src\BnbGo.Models\ViewModels\ActionLocationViewModel.cs
+C:\Users\simon\webdad4.local\dotnet\src\BnbGo.Models\ViewModels\ActionRatingTypeViewModel.cs
 C:\Users\simon\webdad4.local\dotnet\src\BnbGo.Models\ViewModels\ActionRegionViewModel.cs
 C:\Users\simon\webdad4.local\dotnet\src\BnbGo.Models\ViewModels\ActionRentTypeViewModel.cs
 C:\Users\simon\webdad4.local\dotnet\src\BnbGo.Models\ViewModels\ActionReservationViewModel.cs
@@ -210,6 +215,9 @@ C:\Users\simon\webdad4.local\dotnet\src\BnbGo.Models\ViewModels\CountryViewModel
 C:\Users\simon\webdad4.local\dotnet\src\BnbGo.Models\ViewModels\CurrencyTypeViewModel.cs
 C:\Users\simon\webdad4.local\dotnet\src\BnbGo.Models\ViewModels\FacilityViewModel.cs
 C:\Users\simon\webdad4.local\dotnet\src\BnbGo.Models\ViewModels\HouseTypeViewModel.cs
+C:\Users\simon\webdad4.local\dotnet\src\BnbGo.Models\ViewModels\ImageViewModel.cs
+C:\Users\simon\webdad4.local\dotnet\src\BnbGo.Models\ViewModels\LocationViewModel.cs
+C:\Users\simon\webdad4.local\dotnet\src\BnbGo.Models\ViewModels\RatingTypeViewModel.cs
 C:\Users\simon\webdad4.local\dotnet\src\BnbGo.Models\ViewModels\RegionViewModel.cs
 C:\Users\simon\webdad4.local\dotnet\src\BnbGo.Models\ViewModels\RentTypeViewModel.cs
 C:\Users\simon\webdad4.local\dotnet\src\BnbGo.Models\ViewModels\ReservationViewModel.cs

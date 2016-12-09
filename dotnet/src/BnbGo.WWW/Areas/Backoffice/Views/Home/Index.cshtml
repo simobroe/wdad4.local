@@ -23,10 +23,25 @@
         @await Component.InvokeAsync("AmountForEntity", new { entityType = "City"})
     </tr>
     <tr>
+        @await Component.InvokeAsync("AmountForEntity", new { entityType = "Location"})
+    </tr>
+    <tr>
         @await Component.InvokeAsync("AmountForEntity", new { entityType = "User"})
     </tr>
     <tr>
         @await Component.InvokeAsync("AmountForEntity", new { entityType = "Room"})
+    </tr>
+    <tr>
+        @await Component.InvokeAsync("AmountForEntity", new { entityType = "PendingRoom"})
+    </tr>
+    <tr>
+        @await Component.InvokeAsync("AmountForEntity", new { entityType = "CanceledRoom"})
+    </tr>
+    <tr>
+        @await Component.InvokeAsync("AmountForEntity", new { entityType = "Image"})
+    </tr>
+    <tr>
+        @await Component.InvokeAsync("AmountForEntity", new { entityType = "RatingType"})
     </tr>
     <tr>
         @await Component.InvokeAsync("AmountForEntity", new { entityType = "Reservation"})

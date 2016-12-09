@@ -12,7 +12,5 @@ namespace BnbGo.Models
         // link with room
         public Int64 RoomId { get; set; }
         public Room Room { get; set; }
-        // Comment
-        public string Content { get; set; }
     }
 }

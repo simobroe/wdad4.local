@@ -56,17 +56,47 @@ namespace  BnbGo.WWW.Areas.Backoffice.ViewComponents
                     name = "City";
                     pluralizeName = "Cities";
                     break;
+                case "Location":
+                    amount = ApplicationDbContext.Locations.AsEnumerable().Count();
+                    entityType = "Location";
+                    name = "Location";
+                    pluralizeName = "Locations";
+                    break;
                 case "Room":
-                    amount = ApplicationDbContext.Rooms.AsEnumerable().Count();
+                    amount = ApplicationDbContext.Rooms.Where(o => o.RoomStateId == 1).AsEnumerable().Count();
                     entityType = "Room";
                     name = "Room";
                     pluralizeName = "Rooms";
+                    break;
+                case "PendingRoom":
+                    amount = ApplicationDbContext.Rooms.Where(o => o.RoomStateId == 2).AsEnumerable().Count();
+                    entityType = "Room";
+                    name = "Pending Room";
+                    pluralizeName = "Pending Rooms";
+                    break;
+                case "CanceledRoom":
+                    amount = ApplicationDbContext.Rooms.Where(o => o.RoomStateId == 3).AsEnumerable().Count();
+                    entityType = "Room";
+                    name = "Canceled Room";
+                    pluralizeName = "Canceled Rooms";
                     break;
                 case "Reservation":
                     amount = ApplicationDbContext.Reservations.AsEnumerable().Count();
                     entityType = "Reservation";
                     name = "Reservation";
                     pluralizeName = "Reservations";
+                    break;
+                case "Image":
+                    amount = ApplicationDbContext.Images.AsEnumerable().Count();
+                    entityType = "Image";
+                    name = "Image";
+                    pluralizeName = "Images";
+                    break;
+                case "RatingType":
+                    amount = ApplicationDbContext.RatingTypes.AsEnumerable().Count();
+                    entityType = "RatingType";
+                    name = "Rating type";
+                    pluralizeName = "Rating types";
                     break;
                 case "CurrencyType":
                     amount = ApplicationDbContext.CurrencyTypes.AsEnumerable().Count();

@@ -1,0 +1,59 @@
+@model ICollection<BnbGo.Models.Location>
+@Html.AntiForgeryToken()
+@if (Model != null && Model.Count() > 0)
+{
+    <table class="col col-xl-12 col-la-12 col-md-12 col-sm-12 col-xs-12">
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+            @foreach (var location in Model)
+            {
+                <tr>
+                    <td>Id</td>
+                    <td>@location.Id</td>
+                </tr>
+                <tr>
+                    <td>Street</td>
+                    <td>@location.Name</td>
+                </tr>
+                <tr>
+                    <td>Number</td>
+                    <td>@location.Description</td>
+                </tr>
+                <tr>
+                    <td>City</td>
+                    <td>@location.City.Name</td>
+                </tr>
+                <tr>
+                    <td>Create date</td>
+                    <td>@location.CreatedAt</td>
+                </tr>
+                <tr>
+                    <td>Update date</td>
+                    @if (@location.UpdatedAt == null) {
+                        <td>Not Updated</td>
+                    } else {
+                        <td>@location.UpdatedAt</td>
+                    }
+                </tr>
+                <tr>
+                    <td>Delete date</td>
+                    @if (@location.DeletedAt == null) {
+                        <td>Not Deleted</td>
+                    } else {
+                        <td>@location.DeletedAt</td>
+                    }
+                </tr>
+            } 
+        </tbody>
+      </table>
+}
+else
+{
+    <p>No details available!</p>
+}
+</div>

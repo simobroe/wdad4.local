@@ -274,12 +274,12 @@ namespace BnbGo.WWW.Areas.Backoffice.Controllers
 
          private async Task<ReservationViewModel> ViewModel(Reservation reservation = null) 
         {
-            var users = await ApplicationDbContext.Users.Select(o => new SelectListItem { 
+            var users = await ApplicationDbContext.Users.OrderBy(u => u.FirstName).Select(o => new SelectListItem { 
                 Value = o.Id.ToString(), 
                 Text = o.FirstName + " " + o.SurName
             }).ToListAsync();
 
-            var rooms = await ApplicationDbContext.Rooms.Select(o => new SelectListItem { 
+            var rooms = await ApplicationDbContext.Rooms.OrderBy(u => u.Name).Select(o => new SelectListItem { 
                 Value = o.Id.ToString(), 
                 Text = o.Name
             }).ToListAsync();

@@ -12,7 +12,8 @@ namespace BnbGo.Models
         // link with room
         public Int64 RoomId { get; set; }
         public Room Room { get; set; }
-        // Comment
-        public Int16 Amount { get; set; }
+        // rating type
+        public Int32 RatingTypeId { get; set; }
+        public RatingType RatingType { get; set; }
     }
 }

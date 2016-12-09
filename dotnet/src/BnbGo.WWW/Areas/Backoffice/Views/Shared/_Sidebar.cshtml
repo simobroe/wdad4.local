@@ -4,19 +4,30 @@
         <li><a asp-controller="Country" asp-action="Index"><i class="fa fa-globe"></i>Countries</a></li>
         <li><a asp-controller="Region" asp-action="Index"><i class="fa fa-map"></i>Regions</a></li>
         <li><a asp-controller="City" asp-action="Index"><i class="fa fa-building"></i>Cities</a></li>
+        <li><a asp-controller="Location" asp-action="Index"><i class="fa fa-road"></i>Locations</a></li>
     </ul>
     <h1>User management</h1>
     <ul>
         <li><a asp-controller="User" asp-action="Index"><i class="fa fa-user"></i>Users</a></li>
         <li><a asp-controller="Reservation" asp-action="Index"><i class="fa fa-calendar"></i>Reservations</a></li>
-        <li><a asp-controller="Room" asp-action="Index"><i class="fa fa-home"></i>Rooms</a></li>
     </ul>
-    <h1>Settings management</h1>
+    <h1>Room management</h1>
     <ul>
+        <li><a asp-controller="Room" asp-action="Index"><i class="fa fa-home"></i>Rooms</a></li>
+        <li><a asp-controller="PendingRoom" asp-action="Index"><i class="fa fa-home"></i>Pending rooms</a></li>
+        <li><a asp-controller="CanceledRoom" asp-action="Index"><i class="fa fa-home"></i>Canceled rooms</a></li>
+    </ul>
+    <h1>Image management</h1>
+    <ul>
+        <li><a asp-controller="Image" asp-action="Index"><i class="fa fa-home"></i>Images</a></li>
+    </ul>
+    <h1>Settings</h1>
+    <ul>
+        <li><a asp-controller="RatingType" asp-action="Index"><i class="fa fa-star"></i>Rating types</a></li>
+        <li><a asp-controller="CurrencyType" asp-action="Index"><i class="fa fa-euro"></i>Currency types</a></li>
         <li><a asp-controller="Facility" asp-action="Index"><i class="fa fa-list"></i>Facilities</a></li>
         <li><a asp-controller="HouseType" asp-action="Index"><i class="fa fa-list-alt"></i>House types</a></li>
         <li><a asp-controller="RoomType" asp-action="Index"><i class="fa fa-list-alt"></i>Room types</a></li>
         <li><a asp-controller="RentType" asp-action="Index"><i class="fa fa-list-alt"></i>Rent types</a></li>
-        <li><a asp-controller="CurrencyType" asp-action="Index"><i class="fa fa-list-alt"></i>Currency types</a></li>
     </ul>
 </div>

@@ -1,0 +1,57 @@
+@model BnbGo.Models.ViewModels.ImageViewModel
+@{
+    ViewBag.Title = "Create a image";
+    ViewBag.SubTitle = "Create a new image";
+    Layout = "~/Areas/Backoffice/Views/Shared/_Layout.cshtml";
+}
+
+<form id="createForm" class="mid col col-xl-6 col-la-8 col-md-12 col-sm-12 col-xs-12" asp-controller="Image" asp-action="Create" method="post" asp-antiforgery="true">
+    <div class="col col-xl-12 col-md-12 col-la-12 col-sm-12 col-xs-12">
+        <label asp-for="Image.Name">Name</label>
+        <input asp-for="Image.Name">
+    </div>
+    <div class="col col-xl-12 col-md-12 col-la-12 col-sm-12 col-xs-12">
+        <label asp-for="Image.Link">Link url</label>
+        <input asp-for="Image.Link">
+    </div>
+    <div class="col col-xl-12 col-md-12 col-la-12 col-sm-12 col-xs-12">
+        <label asp-for="Image.ImageType">Image type</label>
+        <select onchange="checkType()" asp-for="Image.ImageTypeId" asp-items="Model.ImageTypes"></select> 
+    </div>
+    <div id="UserSelect" style="display : none" class="col col-xl-12 col-md-12 col-la-12 col-sm-12 col-xs-12">
+        <label asp-for="Image.User">User</label>
+        <select asp-for="Image.UserId" asp-items="Model.Users"></select> 
+    </div>
+    <div id="RoomSelect" style="display : none" class="col col-xl-12 col-md-12 col-la-12 col-sm-12 col-xs-12">
+        <label asp-for="Image.Room">Room</label>
+        <select asp-for="Image.RoomId" asp-items="Model.Rooms"></select> 
+    </div>
+    <div id="RegionSelect" class="col col-xl-12 col-md-12 col-la-12 col-sm-12 col-xs-12">
+        <label asp-for="Image.Region">Region</label>
+        <select asp-for="Image.RegionId" asp-items="Model.Regions"></select> 
+    </div>
+    <div id="submenu" class="col col-xl-12 col-la-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="col col-xl-6 col-la-6 col-md-6 col-sm-6 col-xs-6">
+            <a class="button" asp-controller="Image" asp-action="Index">Cancel</a>
+        </div>
+        <button type="submit" class="button right col col-xl-6 col-la-6 col-md-6 col-sm-6 col-xs-6">Save</button>
+    </div>
+</form>
+<script>
+    function checkType() {
+        if (document.getElementsByName("Image.ImageTypeId")[0].options[document.getElementsByName("Image.ImageTypeId")[0].selectedIndex].text == "User")
+        {
+            document.getElementById("RoomSelect").style.display = "none";
+            document.getElementById("RegionSelect").style.display = "none";
+            document.getElementById("UserSelect").style.display = "block";
+        } else if (document.getElementsByName("Image.ImageTypeId")[0].options[document.getElementsByName("Image.ImageTypeId")[0].selectedIndex].text == "Room") {
+            document.getElementById("RoomSelect").style.display = "block";
+            document.getElementById("RegionSelect").style.display = "none";
+            document.getElementById("UserSelect").style.display = "none";
+        } else {
+            document.getElementById("RoomSelect").style.display = "none";
+            document.getElementById("RegionSelect").style.display = "block";
+            document.getElementById("UserSelect").style.display = "none";
+        }
+    }
+</script>

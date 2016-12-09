@@ -1,0 +1,55 @@
+@model BnbGo.Models.ViewModels.RoomViewModel
+@{
+    ViewBag.Title = "Create a room";
+    ViewBag.SubTitle = "Create a new room";
+    Layout = "~/Areas/Backoffice/Views/Shared/_Layout.cshtml";
+}
+
+<form id="createForm" class="mid col col-xl-6 col-la-8 col-md-12 col-sm-12 col-xs-12" asp-controller="PendingRoom" asp-action="Create" method="post" asp-antiforgery="true">
+    <div class="col col-xl-12 col-md-12 col-la-12 col-sm-12 col-xs-12">
+        <label asp-for="Room.Name">Name</label>
+        <input asp-for="Room.Name">
+    </div>
+    <div class="col col-xl-12 col-md-12 col-la-12 col-sm-12 col-xs-12">
+        <label asp-for="Room.Description">Description</label>
+        <input asp-for="Room.Description">
+    </div>
+    <div class="col col-xl-12 col-md-12 col-la-12 col-sm-12 col-xs-12">
+        <label asp-for="Room.Location">Location</label>
+        <select asp-for="Room.LocationId" asp-items="Model.Locations"></select> 
+    </div>
+    <div class="col col-xl-12 col-md-12 col-la-12 col-sm-12 col-xs-12">
+        <label asp-for="Room.City">City</label>
+        <select asp-for="Room.CityId" asp-items="Model.Cities"></select> 
+    </div>
+    <div class="col col-xl-12 col-md-12 col-la-12 col-sm-12 col-xs-12">
+        <label asp-for="Room.HouseRules">HouseRules</label>
+        <input asp-for="Room.HouseRules">
+    </div>
+    <div class="col col-xl-12 col-md-12 col-la-12 col-sm-12 col-xs-12">
+        <label asp-for="Room.User">User</label>
+        <select asp-for="Room.UserId" asp-items="Model.Users"></select> 
+    </div>
+    <div class="col col-xl-12 col-md-12 col-la-12 col-sm-12 col-xs-12">
+        <label asp-for="Room.HouseType">HouseType</label>
+        <select asp-for="Room.HouseTypeId" asp-items="Model.HouseTypes"></select> 
+    </div>
+    <div class="col col-xl-12 col-md-12 col-la-12 col-sm-12 col-xs-12">
+        <label asp-for="Room.RoomType">RoomType</label>
+        <select asp-for="Room.RoomTypeId" asp-items="Model.RoomTypes"></select> 
+    </div>
+    <div class="col col-xl-12 col-md-12 col-la-12 col-sm-12 col-xs-12">
+        <label asp-for="Room.RentType">RentType</label>
+        <select asp-for="Room.RentTypeId" asp-items="Model.RentTypes"></select> 
+    </div>
+    <div class="col col-xl-12 col-md-12 col-la-12 col-sm-12 col-xs-12">
+        <label asp-for="Room.RoomState">RoomState</label>
+        <select asp-for="Room.RoomStateId" asp-items="Model.RoomStates"></select> 
+    </div>
+    <div id="submenu" class="col col-xl-12 col-la-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="col col-xl-6 col-la-6 col-md-6 col-sm-6 col-xs-6">
+            <a class="button" asp-controller="PendingRoom" asp-action="Index">Cancel</a>
+        </div>
+        <button type="submit" class="button right col col-xl-6 col-la-6 col-md-6 col-sm-6 col-xs-6">Save</button>
+    </div>
+</form>

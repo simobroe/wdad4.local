@@ -8,7 +8,7 @@ using BnbGo.Db;
 namespace BnbGo.Db.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20161208011116_Initial Commit")]
+    [Migration("20161209003117_Initial Commit")]
     partial class InitialCommit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -56,19 +56,25 @@ namespace BnbGo.Db.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Content");
-
-                    b.Property<DateTime>("CreatedAt");
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("now()");
 
                     b.Property<DateTime?>("DeletedAt");
 
-                    b.Property<string>("Description");
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 511);
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 255);
 
                     b.Property<long>("RoomId");
 
-                    b.Property<DateTime?>("UpdatedAt");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasDefaultValueSql("now()");
 
                     b.Property<Guid>("UserId");
 
@@ -78,7 +84,7 @@ namespace BnbGo.Db.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Comment");
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("BnbGo.Models.Country", b =>
@@ -203,6 +209,54 @@ namespace BnbGo.Db.Migrations
 
             modelBuilder.Entity("BnbGo.Models.Image", b =>
                 {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("now()");
+
+                    b.Property<DateTime?>("DeletedAt");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 511);
+
+                    b.Property<int>("ImageTypeId");
+
+                    b.Property<string>("Link")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 255);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 255);
+
+                    b.Property<int?>("RegionId");
+
+                    b.Property<long?>("RoomId");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasDefaultValueSql("now()");
+
+                    b.Property<Guid?>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ImageTypeId");
+
+                    b.HasIndex("RegionId");
+
+                    b.HasIndex("RoomId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Images");
+                });
+
+            modelBuilder.Entity("BnbGo.Models.ImageType", b =>
+                {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
@@ -216,15 +270,71 @@ namespace BnbGo.Db.Migrations
                         .IsRequired()
                         .HasAnnotation("MaxLength", 511);
 
-                    b.Property<int?>("ImageTypeId");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 255);
 
-                    b.Property<string>("Link")
+                    b.Property<DateTime?>("UpdatedAt")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasDefaultValueSql("now()");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ImageTypes");
+                });
+
+            modelBuilder.Entity("BnbGo.Models.Location", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<long>("CityId");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("now()");
+
+                    b.Property<DateTime?>("DeletedAt");
+
+                    b.Property<string>("Description")
                         .IsRequired()
                         .HasAnnotation("MaxLength", 511);
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasAnnotation("MaxLength", 255);
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasDefaultValueSql("now()");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CityId");
+
+                    b.ToTable("Locations");
+                });
+
+            modelBuilder.Entity("BnbGo.Models.Rating", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("now()");
+
+                    b.Property<DateTime?>("DeletedAt");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 511);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 255);
+
+                    b.Property<int>("RatingTypeId");
 
                     b.Property<long>("RoomId");
 
@@ -236,93 +346,41 @@ namespace BnbGo.Db.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ImageTypeId");
-
-                    b.HasIndex("RoomId");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
-
-                    b.ToTable("Images");
-                });
-
-            modelBuilder.Entity("BnbGo.Models.ImageType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("CreatedAt");
-
-                    b.Property<DateTime?>("DeletedAt");
-
-                    b.Property<string>("Description");
-
-                    b.Property<string>("Name");
-
-                    b.Property<DateTime?>("UpdatedAt");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ImageType");
-                });
-
-            modelBuilder.Entity("BnbGo.Models.Location", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("CreatedAt");
-
-                    b.Property<DateTime?>("DeletedAt");
-
-                    b.Property<string>("Description");
-
-                    b.Property<string>("HouseNumber");
-
-                    b.Property<string>("Name");
-
-                    b.Property<long>("RoomId");
-
-                    b.Property<string>("Street");
-
-                    b.Property<DateTime?>("UpdatedAt");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RoomId")
-                        .IsUnique();
-
-                    b.ToTable("Location");
-                });
-
-            modelBuilder.Entity("BnbGo.Models.Rating", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<short>("Amount");
-
-                    b.Property<DateTime>("CreatedAt");
-
-                    b.Property<DateTime?>("DeletedAt");
-
-                    b.Property<string>("Description");
-
-                    b.Property<string>("Name");
-
-                    b.Property<long>("RoomId");
-
-                    b.Property<DateTime?>("UpdatedAt");
-
-                    b.Property<Guid>("UserId");
-
-                    b.HasKey("Id");
+                    b.HasIndex("RatingTypeId");
 
                     b.HasIndex("RoomId");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Rating");
+                    b.ToTable("Ratings");
+                });
+
+            modelBuilder.Entity("BnbGo.Models.RatingType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("now()");
+
+                    b.Property<DateTime?>("DeletedAt");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 511);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 255);
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasDefaultValueSql("now()");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RatingTypes");
                 });
 
             modelBuilder.Entity("BnbGo.Models.Region", b =>
@@ -342,10 +400,6 @@ namespace BnbGo.Db.Migrations
                         .IsRequired()
                         .HasAnnotation("MaxLength", 511);
 
-                    b.Property<long>("ImageId");
-
-                    b.Property<int?>("ImageId1");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasAnnotation("MaxLength", 255);
@@ -357,8 +411,6 @@ namespace BnbGo.Db.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CountryId");
-
-                    b.HasIndex("ImageId1");
 
                     b.ToTable("Regions");
                 });
@@ -492,7 +544,7 @@ namespace BnbGo.Db.Migrations
 
                     b.Property<int>("HouseTypeId");
 
-                    b.Property<long>("LocationId");
+                    b.Property<int>("LocationId");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -521,6 +573,8 @@ namespace BnbGo.Db.Migrations
                     b.HasIndex("CityId");
 
                     b.HasIndex("HouseTypeId");
+
+                    b.HasIndex("LocationId");
 
                     b.HasIndex("RentTypeId");
 
@@ -674,8 +728,6 @@ namespace BnbGo.Db.Migrations
                     b.Property<string>("FirstName");
 
                     b.Property<byte>("Gender");
-
-                    b.Property<long>("ImageId");
 
                     b.Property<bool>("LockoutEnabled");
 
@@ -911,29 +963,37 @@ namespace BnbGo.Db.Migrations
                 {
                     b.HasOne("BnbGo.Models.ImageType", "ImageType")
                         .WithMany("Images")
-                        .HasForeignKey("ImageTypeId");
+                        .HasForeignKey("ImageTypeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("BnbGo.Models.Region", "Region")
+                        .WithMany("Images")
+                        .HasForeignKey("RegionId");
 
                     b.HasOne("BnbGo.Models.Room", "Room")
                         .WithMany("Images")
-                        .HasForeignKey("RoomId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("RoomId");
 
                     b.HasOne("BnbGo.Models.Security.ApplicationUser", "User")
-                        .WithOne("Image")
-                        .HasForeignKey("BnbGo.Models.Image", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .WithMany("Images")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("BnbGo.Models.Location", b =>
                 {
-                    b.HasOne("BnbGo.Models.Room", "Room")
-                        .WithOne("Location")
-                        .HasForeignKey("BnbGo.Models.Location", "RoomId")
+                    b.HasOne("BnbGo.Models.City", "City")
+                        .WithMany("Locations")
+                        .HasForeignKey("CityId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("BnbGo.Models.Rating", b =>
                 {
+                    b.HasOne("BnbGo.Models.RatingType", "RatingType")
+                        .WithMany("Ratings")
+                        .HasForeignKey("RatingTypeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("BnbGo.Models.Room", "Room")
                         .WithMany("Ratings")
                         .HasForeignKey("RoomId")
@@ -951,10 +1011,6 @@ namespace BnbGo.Db.Migrations
                         .WithMany("Regions")
                         .HasForeignKey("CountryId")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("BnbGo.Models.Image", "Image")
-                        .WithMany()
-                        .HasForeignKey("ImageId1");
                 });
 
             modelBuilder.Entity("BnbGo.Models.Reservation", b =>
@@ -995,12 +1051,17 @@ namespace BnbGo.Db.Migrations
                         .HasForeignKey("HouseTypeId")
                         .OnDelete(DeleteBehavior.Cascade);
 
+                    b.HasOne("BnbGo.Models.Location", "Location")
+                        .WithMany("Rooms")
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("BnbGo.Models.RentType", "RentType")
                         .WithMany("Rooms")
                         .HasForeignKey("RentTypeId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("BnbGo.Models.RoomState", "RoomsState")
+                    b.HasOne("BnbGo.Models.RoomState", "RoomState")
                         .WithMany("Rooms")
                         .HasForeignKey("RoomStateId")
                         .OnDelete(DeleteBehavior.Cascade);

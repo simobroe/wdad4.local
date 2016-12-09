@@ -271,7 +271,7 @@ namespace BnbGo.WWW.Areas.Backoffice.Controllers
 
          private async Task<CountryViewModel> ViewModel(Country country = null) 
         {
-            var currencytypes = await ApplicationDbContext.CurrencyTypes.Select(o => new SelectListItem { 
+            var currencytypes = await ApplicationDbContext.CurrencyTypes.OrderBy(u => u.Name).Select(o => new SelectListItem { 
                 Value = o.Id.ToString(), 
                 Text = o.Name 
             }).ToListAsync();

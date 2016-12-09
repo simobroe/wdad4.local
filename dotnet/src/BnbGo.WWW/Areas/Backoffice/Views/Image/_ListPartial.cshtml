@@ -1,0 +1,51 @@
+@model IEnumerable<BnbGo.Models.Image>
+@Html.AntiForgeryToken()
+@if (Model != null && Model.Count() > 0)
+{
+      <table class="col col-xl-12 col-la-12 col-md-12 col-sm-12 col-xs-12">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Type</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach (var image in Model)
+          {
+            <tr>
+              <td>@image.Name</td>
+              <td>@image.ImageType.Name</td>
+              <td>
+                <a asp-controller="Image" asp-action="Show" asp-route-id="@image.Id">
+                  <i class="fa fa-eye" title="View"></i>
+                </a>
+                <a asp-controller="Image" asp-action="Edit" asp-route-id="@image.Id">
+                  <i class="fa fa-pencil" role="presentation"></i>
+                </a>
+                @if (@image.DeletedAt != null)
+                {
+                    <a asp-controller="Image" asp-action="Delete" asp-route-id="@image.Id" asp-route-actionType="5" data-is-softdelete="true">
+                      <i class="fa fa-trash-o"></i>
+                    </a>
+                }
+                else
+                {
+                    <a asp-controller="Image" asp-action="Delete" asp-route-id="@image.Id" asp-route-actionType="4">
+                      <i class="fa fa-trash"></i>
+                    </a>
+                }
+                <a asp-controller="Image" asp-action="Delete" asp-route-id="@image.Id" asp-route-actionType="3">
+                  <i class="fa fa-ban"></i>
+                </a>
+            </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+}
+else
+{
+    <p>No Cities in the database!</p>
+}
+</div>

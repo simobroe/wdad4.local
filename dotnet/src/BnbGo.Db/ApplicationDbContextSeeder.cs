@@ -205,8 +205,8 @@ namespace BnbGo.Db
                 {
                     context.RoomStates.AddRange(new List<RoomState>()
                     {
-                        new RoomState { Name = "Available", Description = "Available and visible" },
-                        new RoomState { Name = "Blocked", Description = "Blocked by admins" },
+                        new RoomState { Name = "Confirmed", Description = "Confirmed and visible" },
+                        new RoomState { Name = "Canceled", Description = "Canceled by admins" },
                         new RoomState { Name = "Pending", Description = "Pending to be approved" },
                     });
                     await context.SaveChangesAsync();
@@ -221,6 +221,19 @@ namespace BnbGo.Db
                         new Facility { Name = "Television", Description = "your own television on your room" },
                         new Facility { Name = "Internet", Description = "internet through cable" },
                         new Facility { Name = "Wifi", Description = "wireless internet" }
+                    });
+                    await context.SaveChangesAsync();
+                }
+
+                // RatingType
+                if (!context.RatingTypes.Any())
+                {
+                    context.RatingTypes.AddRange(new List<RatingType>()
+                    {
+                        new RatingType { Name = "Excelent", Description = "Excelent" },
+                        new RatingType { Name = "Good", Description = "Good" },
+                        new RatingType { Name = "Semi", Description = "Semi" },
+                        new RatingType { Name = "Bad", Description = "Bad" }
                     });
                     await context.SaveChangesAsync();
                 }
@@ -272,6 +285,24 @@ namespace BnbGo.Db
                     await context.SaveChangesAsync();
                 }
 
+                // Locations
+                if (!context.Locations.Any())
+                {
+                    context.Locations.AddRange(new List<Location>()
+                    {
+                        new Location { Name = "Tomato street", Description = "22", CityId =random.Next(1,10), },
+                        new Location { Name = "Wall street", Description = "8", CityId =random.Next(1,10), },
+                        new Location { Name = "Beach street", Description = "12", CityId =random.Next(1,10), },
+                        new Location { Name = "Railway street", Description = "38", CityId =random.Next(1,10), },
+                        new Location { Name = "Northwood street", Description = "19A", CityId =random.Next(1,10), },
+                        new Location { Name = "Tango street", Description = "27", CityId =random.Next(1,10), },
+                        new Location { Name = "Liberty street", Description = "39", CityId =random.Next(1,10), },
+                        new Location { Name = "Industry street", Description = "1", CityId =random.Next(1,10), },
+                        new Location { Name = "Samson street", Description = "3", CityId =random.Next(1,10), },
+                    });
+                    await context.SaveChangesAsync();
+                }
+
                 // Rooms
                 if(!context.Rooms.Any()) 
                 {
@@ -292,12 +323,13 @@ namespace BnbGo.Db
                         room.PriceBase = random.Next(25,300);
                         room.PriceExtraPerPerson = random.Next(0,200);
                         room.PricePerNight = random.Next(10,150);
-                        room.HouseTypeId = random.Next(1,15);
-                        room.RoomTypeId = random.Next(1,4);
-                        room.RentTypeId = random.Next(1,4);
-                        room.RoomStateId = random.Next(1,3);
+                        room.HouseTypeId = random.Next(1,16);
+                        room.RoomTypeId = random.Next(1,5);
+                        room.RentTypeId = random.Next(1,5);
+                        room.RoomStateId = random.Next(1,4);
                         room.UserId = (Guid)UserIds[random.Next(UserIds.Count)];
-                        room.CityId = random.Next(1,9);
+                        room.CityId = random.Next(1,10);
+                        room.LocationId = random.Next(1,10);
                         rooms.Add(room);
                     }
                     context.Rooms.AddRange(rooms);
@@ -371,6 +403,18 @@ namespace BnbGo.Db
 
                     context.RoomFacilities.AddRange(roomfacilities);
 
+                    await context.SaveChangesAsync();
+                }
+
+                // Image types
+                if (!context.ImageTypes.Any())
+                {
+                    context.ImageTypes.AddRange(new List<ImageType>()
+                    {
+                        new ImageType { Name = "User", Description = "User" },
+                        new ImageType { Name = "Room", Description = "Room" },
+                        new ImageType { Name = "Region", Description = "Region" }
+                    });
                     await context.SaveChangesAsync();
                 }
             }

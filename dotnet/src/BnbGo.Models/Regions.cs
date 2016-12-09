@@ -6,9 +6,8 @@ namespace BnbGo.Models
 {
     public class Region : BaseEntity<Int32>
     {
-        // image for this region
-        public Int64 ImageId { get; set;}
-        public Image Image { get; set;}
+        // link with images
+        public List<Image> Images { get; set; }
         // link with country
         public Int32 CountryId { get; set; }
         public Country Country { get; set; }

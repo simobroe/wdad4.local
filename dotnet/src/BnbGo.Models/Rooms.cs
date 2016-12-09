@@ -27,11 +27,11 @@ namespace BnbGo.Models
         public Guid UserId { get; set; }
         public ApplicationUser User { get; set; }
         // link with location
-        public Int64 LocationId { get; set; }
+        public Int32 LocationId { get; set; }
         public Location Location { get; set; }
         // rooom state
         public Int32 RoomStateId { get; set; }
-        public RoomState RoomsState { get; set; }
+        public RoomState RoomState { get; set; }
         // all reservations
         public List<Reservation> Reservations { get; set; }
         // all reservation days

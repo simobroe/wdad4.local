@@ -281,15 +281,15 @@ namespace BnbGo.WWW.Areas.Backoffice.Controllers
         
          private async Task<UserViewModel> ViewModel(ApplicationUser user = null) 
         {
-            var countries = await ApplicationDbContext.Countries.Select(o => new SelectListItem { 
+            var countries = await ApplicationDbContext.Countries.OrderBy(u => u.Name).Select(o => new SelectListItem { 
                 Value = o.Id.ToString(), 
                 Text = o.Name 
             }).ToListAsync();
-            var regions = await ApplicationDbContext.Regions.Select(o => new SelectListItem { 
+            var regions = await ApplicationDbContext.Regions.OrderBy(u => u.Name).Select(o => new SelectListItem { 
                 Value = o.Id.ToString(), 
                 Text = o.Name 
             }).ToListAsync();
-            var cities = await ApplicationDbContext.Cities.Select(o => new SelectListItem { 
+            var cities = await ApplicationDbContext.Cities.OrderBy(u => u.Name).Select(o => new SelectListItem { 
                 Value = o.Id.ToString(), 
                 Text = o.Name 
             }).ToListAsync();

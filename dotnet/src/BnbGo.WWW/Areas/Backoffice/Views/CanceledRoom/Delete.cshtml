@@ -1,0 +1,19 @@
+@model BnbGo.Models.ViewModels.ActionRoomViewModel
+@{
+    ViewBag.Title = "Delete a room";
+    ViewBag.SubTitle = @Model.Action + " the current selected room: " + @Model.BaseEntity.Name + "?";
+    Layout = "~/Areas/Backoffice/Views/Shared/_Layout.cshtml";
+}
+
+<div id="submenu">
+    <form class="col col-xl-3 col-la-3 col-md-6 col-sm-6 col-xs-6" asp-controller="CanceledRoom" asp-action="Delete" method="post" asp-antiforgery="true">
+        <input asp-for="BaseEntity.Id" type="hidden">
+        <input asp-for="BaseEntity.Name" type="hidden">
+        <input asp-for="BaseEntity.Description" type="hidden">
+        <input asp-for="ActionType" type="hidden">
+        <button class="button col col-xl-12 col-la-12 col-md-12 col-sm-12 col-xs-12" type="submit">Yes</button>
+    </form>
+    <div class="col col-xl-3 col-la-3 col-md-6 col-sm-6 col-xs-6">
+        <a class="button" asp-controller="CanceledRoom" asp-action="Index">No</a>
+    </div>
+</div>

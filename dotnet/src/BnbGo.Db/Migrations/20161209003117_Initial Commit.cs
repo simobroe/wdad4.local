@@ -65,20 +65,39 @@ namespace BnbGo.Db.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ImageType",
+                name: "ImageTypes",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGeneratedOnAdd", true),
-                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "now()")
+                        .Annotation("Npgsql:ValueGeneratedOnAdd", true),
                     DeletedAt = table.Column<DateTime>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
-                    UpdatedAt = table.Column<DateTime>(nullable: true)
+                    Description = table.Column<string>(maxLength: 511, nullable: false),
+                    Name = table.Column<string>(maxLength: 255, nullable: false),
+                    UpdatedAt = table.Column<DateTime>(nullable: true, defaultValueSql: "now()")
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ImageType", x => x.Id);
+                    table.PrimaryKey("PK_ImageTypes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RatingTypes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGeneratedOnAdd", true),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "now()")
+                        .Annotation("Npgsql:ValueGeneratedOnAdd", true),
+                    DeletedAt = table.Column<DateTime>(nullable: true),
+                    Description = table.Column<string>(maxLength: 511, nullable: false),
+                    Name = table.Column<string>(maxLength: 255, nullable: false),
+                    UpdatedAt = table.Column<DateTime>(nullable: true, defaultValueSql: "now()")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RatingTypes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -290,105 +309,77 @@ namespace BnbGo.Db.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Rooms",
+                name: "Regions",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGeneratedOnAdd", true),
+                    CountryId = table.Column<int>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "now()")
+                        .Annotation("Npgsql:ValueGeneratedOnAdd", true),
+                    DeletedAt = table.Column<DateTime>(nullable: true),
+                    Description = table.Column<string>(maxLength: 511, nullable: false),
+                    Name = table.Column<string>(maxLength: 255, nullable: false),
+                    UpdatedAt = table.Column<DateTime>(nullable: true, defaultValueSql: "now()")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Regions", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Regions_Countries_CountryId",
+                        column: x => x.CountryId,
+                        principalTable: "Countries",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Cities",
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
+                        .Annotation("Npgsql:ValueGeneratedOnAdd", true),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "now()")
+                        .Annotation("Npgsql:ValueGeneratedOnAdd", true),
+                    DeletedAt = table.Column<DateTime>(nullable: true),
+                    Description = table.Column<string>(maxLength: 511, nullable: false),
+                    Name = table.Column<string>(maxLength: 255, nullable: false),
+                    Postal = table.Column<string>(nullable: true),
+                    RegionId = table.Column<int>(nullable: false),
+                    UpdatedAt = table.Column<DateTime>(nullable: true, defaultValueSql: "now()")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Cities", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Cities_Regions_RegionId",
+                        column: x => x.RegionId,
+                        principalTable: "Regions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Locations",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGeneratedOnAdd", true),
                     CityId = table.Column<long>(nullable: false),
                     CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "now()")
                         .Annotation("Npgsql:ValueGeneratedOnAdd", true),
                     DeletedAt = table.Column<DateTime>(nullable: true),
                     Description = table.Column<string>(maxLength: 511, nullable: false),
-                    HouseRules = table.Column<string>(maxLength: 511, nullable: false),
-                    HouseTypeId = table.Column<int>(nullable: false),
-                    LocationId = table.Column<long>(nullable: false),
                     Name = table.Column<string>(maxLength: 255, nullable: false),
-                    PriceBase = table.Column<int>(nullable: false),
-                    PriceExtraPerPerson = table.Column<int>(nullable: false),
-                    PricePerNight = table.Column<int>(nullable: false),
-                    RentTypeId = table.Column<int>(nullable: false),
-                    RoomStateId = table.Column<int>(nullable: false),
-                    RoomTypeId = table.Column<int>(nullable: false),
-                    UpdatedAt = table.Column<DateTime>(nullable: true, defaultValueSql: "now()"),
-                    UserId = table.Column<Guid>(nullable: false)
+                    UpdatedAt = table.Column<DateTime>(nullable: true, defaultValueSql: "now()")
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Rooms", x => x.Id);
+                    table.PrimaryKey("PK_Locations", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Rooms_HouseTypes_HouseTypeId",
-                        column: x => x.HouseTypeId,
-                        principalTable: "HouseTypes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Rooms_RentTypes_RentTypeId",
-                        column: x => x.RentTypeId,
-                        principalTable: "RentTypes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Rooms_RoomStates_RoomStateId",
-                        column: x => x.RoomStateId,
-                        principalTable: "RoomStates",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Rooms_RoomTypes_RoomTypeId",
-                        column: x => x.RoomTypeId,
-                        principalTable: "RoomTypes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Location",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Npgsql:ValueGeneratedOnAdd", true),
-                    CreatedAt = table.Column<DateTime>(nullable: false),
-                    DeletedAt = table.Column<DateTime>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    HouseNumber = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
-                    RoomId = table.Column<long>(nullable: false),
-                    Street = table.Column<string>(nullable: true),
-                    UpdatedAt = table.Column<DateTime>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Location", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Location_Rooms_RoomId",
-                        column: x => x.RoomId,
-                        principalTable: "Rooms",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "RoomFacilities",
-                columns: table => new
-                {
-                    RoomId = table.Column<long>(nullable: false),
-                    FacilityId = table.Column<long>(nullable: false),
-                    Id = table.Column<long>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_RoomFacilities", x => new { x.RoomId, x.FacilityId });
-                    table.ForeignKey(
-                        name: "FK_RoomFacilities_Facilities_FacilityId",
-                        column: x => x.FacilityId,
-                        principalTable: "Facilities",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_RoomFacilities_Rooms_RoomId",
-                        column: x => x.RoomId,
-                        principalTable: "Rooms",
+                        name: "FK_Locations_Cities_CityId",
+                        column: x => x.CityId,
+                        principalTable: "Cities",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -411,7 +402,6 @@ namespace BnbGo.Db.Migrations
                     EmailConfirmed = table.Column<bool>(nullable: false),
                     FirstName = table.Column<string>(nullable: true),
                     Gender = table.Column<byte>(nullable: false),
-                    ImageId = table.Column<long>(nullable: false),
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
@@ -430,147 +420,90 @@ namespace BnbGo.Db.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_AspNetUsers_Cities_CityId",
+                        column: x => x.CityId,
+                        principalTable: "Cities",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_AspNetUsers_Countries_CountryId",
                         column: x => x.CountryId,
                         principalTable: "Countries",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AspNetUsers_Regions_RegionId",
+                        column: x => x.RegionId,
+                        principalTable: "Regions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Comment",
+                name: "Rooms",
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("Npgsql:ValueGeneratedOnAdd", true),
-                    Content = table.Column<string>(nullable: true),
-                    CreatedAt = table.Column<DateTime>(nullable: false),
-                    DeletedAt = table.Column<DateTime>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
-                    RoomId = table.Column<long>(nullable: false),
-                    UpdatedAt = table.Column<DateTime>(nullable: true),
-                    UserId = table.Column<Guid>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Comment", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Comment_Rooms_RoomId",
-                        column: x => x.RoomId,
-                        principalTable: "Rooms",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Comment_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Images",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Npgsql:ValueGeneratedOnAdd", true),
+                    CityId = table.Column<long>(nullable: false),
                     CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "now()")
                         .Annotation("Npgsql:ValueGeneratedOnAdd", true),
                     DeletedAt = table.Column<DateTime>(nullable: true),
                     Description = table.Column<string>(maxLength: 511, nullable: false),
-                    ImageTypeId = table.Column<int>(nullable: true),
-                    Link = table.Column<string>(maxLength: 511, nullable: false),
+                    HouseRules = table.Column<string>(maxLength: 511, nullable: false),
+                    HouseTypeId = table.Column<int>(nullable: false),
+                    LocationId = table.Column<int>(nullable: false),
                     Name = table.Column<string>(maxLength: 255, nullable: false),
-                    RoomId = table.Column<long>(nullable: false),
+                    PriceBase = table.Column<int>(nullable: false),
+                    PriceExtraPerPerson = table.Column<int>(nullable: false),
+                    PricePerNight = table.Column<int>(nullable: false),
+                    RentTypeId = table.Column<int>(nullable: false),
+                    RoomStateId = table.Column<int>(nullable: false),
+                    RoomTypeId = table.Column<int>(nullable: false),
                     UpdatedAt = table.Column<DateTime>(nullable: true, defaultValueSql: "now()"),
                     UserId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Images", x => x.Id);
+                    table.PrimaryKey("PK_Rooms", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Images_ImageType_ImageTypeId",
-                        column: x => x.ImageTypeId,
-                        principalTable: "ImageType",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Images_Rooms_RoomId",
-                        column: x => x.RoomId,
-                        principalTable: "Rooms",
+                        name: "FK_Rooms_Cities_CityId",
+                        column: x => x.CityId,
+                        principalTable: "Cities",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Images_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Rating",
-                columns: table => new
-                {
-                    Id = table.Column<long>(nullable: false)
-                        .Annotation("Npgsql:ValueGeneratedOnAdd", true),
-                    Amount = table.Column<short>(nullable: false),
-                    CreatedAt = table.Column<DateTime>(nullable: false),
-                    DeletedAt = table.Column<DateTime>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
-                    RoomId = table.Column<long>(nullable: false),
-                    UpdatedAt = table.Column<DateTime>(nullable: true),
-                    UserId = table.Column<Guid>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Rating", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Rating_Rooms_RoomId",
-                        column: x => x.RoomId,
-                        principalTable: "Rooms",
+                        name: "FK_Rooms_HouseTypes_HouseTypeId",
+                        column: x => x.HouseTypeId,
+                        principalTable: "HouseTypes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Rating_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Reservations",
-                columns: table => new
-                {
-                    Id = table.Column<long>(nullable: false)
-                        .Annotation("Npgsql:ValueGeneratedOnAdd", true),
-                    AmountOfGuests = table.Column<int>(maxLength: 511, nullable: false),
-                    Arrival = table.Column<DateTime>(maxLength: 511, nullable: false),
-                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "now()")
-                        .Annotation("Npgsql:ValueGeneratedOnAdd", true),
-                    DeletedAt = table.Column<DateTime>(nullable: true),
-                    Departure = table.Column<DateTime>(maxLength: 511, nullable: false),
-                    Description = table.Column<string>(maxLength: 511, nullable: false),
-                    Name = table.Column<string>(maxLength: 255, nullable: false),
-                    PriceTotal = table.Column<int>(maxLength: 511, nullable: false),
-                    RoomId = table.Column<long>(nullable: false),
-                    UpdatedAt = table.Column<DateTime>(nullable: true, defaultValueSql: "now()"),
-                    UserId = table.Column<Guid>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Reservations", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Reservations_Rooms_RoomId",
-                        column: x => x.RoomId,
-                        principalTable: "Rooms",
+                        name: "FK_Rooms_Locations_LocationId",
+                        column: x => x.LocationId,
+                        principalTable: "Locations",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Reservations_AspNetUsers_UserId",
+                        name: "FK_Rooms_RentTypes_RentTypeId",
+                        column: x => x.RentTypeId,
+                        principalTable: "RentTypes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Rooms_RoomStates_RoomStateId",
+                        column: x => x.RoomStateId,
+                        principalTable: "RoomStates",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Rooms_RoomTypes_RoomTypeId",
+                        column: x => x.RoomTypeId,
+                        principalTable: "RoomTypes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Rooms_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -643,36 +576,182 @@ namespace BnbGo.Db.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Regions",
+                name: "Comments",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<long>(nullable: false)
                         .Annotation("Npgsql:ValueGeneratedOnAdd", true),
-                    CountryId = table.Column<int>(nullable: false),
                     CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "now()")
                         .Annotation("Npgsql:ValueGeneratedOnAdd", true),
                     DeletedAt = table.Column<DateTime>(nullable: true),
                     Description = table.Column<string>(maxLength: 511, nullable: false),
-                    ImageId = table.Column<long>(nullable: false),
-                    ImageId1 = table.Column<int>(nullable: true),
                     Name = table.Column<string>(maxLength: 255, nullable: false),
-                    UpdatedAt = table.Column<DateTime>(nullable: true, defaultValueSql: "now()")
+                    RoomId = table.Column<long>(nullable: false),
+                    UpdatedAt = table.Column<DateTime>(nullable: true, defaultValueSql: "now()"),
+                    UserId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Regions", x => x.Id);
+                    table.PrimaryKey("PK_Comments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Regions_Countries_CountryId",
-                        column: x => x.CountryId,
-                        principalTable: "Countries",
+                        name: "FK_Comments_Rooms_RoomId",
+                        column: x => x.RoomId,
+                        principalTable: "Rooms",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Regions_Images_ImageId1",
-                        column: x => x.ImageId1,
-                        principalTable: "Images",
+                        name: "FK_Comments_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Images",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("Npgsql:ValueGeneratedOnAdd", true),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "now()")
+                        .Annotation("Npgsql:ValueGeneratedOnAdd", true),
+                    DeletedAt = table.Column<DateTime>(nullable: true),
+                    Description = table.Column<string>(maxLength: 511, nullable: false),
+                    ImageTypeId = table.Column<int>(nullable: false),
+                    Link = table.Column<string>(maxLength: 255, nullable: false),
+                    Name = table.Column<string>(maxLength: 255, nullable: false),
+                    RegionId = table.Column<int>(nullable: true),
+                    RoomId = table.Column<long>(nullable: true),
+                    UpdatedAt = table.Column<DateTime>(nullable: true, defaultValueSql: "now()"),
+                    UserId = table.Column<Guid>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Images", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Images_ImageTypes_ImageTypeId",
+                        column: x => x.ImageTypeId,
+                        principalTable: "ImageTypes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Images_Regions_RegionId",
+                        column: x => x.RegionId,
+                        principalTable: "Regions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Images_Rooms_RoomId",
+                        column: x => x.RoomId,
+                        principalTable: "Rooms",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Images_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Ratings",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("Npgsql:ValueGeneratedOnAdd", true),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "now()")
+                        .Annotation("Npgsql:ValueGeneratedOnAdd", true),
+                    DeletedAt = table.Column<DateTime>(nullable: true),
+                    Description = table.Column<string>(maxLength: 511, nullable: false),
+                    Name = table.Column<string>(maxLength: 255, nullable: false),
+                    RatingTypeId = table.Column<int>(nullable: false),
+                    RoomId = table.Column<long>(nullable: false),
+                    UpdatedAt = table.Column<DateTime>(nullable: true, defaultValueSql: "now()"),
+                    UserId = table.Column<Guid>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Ratings", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Ratings_RatingTypes_RatingTypeId",
+                        column: x => x.RatingTypeId,
+                        principalTable: "RatingTypes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Ratings_Rooms_RoomId",
+                        column: x => x.RoomId,
+                        principalTable: "Rooms",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Ratings_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Reservations",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("Npgsql:ValueGeneratedOnAdd", true),
+                    AmountOfGuests = table.Column<int>(maxLength: 511, nullable: false),
+                    Arrival = table.Column<DateTime>(maxLength: 511, nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "now()")
+                        .Annotation("Npgsql:ValueGeneratedOnAdd", true),
+                    DeletedAt = table.Column<DateTime>(nullable: true),
+                    Departure = table.Column<DateTime>(maxLength: 511, nullable: false),
+                    Description = table.Column<string>(maxLength: 511, nullable: false),
+                    Name = table.Column<string>(maxLength: 255, nullable: false),
+                    PriceTotal = table.Column<int>(maxLength: 511, nullable: false),
+                    RoomId = table.Column<long>(nullable: false),
+                    UpdatedAt = table.Column<DateTime>(nullable: true, defaultValueSql: "now()"),
+                    UserId = table.Column<Guid>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reservations", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Reservations_Rooms_RoomId",
+                        column: x => x.RoomId,
+                        principalTable: "Rooms",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Reservations_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RoomFacilities",
+                columns: table => new
+                {
+                    RoomId = table.Column<long>(nullable: false),
+                    FacilityId = table.Column<long>(nullable: false),
+                    Id = table.Column<long>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RoomFacilities", x => new { x.RoomId, x.FacilityId });
+                    table.ForeignKey(
+                        name: "FK_RoomFacilities_Facilities_FacilityId",
+                        column: x => x.FacilityId,
+                        principalTable: "Facilities",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_RoomFacilities_Rooms_RoomId",
+                        column: x => x.RoomId,
+                        principalTable: "Rooms",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -707,45 +786,19 @@ namespace BnbGo.Db.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Cities",
-                columns: table => new
-                {
-                    Id = table.Column<long>(nullable: false)
-                        .Annotation("Npgsql:ValueGeneratedOnAdd", true),
-                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "now()")
-                        .Annotation("Npgsql:ValueGeneratedOnAdd", true),
-                    DeletedAt = table.Column<DateTime>(nullable: true),
-                    Description = table.Column<string>(maxLength: 511, nullable: false),
-                    Name = table.Column<string>(maxLength: 255, nullable: false),
-                    Postal = table.Column<string>(nullable: true),
-                    RegionId = table.Column<int>(nullable: false),
-                    UpdatedAt = table.Column<DateTime>(nullable: true, defaultValueSql: "now()")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Cities", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Cities_Regions_RegionId",
-                        column: x => x.RegionId,
-                        principalTable: "Regions",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_Cities_RegionId",
                 table: "Cities",
                 column: "RegionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comment_RoomId",
-                table: "Comment",
+                name: "IX_Comments_RoomId",
+                table: "Comments",
                 column: "RoomId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comment_UserId",
-                table: "Comment",
+                name: "IX_Comments_UserId",
+                table: "Comments",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -759,6 +812,11 @@ namespace BnbGo.Db.Migrations
                 column: "ImageTypeId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Images_RegionId",
+                table: "Images",
+                column: "RegionId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Images_RoomId",
                 table: "Images",
                 column: "RoomId");
@@ -766,34 +824,32 @@ namespace BnbGo.Db.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Images_UserId",
                 table: "Images",
-                column: "UserId",
-                unique: true);
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Location_RoomId",
-                table: "Location",
-                column: "RoomId",
-                unique: true);
+                name: "IX_Locations_CityId",
+                table: "Locations",
+                column: "CityId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Rating_RoomId",
-                table: "Rating",
+                name: "IX_Ratings_RatingTypeId",
+                table: "Ratings",
+                column: "RatingTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Ratings_RoomId",
+                table: "Ratings",
                 column: "RoomId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Rating_UserId",
-                table: "Rating",
+                name: "IX_Ratings_UserId",
+                table: "Ratings",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Regions_CountryId",
                 table: "Regions",
                 column: "CountryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Regions_ImageId1",
-                table: "Regions",
-                column: "ImageId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Reservations_RoomId",
@@ -824,6 +880,11 @@ namespace BnbGo.Db.Migrations
                 name: "IX_Rooms_HouseTypeId",
                 table: "Rooms",
                 column: "HouseTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Rooms_LocationId",
+                table: "Rooms",
+                column: "LocationId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Rooms_RentTypeId",
@@ -926,60 +987,20 @@ namespace BnbGo.Db.Migrations
                 name: "IX_OpenIddictTokens_AuthorizationId",
                 table: "OpenIddictTokens",
                 column: "AuthorizationId");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Rooms_AspNetUsers_UserId",
-                table: "Rooms",
-                column: "UserId",
-                principalTable: "AspNetUsers",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Rooms_Cities_CityId",
-                table: "Rooms",
-                column: "CityId",
-                principalTable: "Cities",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_AspNetUsers_Regions_RegionId",
-                table: "AspNetUsers",
-                column: "RegionId",
-                principalTable: "Regions",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_AspNetUsers_Cities_CityId",
-                table: "AspNetUsers",
-                column: "CityId",
-                principalTable: "Cities",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropPostgresExtension("uuid-ossp");
 
-            migrationBuilder.DropForeignKey(
-                name: "FK_Cities_Regions_RegionId",
-                table: "Cities");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_AspNetUsers_Regions_RegionId",
-                table: "AspNetUsers");
+            migrationBuilder.DropTable(
+                name: "Comments");
 
             migrationBuilder.DropTable(
-                name: "Comment");
+                name: "Images");
 
             migrationBuilder.DropTable(
-                name: "Location");
-
-            migrationBuilder.DropTable(
-                name: "Rating");
+                name: "Ratings");
 
             migrationBuilder.DropTable(
                 name: "ReservationDay");
@@ -1009,6 +1030,12 @@ namespace BnbGo.Db.Migrations
                 name: "OpenIddictTokens");
 
             migrationBuilder.DropTable(
+                name: "ImageTypes");
+
+            migrationBuilder.DropTable(
+                name: "RatingTypes");
+
+            migrationBuilder.DropTable(
                 name: "Reservations");
 
             migrationBuilder.DropTable(
@@ -1024,19 +1051,13 @@ namespace BnbGo.Db.Migrations
                 name: "OpenIddictAuthorizations");
 
             migrationBuilder.DropTable(
-                name: "Regions");
-
-            migrationBuilder.DropTable(
-                name: "Images");
-
-            migrationBuilder.DropTable(
-                name: "ImageType");
-
-            migrationBuilder.DropTable(
                 name: "Rooms");
 
             migrationBuilder.DropTable(
                 name: "HouseTypes");
+
+            migrationBuilder.DropTable(
+                name: "Locations");
 
             migrationBuilder.DropTable(
                 name: "RentTypes");
@@ -1052,6 +1073,9 @@ namespace BnbGo.Db.Migrations
 
             migrationBuilder.DropTable(
                 name: "Cities");
+
+            migrationBuilder.DropTable(
+                name: "Regions");
 
             migrationBuilder.DropTable(
                 name: "Countries");

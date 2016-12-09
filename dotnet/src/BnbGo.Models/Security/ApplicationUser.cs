@@ -29,9 +29,8 @@ namespace BnbGo.Models.Security
         // link with city
         public Int64 CityId { get; set; }
         public City City { get; set; }
-        // link with image
-        public Int64 ImageId { get; set; }
-        public Image Image { get; set; }
+        // link with images
+        public List<Image> Images { get; set; }
         // if user is a renter or landlord
         public List<Room> Rooms { get; set; }
         public List<Reservation> Reservations { get; set; }

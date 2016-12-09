@@ -12,5 +12,8 @@ namespace BnbGo.Models.ViewModels
         public List<SelectListItem> HouseTypes { get; set; }
         public List<SelectListItem> RoomTypes { get; set; }
         public List<SelectListItem> RentTypes { get; set; }
+        public List<SelectListItem> Locations { get; set; }
+        public List<SelectListItem> RoomStates { get; set; }
+        public List<SelectListItem> Cities { get; set; }
     }
 }
