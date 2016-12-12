@@ -34,8 +34,8 @@ namespace BnbGo.API.Controllers
             return new OkObjectResult(model);
         }
 
-        [HttpGet("{UserId:int}", Name = "GetUserById")]
-        public async Task<IActionResult> GetUserById(Int16 userId)
+        [HttpGet("{UserId:guid}", Name = "GetUserById")]
+        public async Task<IActionResult> GetUserById(Guid userId)
         {
             var model = await ApplicationDbContext.Users.FirstOrDefaultAsync(o => o.Id == userId);
             if (model == null)

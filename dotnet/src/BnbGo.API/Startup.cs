@@ -119,9 +119,6 @@ namespace WebApplication
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-            
-            // Seeding the database
-            ApplicationDbContextSeeder.Initialize(app.ApplicationServices);
         }
     }
 }

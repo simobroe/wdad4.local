@@ -25,7 +25,7 @@ namespace BnbGo.API.Controllers
         [HttpGet(Name = "GetCountries")]
         public async Task<IActionResult> GetCountries()
         {
-            var model = await ApplicationDbContext.Countries.ToListAsync();
+            var model = await ApplicationDbContext.Countries.OrderBy(c => c.Name).ToListAsync();
             if (model == null)
             {
                 var msg = String.Format(FAILGETENTITIES);
