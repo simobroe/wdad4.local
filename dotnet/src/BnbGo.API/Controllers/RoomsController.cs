@@ -34,13 +34,13 @@ namespace BnbGo.API.Controllers
             return new OkObjectResult(model);
         }
 
-        [HttpGet("{roomId:int}", Name = "GetRoomById")]
-        public async Task<IActionResult> GetRoomById(Int16 roomId)
+        [HttpGet("{cityId:int}", Name = "GetRoomById")]
+        public async Task<IActionResult> GetRoomById(Int16 cityId)
         {
-            var model = await ApplicationDbContext.Rooms.FirstOrDefaultAsync(o => o.Id == roomId);
+            var model = await ApplicationDbContext.Rooms.Where(o => o.CityId == cityId).ToListAsync();
             if (model == null)
             {
-                var msg = String.Format(FAILGETENTITYBYID, roomId);
+                var msg = String.Format(FAILGETENTITYBYID, cityId);
                 return NotFound(msg);
             }
             return new OkObjectResult(model);

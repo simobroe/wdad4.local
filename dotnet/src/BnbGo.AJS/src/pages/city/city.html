@@ -10,11 +10,11 @@
 
 <ion-content padding>
   <h1>
-    Select a city in {{ region }}
+    Select a room in {{ city }}
   </h1>
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list>
-    <ion-item (click)="pushCity(item.id, item.name)" *ngFor="let item of items">
+    <ion-item (click)="pushRoom(item.id)" *ngFor="let item of items">
       <h2>{{ item.name }}</h2>
     </ion-item>
   </ion-list>

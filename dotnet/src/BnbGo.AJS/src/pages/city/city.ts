@@ -1,31 +1,30 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 // call country service
-import { CountryService } from '../../providers/country-service';
+import { RoomService } from '../../providers/room-service';
 
-import { CountryPage } from '../country/country'
+import { Home } from '../home/home'
 
 @Component({
-  selector: 'page-search',
-  templateUrl: 'search.html',
-  providers: [CountryService]
+  selector: 'page-city',
+  templateUrl: 'city.html',
+  providers: [RoomService]
 })
-export class SearchPage {
+export class CityPage {
   private posts: any;
+  private cityId: string;
   private items: any;
-  private countryId: string;
-  private countryName: string;
+  private roomId: string;
+  private city: string;
 
-  constructor(
-    public navCtrl: NavController, 
-    public CountryService: CountryService,
-  ) {
-    this.navCtrl = navCtrl;
-    this.loadCountries();
+  constructor(public navCtrl: NavController, public navParams: NavParams, public RoomService: RoomService) {
+    this.cityId = this.navParams.get("cityId");
+    this.city = this.navParams.get("cityName");
+    this.loadRooms(this.cityId);
   }
   
-  loadCountries(){
-    this.CountryService.load()
+  loadRooms(cityId){
+    this.RoomService.load(cityId)
     .then(data => {
       this.posts = data;
       this.initializeItems();
@@ -51,10 +50,8 @@ export class SearchPage {
     }
   }
 
-  pushCountry(id, name) {
-    this.countryId = id;
-    this.countryName = name;
-    this.navCtrl.push(CountryPage , {countryId: this.countryId, countryName: this.countryName});
+  pushRoom(id) {
+    this.roomId = id;
+    this.navCtrl.push(Home , {roomId: this.roomId});
   }
-
 }

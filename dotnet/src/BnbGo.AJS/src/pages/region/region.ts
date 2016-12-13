@@ -4,7 +4,7 @@ import { NavController, NavParams } from 'ionic-angular';
 // call country service
 import { CityService } from '../../providers/city-service';
 
-import { Home } from '../home/home'
+import { CityPage } from '../city/city'
 
 @Component({
   selector: 'page-region',
@@ -16,10 +16,13 @@ export class RegionPage {
   private regionId: string;
   private items: any;
   private cityId: string;
+  private cityName: string;
+  private region: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public CityService: CityService) {
     this.navCtrl = navCtrl;
     this.cityId = this.navParams.get("regionId");
+    this.region = this.navParams.get("regionName");
     this.loadCities(this.cityId);
   }
 
@@ -50,8 +53,9 @@ export class RegionPage {
     }
   }
 
-  pushCity(id) {
+  pushCity(id, name) {
     this.cityId = id;
-    this.navCtrl.push(Home , {cityId: this.cityId});
+    this.cityName = name;
+    this.navCtrl.push(CityPage , {cityId: this.cityId, cityName: this.cityName});
   }
 }

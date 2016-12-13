@@ -13,7 +13,7 @@
   </h1>
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list>
-    <ion-item (click)="pushCountry(item.id)" *ngFor="let item of items">
+    <ion-item (click)="pushCountry(item.id, item.name)" *ngFor="let item of items">
       <h2>{{ item.name }}</h2>
     </ion-item>
   </ion-list>

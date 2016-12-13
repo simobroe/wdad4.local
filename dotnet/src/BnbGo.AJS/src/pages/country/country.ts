@@ -15,9 +15,12 @@ export class CountryPage {
   private countryId: string;
   private items: any;
   private regionId: string;
+  private regionName: string;
+  private country: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public RegionService: RegionService) {
     this.countryId = this.navParams.get("countryId");
+    this.country = this.navParams.get("countryName");
     this.loadRegions(this.countryId);
   }
   
@@ -48,8 +51,9 @@ export class CountryPage {
     }
   }
 
-  pushRegion(id) {
+  pushRegion(id, name) {
     this.regionId = id;
-    this.navCtrl.push(RegionPage , {regionId: this.regionId});
+    this.regionName = name;
+    this.navCtrl.push(RegionPage , {regionId: this.regionId, regionName: this.regionName});
   }
 }
