@@ -44,7 +44,7 @@
       "type": "build"
     },
     "Newtonsoft.Json": "9.0.1",
-    "OpenIddict": "1.0.0-*",
+    "OpenIddict": "1.0.0-beta1-0500",
     "BnbGo.Db": {
       "target": "project",
       "version": "1.0.0-*"

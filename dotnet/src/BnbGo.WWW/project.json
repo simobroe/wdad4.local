@@ -40,7 +40,7 @@
       "version": "1.0.0-preview2-update1",
       "type": "build"
     },
-    "OpenIddict": "1.0.0-*",
+    "OpenIddict": "1.0.0-beta1-0500",
     "BnbGo.Models": {
       "version": "1.0.0-*",
       "target": "project"

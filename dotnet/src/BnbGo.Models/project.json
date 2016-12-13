@@ -5,7 +5,7 @@
   },
   "dependencies": {
     "AspNet.Security.Oauth.Validation": "1.0.0-alpha2-final",
-    "OpenIddict": "1.0.0-*",
+    "OpenIddict": "1.0.0-beta1-0500",
     "Microsoft.AspNetCore.Mvc": "1.0.0"
   },
   "frameworks": {

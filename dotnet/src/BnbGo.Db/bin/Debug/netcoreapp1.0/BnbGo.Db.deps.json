@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v1.0",
-    "signature": "c1cb46e8b5ba25dba3eff6e42c2926402dc0f7d5"
+    "signature": "c1f4d849925c6bfd057bab9e6a5a8708a19d66d6"
   },
   "compilationOptions": {},
   "targets": {
@@ -10,7 +10,7 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Design": "1.0.0-preview2-final",
           "AspNet.Security.Oauth.Validation": "1.0.0-alpha2-final",
-          "OpenIddict": "1.0.0-beta1-0501",
+          "OpenIddict": "1.0.0-beta1-0500",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "1.0.1",
           "Npgsql.EntityFrameworkCore.PostgreSQL.Design": "1.0.1",
           "Bogus": "7.1.6",
@@ -745,15 +745,15 @@
           "lib/netstandard1.3/Npgsql.EntityFrameworkCore.PostgreSQL.Design.dll": {}
         }
       },
-      "OpenIddict/1.0.0-beta1-0501": {
+      "OpenIddict/1.0.0-beta1-0500": {
         "dependencies": {
-          "OpenIddict.EntityFramework": "1.0.0-beta1-0501"
+          "OpenIddict.EntityFramework": "1.0.0-beta1-0500"
         },
         "runtime": {
           "lib/netstandard1.4/OpenIddict.dll": {}
         }
       },
-      "OpenIddict.Core/1.0.0-beta1-0501": {
+      "OpenIddict.Core/1.0.0-beta1-0500": {
         "dependencies": {
           "AspNet.Security.OpenIdConnect.Server": "1.0.0-beta7-final",
           "CryptoHelper": "2.0.0",
@@ -764,10 +764,10 @@
           "lib/netstandard1.4/OpenIddict.Core.dll": {}
         }
       },
-      "OpenIddict.EntityFramework/1.0.0-beta1-0501": {
+      "OpenIddict.EntityFramework/1.0.0-beta1-0500": {
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.0.0",
-          "OpenIddict.Core": "1.0.0-beta1-0501"
+          "OpenIddict.Core": "1.0.0-beta1-0500"
         },
         "runtime": {
           "lib/netstandard1.4/OpenIddict.EntityFramework.dll": {}
@@ -863,7 +863,7 @@
       "BnbGo.Models/1.0.0": {
         "dependencies": {
           "AspNet.Security.Oauth.Validation": "1.0.0-alpha2-final",
-          "OpenIddict": "1.0.0-beta1-0501",
+          "OpenIddict": "1.0.0-beta1-0500",
           "Microsoft.AspNetCore.Mvc": "1.0.0"
         },
         "runtime": {
@@ -1278,20 +1278,20 @@
       "serviceable": true,
       "sha512": "sha512-xYIj3HiGtqtaDQtzPyUHlZIM12cnpRfKLwqLIksTRd/3cfI2Xa8ie23CdRNwwSI+cqWmur7oYT9NAeGJu/Z7hQ=="
     },
-    "OpenIddict/1.0.0-beta1-0501": {
+    "OpenIddict/1.0.0-beta1-0500": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-I3Dk6MwOvmPQ9PQPG5Gw2FMciVOHz2IRv7zuUYPxcI0NVHmzB9mN7e118pWuZrMrE95C0aRrWecpouQNwAjcJg=="
+      "sha512": "sha512-I/WU1HaunjFrR0gF++ICx4CwzD8Q1KeMWidS1LEqfX68IG5aT0f0q6df8pxlyR46gDw8JiELv9Dcc2F5K8lROw=="
     },
-    "OpenIddict.Core/1.0.0-beta1-0501": {
+    "OpenIddict.Core/1.0.0-beta1-0500": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-rNfZbrQrlGWcpP1g0xJfc4hontloNVZZWkoAqZ+dYifzImSHJMTzgvaj83tdKXDW3PelVK8Yi2HGSmrgWiu+/A=="
+      "sha512": "sha512-6pKR8jM+rJX/COveH5p+QqcDxvVNDBK4NY7wVlNHAhz+sj6xD4LBARkkTawWolsm3qc2wQpEBsjfN/PhhP6PzA=="
     },
-    "OpenIddict.EntityFramework/1.0.0-beta1-0501": {
+    "OpenIddict.EntityFramework/1.0.0-beta1-0500": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Gw21ul78WPPLKsgSCICDEjIzOf7RUd4jmeG/VlWOeWsGP4HedR4V36d48U/scNSxavPkd/edeSJmuHXYKD6GeQ=="
+      "sha512": "sha512-4PgcuSowmn5ab8g6wbPW5HKrO2F75KIPLjTGI0PyABJvi/s/nJJbJBsFEXm37YrRST9zRZSCoHb3ADW3KLnPPg=="
     },
     "Remotion.Linq/2.1.1": {
       "type": "package",
@@ -1336,7 +1336,7 @@
     "System.Interactive.Async/3.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-UEM+WmG1Oq0bNbPx/E1jaIQ83QOrPfVDUyuYBtG6D6DpB77ytv9flPterMujumpHuoRjSc0ilSB8w41fQc05dw=="
+      "sha512": "sha512-iyrgkZz9Dzm0fiPouQszFC3SO/46k6AYd/jG9bu+/o0AoDMaRXtlo3TIuWVNtOuJFd1noL963QouroJ0T3rImw=="
     },
     "System.Net.NetworkInformation/4.1.0": {
       "type": "package",
