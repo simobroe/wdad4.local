@@ -2,15 +2,21 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
+/*
+  Generated class for the RegionService provider.
+
+  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
+  for more info on providers and Angular 2 DI.
+*/
 @Injectable()
-export class CountryService {
+export class RegionService {
   public data: any;
 
   constructor(public http: Http) {
     
   }
 
-  load() {
+  load(countryId) {
   if (this.data) {
     // already loaded data
     return Promise.resolve(this.data);
@@ -21,7 +27,7 @@ export class CountryService {
     // We're using Angular HTTP provider to request the data,
     // then on the response, it'll map the JSON data to a parsed JS object.
     // Next, we process the data and resolve the promise with the new data.
-    this.http.get('http://localhost:5000/api/countries')
+    this.http.get('http://localhost:5000/api/regions/' + countryId)
       .map(res => res.json())
       .subscribe(data => {
         // we've got back the raw data, now generate the core schedule data

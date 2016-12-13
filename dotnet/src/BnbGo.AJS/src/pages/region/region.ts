@@ -1,30 +1,30 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-// call country service
-import { CountryService } from '../../providers/country-service';
 
-import { CountryPage } from '../country/country'
+// call country service
+import { CityService } from '../../providers/city-service';
+
+import { Home } from '../home/home'
 
 @Component({
-  selector: 'page-search',
-  templateUrl: 'search.html',
-  providers: [CountryService]
+  selector: 'page-region',
+  templateUrl: 'region.html',
+  providers: [CityService]
 })
-export class SearchPage {
+export class RegionPage {
   private posts: any;
+  private regionId: string;
   private items: any;
-  private countryId: string;
+  private cityId: string;
 
-  constructor(
-    public navCtrl: NavController, 
-    public CountryService: CountryService,
-  ) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public CityService: CityService) {
     this.navCtrl = navCtrl;
-    this.loadCountries();
+    this.cityId = this.navParams.get("regionId");
+    this.loadCities(this.cityId);
   }
-  
-  loadCountries(){
-    this.CountryService.load()
+
+  loadCities(regionId){
+    this.CityService.load(regionId)
     .then(data => {
       this.posts = data;
       this.initializeItems();
@@ -50,9 +50,8 @@ export class SearchPage {
     }
   }
 
-  pushCountry(id) {
-    this.countryId = id;
-    this.navCtrl.push(CountryPage , {countryId: this.countryId});
+  pushCity(id) {
+    this.cityId = id;
+    this.navCtrl.push(Home , {cityId: this.cityId});
   }
-
 }

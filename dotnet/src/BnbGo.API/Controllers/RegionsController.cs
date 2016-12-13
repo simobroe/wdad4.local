@@ -37,7 +37,7 @@ namespace BnbGo.API.Controllers
         [HttpGet("{regionId:int}", Name = "GetRegionById")]
         public async Task<IActionResult> GetRegionById(Int16 regionId)
         {
-            var model = await ApplicationDbContext.Regions.FirstOrDefaultAsync(o => o.Id == regionId);
+            var model = await ApplicationDbContext.Regions.Where(o => o.CountryId == regionId).OrderBy(o => o.Name).ToListAsync();
             if (model == null)
             {
                 var msg = String.Format(FAILGETENTITYBYID, regionId);

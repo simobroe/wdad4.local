@@ -4,13 +4,17 @@ import { MyApp } from './app.component';
 import { Home } from '../pages/home/home';
 import { Page2 } from '../pages/page2/page2';
 import { SearchPage } from '../pages/search/search';
+import { CountryPage } from '../pages/country/country';
+import { RegionPage } from '../pages/region/region';
 
 @NgModule({
   declarations: [
     MyApp,
     Home,
     Page2,
-    SearchPage
+    SearchPage,
+    CountryPage,
+    RegionPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -20,7 +24,9 @@ import { SearchPage } from '../pages/search/search';
     MyApp,
     Home,
     Page2,
-    SearchPage
+    SearchPage,
+    CountryPage,
+    RegionPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

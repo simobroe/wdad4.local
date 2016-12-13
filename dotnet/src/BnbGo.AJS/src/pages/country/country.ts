@@ -1,30 +1,28 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 // call country service
-import { CountryService } from '../../providers/country-service';
+import { RegionService } from '../../providers/region-service';
 
-import { CountryPage } from '../country/country'
+import { RegionPage } from '../region/region'
 
 @Component({
-  selector: 'page-search',
-  templateUrl: 'search.html',
-  providers: [CountryService]
+  selector: 'page-country',
+  templateUrl: 'country.html',
+  providers: [RegionService]
 })
-export class SearchPage {
+export class CountryPage {
   private posts: any;
-  private items: any;
   private countryId: string;
+  private items: any;
+  private regionId: string;
 
-  constructor(
-    public navCtrl: NavController, 
-    public CountryService: CountryService,
-  ) {
-    this.navCtrl = navCtrl;
-    this.loadCountries();
+  constructor(public navCtrl: NavController, public navParams: NavParams, public RegionService: RegionService) {
+    this.countryId = this.navParams.get("countryId");
+    this.loadRegions(this.countryId);
   }
   
-  loadCountries(){
-    this.CountryService.load()
+  loadRegions(countryId){
+    this.RegionService.load(countryId)
     .then(data => {
       this.posts = data;
       this.initializeItems();
@@ -50,9 +48,8 @@ export class SearchPage {
     }
   }
 
-  pushCountry(id) {
-    this.countryId = id;
-    this.navCtrl.push(CountryPage , {countryId: this.countryId});
+  pushRegion(id) {
+    this.regionId = id;
+    this.navCtrl.push(RegionPage , {regionId: this.regionId});
   }
-
 }
