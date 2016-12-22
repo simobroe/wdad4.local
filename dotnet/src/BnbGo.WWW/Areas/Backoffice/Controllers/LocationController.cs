@@ -146,7 +146,7 @@ namespace BnbGo.WWW.Areas.Backoffice.Controllers
                 }
                     
                 originalModel.Name = model.Location.Name;
-                originalModel.Description = model.Location.Name;
+                originalModel.Description = model.Location.Description;
                 originalModel.CityId = model.Location.CityId;
                 
                 ApplicationDbContext.Locations.Attach(originalModel);

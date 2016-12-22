@@ -80,7 +80,6 @@ namespace BnbGo.WWW.Areas.Backoffice.Controllers
                     throw new Exception();
                 }
                 
-                model.Country.Description = model.Country.Name;
 
                 ApplicationDbContext.Countries.Add(model.Country);
                 if (await ApplicationDbContext.SaveChangesAsync() == 0)
@@ -146,7 +145,7 @@ namespace BnbGo.WWW.Areas.Backoffice.Controllers
                 }
                     
                 originalModel.Name = model.Country.Name;
-                originalModel.Description = model.Country.Name;
+                originalModel.Description = model.Country.Description;
                 originalModel.Iso2 = model.Country.Iso2;
                 originalModel.CurrencyTypeId = model.Country.CurrencyTypeId;
                 

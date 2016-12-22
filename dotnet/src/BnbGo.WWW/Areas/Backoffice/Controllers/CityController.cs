@@ -82,7 +82,6 @@ namespace BnbGo.WWW.Areas.Backoffice.Controllers
                     throw new Exception();
                 }
                 
-                model.City.Description = model.City.Name;
 
                 ApplicationDbContext.Cities.Add(model.City);
                 if (await ApplicationDbContext.SaveChangesAsync() == 0)
@@ -148,7 +147,7 @@ namespace BnbGo.WWW.Areas.Backoffice.Controllers
                 }
                     
                 originalModel.Name = model.City.Name;
-                originalModel.Description = model.City.Name;
+                originalModel.Description = model.City.Description;
                 originalModel.Postal = model.City.Postal;
                 originalModel.RegionId = model.City.RegionId;
                 

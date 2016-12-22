@@ -33,7 +33,8 @@ export class Home {
   }
 
   pushCity() {
-    this.cityId = this.getRandomInt(1, this.posts.length);
+    this.cityId = '1';
+    //this.cityId = this.getRandomInt(1, this.posts.length);
     this.navCtrl.push(CityPage , {cityId: this.cityId});
   }
 }

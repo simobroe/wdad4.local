@@ -613,6 +613,12 @@ namespace BnbGo.Db
                 .WithMany(p => p.Rooms)
                 .HasForeignKey(pt => pt.FacilityId);
 
+                // Relationship between room and Locations: 0 to many (n)
+            builder.Entity<Room>()
+                .HasOne(g => g.Location)
+                .WithMany(l => l.Rooms)
+                .HasForeignKey(g => g.LocationId);
+
             // Relationship between reservation and room: 0 to many (n)
             builder.Entity<Reservation>()
                 .HasOne(g => g.Room)

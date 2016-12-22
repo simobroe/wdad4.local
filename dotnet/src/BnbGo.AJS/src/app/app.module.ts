@@ -30,4 +30,5 @@ import { CityPage } from '../pages/city/city';
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
-export class AppModule {}
+export class AppModule {
+}
