@@ -13,88 +13,63 @@
     Select a room in {{ city }}
   </h1>
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
-  <ion-list>
-    <ion-item (click)="pushRoom(item.id)" *ngFor="let item of items">
-      <ion-card>
+    <ion-card (click)="pushRoom(item.id)" *ngFor="let item of items">
+      <ion-item>
+        <ion-avatar item-left>
+          <img *ngIf="item.user != null && item.user.images.length > 0" src="{{ item.user.images[0].link }}">
+          <img *ngIf="item.user == null || item.user.images.length == 0" src="../../assets/icon/userIcon.svg">
+        </ion-avatar>
+        <h2>{{ item.houseType.name}}, {{ item.rentType.name}}</h2>
+        <p>{{ item.location.name }}</p>
+      </ion-item>
 
-  <ion-item>
-    <ion-avatar item-left>
-      <img *ngIf="item.user != null && item.user.images.length > 0" src="{{ item.user.images[0].link }}">
-      <img *ngIf="item.user == null || item.user.images.length == 0" src="../../assets/icon/userIcon.svg">
-    </ion-avatar>
-    <h2>{{ item.houseType.name}}, {{ item.rentType.name}}</h2>
-    <p>{{ item.location.name }}</p>
-  </ion-item>
+      <img *ngIf="item.images != null && item.images.length > 0" src="{{ item.images[0].link }}">
+      <img *ngIf="item.city.region.images != null && item.images.length == 0" src="{{ item.city.region.images[0].link }}">
+      <img *ngIf="item.city.region.images == null && item.images.length == 0" src="../../assets/icon/cityIcon.png">
 
-  <img *ngIf="item.images != null && item.images.length > 0" src="{{ item.images[0].link }}">
-  <img *ngIf="item.city.region.images != null && item.images.length == 0" src="{{ item.city.region.images[0].link }}">
-  <img *ngIf="item.city.region.images == null && item.images.length == 0" src="../../assets/icon/cityIcon.png">
-
-  <ion-card-content>
-      <h3>Room for {{ item.roomType.bedAmount }} people</h3>
-      <p text-wrap>{{ item.description }}</p>
+      <ion-card-content>
+        <h3>Room for {{ item.roomType.bedAmount }} people</h3>
+        <p text-wrap>{{ item.description }}</p>
       </ion-card-content>
 
-  <ion-row>
-    <ion-col>
-      <button ion-button icon-left clear small>
-        <ion-icon name="thumbs-up"></ion-icon>
-        <div><h3 *ngIf="item.ratings.length > 0 && item.ratings[0].ratingTypeId === 1">
-        Rating: Excellent
-      </h3>
-      <h3 *ngIf="item.ratings.length > 0 && item.ratings[0].ratingTypeId === 2">
-        Rating: Good
-      </h3>
-      <h3 *ngIf="item.ratings.length > 0 && item.ratings[0].ratingTypeId === 3">
-        Rating: Decent
-      </h3>
-      <h3 *ngIf="item.ratings.length > 0 && item.ratings[0].ratingTypeId === 4">
-        Rating: Bad
-      </h3>
-      <h3 *ngIf="item.ratings.length == 0">
-        Rating: N/A
-      </h3></div>
-      </button>
-    </ion-col>
-    <ion-col>
-      <button ion-button icon-left clear small>
-        <ion-icon name="text"></ion-icon>
-        <div><a *ngIf="item.ratings.length > 0 && item.ratings.length != 1">{{ item.ratings.length }} reviews</a>
-      <a *ngIf="item.ratings.length == 1">{{ item.ratings.length }} review</a>
-      <h3 *ngIf="item.ratings.length == 0">No reviews</h3></div>
-      </button>
-    </ion-col>
-    <ion-col center text-center>
-      <ion-note>
-        <a>€{{ item.priceBase }}</a>
-      </ion-note>
-    </ion-col>
-  </ion-row>
-
-</ion-card>
-      <!--<h2>{{ item.name }}</h2>
-      <h3>Location: {{ item.location.name }}</h3>
-      <h3>Roomtype: {{ item.roomType.name }}</h3>
-      <h3>Price: €{{ item.priceBase }}</h3>
-      <h3 *ngIf="item.ratings.length > 0 && item.ratings[0].ratingTypeId === 1">
-        Rating: Excellent
-      </h3>
-      <h3 *ngIf="item.ratings.length > 0 && item.ratings[0].ratingTypeId === 2">
-        Rating: Good
-      </h3>
-      <h3 *ngIf="item.ratings.length > 0 && item.ratings[0].ratingTypeId === 3">
-        Rating: Decent
-      </h3>
-      <h3 *ngIf="item.ratings.length > 0 && item.ratings[0].ratingTypeId === 4">
-        Rating: Bad
-      </h3>
-      <h3 *ngIf="item.ratings.length == 0">
-        Rating: No rating yet
-      </h3>
-      <a *ngIf="item.ratings.length > 0 && item.ratings.length != 1">{{ item.ratings.length }} reviews</a>
-      <a *ngIf="item.ratings.length == 1">{{ item.ratings.length }} review</a>
-      <h3 *ngIf="item.ratings.length == 0">No reviews yet</h3>
-      <br><a>I choose this room!</a>-->
-      </ion-item>
-  </ion-list>
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-left clear small>
+            <ion-icon name="thumbs-up"></ion-icon>
+            <div>
+              <h3 *ngIf="item.ratings.length > 0 && item.ratings[0].ratingTypeId === 1">
+                Rating: Excellent
+              </h3>
+              <h3 *ngIf="item.ratings.length > 0 && item.ratings[0].ratingTypeId === 2">
+                Rating: Good
+              </h3>
+              <h3 *ngIf="item.ratings.length > 0 && item.ratings[0].ratingTypeId === 3">
+                Rating: Decent
+              </h3>
+              <h3 *ngIf="item.ratings.length > 0 && item.ratings[0].ratingTypeId === 4">
+                Rating: Bad
+              </h3>
+              <h3 *ngIf="item.ratings.length == 0">
+                Rating: N/A
+              </h3>
+            </div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="text"></ion-icon>
+          <div>
+            <a *ngIf="item.ratings.length > 0 && item.ratings.length != 1">{{ item.ratings.length }} reviews</a>
+            <a *ngIf="item.ratings.length == 1">{{ item.ratings.length }} review</a>
+            <h3 *ngIf="item.ratings.length == 0">No reviews</h3>
+          </div>
+        </button>
+      </ion-col>
+      <ion-col center text-center>
+        <ion-note>
+          <a>€{{ item.priceBase }}</a>
+        </ion-note>
+      </ion-col>
+    </ion-row>
+  </ion-card>
 </ion-content>

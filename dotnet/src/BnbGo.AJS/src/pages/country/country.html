@@ -7,14 +7,16 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content class="card-background-page" padding>
   <h1>
     Select a region in {{ country }}
   </h1>
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
-  <ion-list>
-    <ion-item (click)="pushRegion(item.id, item.name)" *ngFor="let item of items">
-      <h2>{{ item.name }}</h2>
-    </ion-item>
-  </ion-list>
+  <ion-card (click)="pushRegion(item.id, item.name)" *ngFor="let item of items">
+    
+    <img *ngIf="item.images[0]" src="{{ item.images[0].link }}"/>
+    <img *ngIf="!item.images[0]" src="../../assets/images/landscape-1.jpg"/>
+    
+    <div class="card-title">{{ item.name }}</div>
+  </ion-card>
 </ion-content>

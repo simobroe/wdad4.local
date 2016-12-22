@@ -27,7 +27,7 @@ export class RegionService {
     // We're using Angular HTTP provider to request the data,
     // then on the response, it'll map the JSON data to a parsed JS object.
     // Next, we process the data and resolve the promise with the new data.
-    this.http.get('http://localhost:5000/api/regions/' + countryId)
+    this.http.get('http://localhost:5000/api/regions/byCountryId/' + countryId)
       .map(res => res.json())
       .subscribe(data => {
         // we've got back the raw data, now generate the core schedule data

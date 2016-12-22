@@ -13,7 +13,6 @@ import { CityPage } from '../city/city'
 })
 export class RegionPage {
   private posts: any;
-  private regionId: string;
   private items: any;
   private cityId: string;
   private cityName: string;

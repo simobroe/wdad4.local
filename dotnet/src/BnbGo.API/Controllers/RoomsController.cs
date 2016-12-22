@@ -39,7 +39,7 @@ namespace BnbGo.API.Controllers
         public async Task<IActionResult> GetRoomById(Int16 Id)
         {
             var model = await ApplicationDbContext.Rooms
-                .Where(o => o.Id == Id)
+                .Where(o => o.Id == Id && o.RoomStateId == 1)
                 .OrderBy(o => o.Name)
                 .Include(loc => loc.Location)
                 .Include(rot => rot.RoomType)
@@ -63,7 +63,7 @@ namespace BnbGo.API.Controllers
         public async Task<IActionResult> GetRoomByCityId(Int16 cityId)
         {
             var model = await ApplicationDbContext.Rooms
-                .Where(o => o.CityId == cityId)
+                .Where(o => o.CityId == cityId && o.RoomStateId == 1)
                 .Include(loc => loc.Location)
                 .Include(rot => rot.RoomType)
                 .Include(rt => rt.Ratings)

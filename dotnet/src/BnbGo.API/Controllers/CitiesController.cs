@@ -34,10 +34,29 @@ namespace BnbGo.API.Controllers
             return new OkObjectResult(model);
         }
 
-        [HttpGet("{regionId:int}", Name = "GetCityByRegion")]
+        [HttpGet("byId/{cityId:int}", Name = "GetCityById")]
+        public async Task<IActionResult> GetCityById(Int16 cityId)
+        {
+            var model = await ApplicationDbContext.Cities.Where(o => o.Id == cityId)
+                                                            .Include(ro => ro.Rooms)
+                                                            .ToListAsync();
+            if (model == null)
+            {
+                var msg = String.Format(FAILGETENTITYBYID, cityId);
+                return NotFound(msg);
+            }
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet("byRegionId/{regionId:int}", Name = "GetCityByRegion")]
         public async Task<IActionResult> GetCityByRegion(Int16 regionId)
         {
-            var model = await ApplicationDbContext.Cities.Where(o => o.RegionId == regionId).ToListAsync();
+            var model = await ApplicationDbContext.Cities.Where(o => o.RegionId == regionId)
+                                                        .Select( c => new {
+                                                            City = c,
+                                                            Rooms = c.Rooms.Where(r => r.RoomStateId == 1)
+                                                        }).ToListAsync();
+
             if (model == null)
             {
                 var msg = String.Format(FAILGETENTITYBYID, regionId);

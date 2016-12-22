@@ -3,7 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 // call country service
 import { RoomService } from '../../providers/room-service';
 
-import { Home } from '../home/home'
+import { RoomPage } from '../room/room'
 
 @Component({
   selector: 'page-city',
@@ -52,6 +52,6 @@ export class CityPage {
 
   pushRoom(id) {
     this.roomId = id;
-    this.navCtrl.push(Home , {roomId: this.roomId});
+    this.navCtrl.push(RoomPage , {roomId: this.roomId});
   }
 }

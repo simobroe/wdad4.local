@@ -25,7 +25,10 @@ namespace BnbGo.API.Controllers
         [HttpGet(Name = "GetRegions")]
         public async Task<IActionResult> GetRegions()
         {
-            var model = await ApplicationDbContext.Regions.ToListAsync();
+            var model = await ApplicationDbContext.Regions
+                                                    .OrderBy(o => o.Name)
+                                                    .Include(im => im.Images)
+                                                    .ToListAsync();
             if (model == null)
             {
                 var msg = String.Format(FAILGETENTITIES);
@@ -34,13 +37,31 @@ namespace BnbGo.API.Controllers
             return new OkObjectResult(model);
         }
 
-        [HttpGet("{regionId:int}", Name = "GetRegionById")]
+        [HttpGet("byId/{regionId:int}", Name = "GetRegionById")]
         public async Task<IActionResult> GetRegionById(Int16 regionId)
         {
-            var model = await ApplicationDbContext.Regions.Where(o => o.CountryId == regionId).OrderBy(o => o.Name).ToListAsync();
+            var model = await ApplicationDbContext.Regions.Where(o => o.Id == regionId)
+                                                            .OrderBy(o => o.Name)
+                                                            .Include(im => im.Images)
+                                                            .ToListAsync();
             if (model == null)
             {
                 var msg = String.Format(FAILGETENTITYBYID, regionId);
+                return NotFound(msg);
+            }
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet("byCountryId/{countryId:int}", Name = "GetRegionByCountryId")]
+        public async Task<IActionResult> GetRegionByCountryId(Int16 countryId)
+        {
+            var model = await ApplicationDbContext.Regions.Where(o => o.CountryId == countryId)
+                                                            .OrderBy(o => o.Name)
+                                                            .Include(im => im.Images)
+                                                            .ToListAsync();
+            if (model == null)
+            {
+                var msg = String.Format(FAILGETENTITYBYID, countryId);
                 return NotFound(msg);
             }
             return new OkObjectResult(model);

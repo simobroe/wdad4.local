@@ -27,6 +27,14 @@
         <input asp-for="Room.HouseRules">
     </div>
     <div class="col col-xl-12 col-md-12 col-la-12 col-sm-12 col-xs-12">
+        <label asp-for="Room.PriceBase">Base price</label>
+        <input asp-for="Room.PriceBase">
+    </div>
+    <div class="col col-xl-12 col-md-12 col-la-12 col-sm-12 col-xs-12">
+        <label asp-for="Room.PricePerNight">Price per night</label>
+        <input asp-for="Room.PricePerNight">
+    </div>
+    <div class="col col-xl-12 col-md-12 col-la-12 col-sm-12 col-xs-12">
         <label asp-for="Room.User">User</label>
         <select asp-for="Room.UserId" asp-items="Model.Users"></select> 
     </div>
