@@ -16,6 +16,10 @@
     </div>  
     <ion-list no-lines>
       <ion-item>
+        <i class="fa fa-user fa-fw"></i>
+        Host: {{ item.user.firstName }} {{ item.user.surName }}
+      </ion-item>
+      <ion-item>
         <i class="fa fa-home fa-fw"></i>
         {{ item.houseType.name }}, {{ item.rentType.name }}
       </ion-item>

@@ -31,7 +31,7 @@ export class MyApp {
     ];
 
     events.subscribe('user:created', (user, time) => {
-      console.log('Welcome', user[0].id, 'at', time);
+      console.log('Welcome', user[0], 'at', time);
       if (user[0] != null) {
         this.pages = [
           { title: 'Home', component: Home },

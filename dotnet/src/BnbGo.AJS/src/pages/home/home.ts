@@ -15,6 +15,7 @@ import { CityPage } from '../city/city'
 
 export class Home {
   private cityId: string;
+  private cityName: string;
   private posts: any;
   public loggedIn: boolean;
 
@@ -38,5 +39,11 @@ export class Home {
     this.cityId = '1';
     //this.cityId = this.getRandomInt(1, this.posts.length);
     this.navCtrl.push(CityPage , {cityId: this.cityId});
+  }
+
+  pushCityById(id, name) {
+    this.cityId = id;
+    this.cityName = name;
+    this.navCtrl.push(CityPage , {cityId: this.cityId, cityName: this.cityName});
   }
 }

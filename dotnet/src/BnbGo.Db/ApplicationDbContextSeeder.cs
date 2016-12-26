@@ -44,10 +44,10 @@ namespace BnbGo.Db
                 {
                     context.CurrencyTypes.AddRange(new List<CurrencyType>()
                     {
-                        new CurrencyType { Name = "Euro", Description = "Euro"},
-                        new CurrencyType { Name = "Dollar", Description = "Dollar"},
-                        new CurrencyType { Name = "Yen", Description = "Yen"},
-                        new CurrencyType { Name = "Pound", Description = "Pound"},
+                        new CurrencyType { Name = "Euro", Description = "€"},
+                        new CurrencyType { Name = "Dollar", Description = "$"},
+                        new CurrencyType { Name = "Yen", Description = "¥"},
+                        new CurrencyType { Name = "Pound", Description = "`£"},
                     });
                     await context.SaveChangesAsync();
                 }

@@ -3,21 +3,9 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Events } from 'ionic-angular';
 
-export class User {
-  id: string;
-  name: string;
-  email: string;
- 
-  constructor(id: string, name: string, email: string) {
-    this.id = id;
-    this.name = name;
-    this.email = email;
-  }
-}
-
 @Injectable()
 export class AuthenticationService {
-  public currentUser: User;
+  public currentUser: any;
   public data: any;
   public allowed: boolean;
  
@@ -41,7 +29,8 @@ export class AuthenticationService {
 
           if (data.email != null) {
             if (data.plainPassword == credentials.password) {
-              this.currentUser = new User(data.id, data.firstName + " " + data.surName, data.email);
+              this.currentUser = data.id;
+              localStorage.setItem("userId", this.currentUser);
               this.events.publish('user:created', this.currentUser, Date.now());
               this.allowed = true;
             } else {
@@ -62,13 +51,14 @@ export class AuthenticationService {
   }
  
   public getUserInfo() {
-    console.log(this.currentUser.id);
-    return this.currentUser.id;
+    console.log(this.currentUser);
+    return this.currentUser;
   }
  
   public logout() {
     this.currentUser = null;
     this.events.publish('user:created', this.currentUser, Date.now());
+    localStorage.removeItem("userId");
   }
 
 }

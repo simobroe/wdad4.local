@@ -19,8 +19,8 @@ export class ProfilePage {
     if (this.navParams.get("userId") != null) {
       this.userId = this.navParams.get("userId");
     } else {
+      this.userId = localStorage.getItem("userId");
     }
-    this.userId = this.Authentication.getUserInfo();
     this.loadUser(this.userId);
   }
 

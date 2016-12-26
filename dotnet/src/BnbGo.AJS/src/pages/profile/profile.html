@@ -9,6 +9,12 @@
 
 <ion-content padding>
   <ion-card *ngFor="let item of items">
-    <h2>{{ item.firstName }} {{ item.surName }}</h2>
+    <ion-item>
+      <ion-avatar item-left>
+        <img *ngIf="item.images.length > 0" src="{{ item.images[0].link }}">
+        <img *ngIf="item.images.length == 0" src="../../assets/icon/userIcon.svg">
+      </ion-avatar>
+      <h2>{{ item.firstName }} {{ item.surName }}</h2>
+    </ion-item>
   </ion-card>
 </ion-content>
