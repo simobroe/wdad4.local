@@ -8,11 +8,53 @@
 </ion-header>
 
 <ion-content padding>
-  <h1>
-    Room detail
-  </h1>
-  <ion-item *ngFor="let item of items">
-    <h1>{{ item.name }}</h1>
-    <p>{{ item.description }}</p>
-  </ion-item>
+  <div *ngFor="let item of items">
+    <div class="detailBanner">
+      <div class="bannerImage" *ngIf="item.images.length > 0" style="background-image: url('{{ item.images[0].link }}')"></div>
+      <div class="bannerImage" *ngIf="item.images.length == 0" style="background-image: url('../../assets/icon/cityIcon.png')"></div>
+      <div class="bannerTitle">{{ item.city.region.country.currencyType.description }} {{ item.priceBase }}</div>   
+    </div>  
+    <ion-list no-lines>
+      <ion-item>
+        <i class="fa fa-home fa-fw"></i>
+        {{ item.houseType.name }}, {{ item.rentType.name }}
+      </ion-item>
+      <ion-item>
+        <i class="fa fa-group fa-fw"></i>
+        Room for {{ item.roomType.guestAmount }}
+      </ion-item>
+      <ion-item>
+        <i class="fa fa-bed fa-fw"></i>
+        {{ item.roomType.name }}
+      </ion-item>
+    </ion-list>
+    <ion-item text-wrap no-lines>
+      <h2>About the room</h2>
+      <p>
+        {{ item.description }}
+      </p>
+    </ion-item>
+    <ion-item no-lines>
+      <h2>Facilities</h2>
+      <p  *ngFor="let detailItem of item.facilities">
+        {{ detailItem.facility.name }}
+      </p>
+    </ion-item>
+    <ion-item text-wrap no-lines>
+      <h2>House rules</h2>
+      <p>
+        {{ item.houseRules }}
+      </p>
+    </ion-item>
+    <ion-item>
+      <h2>Images</h2>
+      <div class="col col-25" *ngFor="let imageItem of item.images">
+        <img src="{{ imageItem.link }}" width="100%" />
+      </div>
+      <p *ngIf="item.images.length == 0">No images available</p>
+    </ion-item>
+    <button class="reservationButton">
+      <i class="fa fa-pencil-square-o fa-fw"></i>
+    </button>
+  </div>
 </ion-content>

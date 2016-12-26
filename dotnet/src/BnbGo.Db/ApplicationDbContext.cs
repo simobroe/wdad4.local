@@ -48,9 +48,6 @@ namespace BnbGo.Db
 
             // Model: ApplicationUser
             builder.Entity<ApplicationUser>()
-                .Ignore(u => u.PlainPassword);
-
-            builder.Entity<ApplicationUser>()
                 .Property(u => u.CreatedAt)
                 .HasDefaultValueSql("now()")
                 .ValueGeneratedOnAdd();

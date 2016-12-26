@@ -156,6 +156,7 @@ namespace BnbGo.WWW.Areas.Backoffice.Controllers
                 originalModel.FirstName = model.User.FirstName;
                 originalModel.SurName = model.User.SurName;
                 originalModel.Email = model.User.Email;
+                originalModel.PasswordHash =  model.User.PlainPassword;
                 originalModel.UserName = model.User.UserName;
                 originalModel.DayOfBirth = model.User.DayOfBirth;
                 

@@ -247,7 +247,6 @@ namespace BnbGo.Db
                         .RuleFor(p => p.SurName, f => f.Name.LastName())
                         .RuleFor(p => p.UserName, (f, p) => f.Internet.UserName(p.FirstName, p.SurName))
                         .RuleFor(p => p.Email, f => f.Person.Email)
-                        .RuleFor(p => p.PlainPassword, f => GenerateAlwaysTheSamePassword())
                         .RuleFor(p => p.DayOfBirth, f => GenerateDateTime(1970, 1987, 1, 13, 1, 32))
                         .RuleFor(p => p.Gender, f => f.PickRandom<GenderType>())
                         .FinishWith((f, p) =>
@@ -260,6 +259,7 @@ namespace BnbGo.Db
                     for(var i = 0;i<5;i++) {
                         var person = personSkeleton.Generate();
                         var randomCountry = random.Next(1,3);
+                        person.PlainPassword = GenerateAlwaysTheSamePassword();
                         switch (randomCountry)
                         {
                             case 1:
@@ -433,7 +433,7 @@ namespace BnbGo.Db
 
         private static string GenerateAlwaysTheSamePassword()
         {
-            return "Rode_Biet_2016";
+            return "bnbgo";
         }
 
     }

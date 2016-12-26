@@ -23971,3 +23971,51 @@ page-home #Budapest {
 page-home #LosAngeles {
   background-image: url(../../../assets/images/tiles/los-angeles.jpg);
 }
+
+page-room .detailBanner {
+  position: relative;
+}
+
+page-room .detailBanner .bannerImage {
+  -webkit-filter: brightness(80%);
+  filter: brightness(80%);
+  height: 30vh;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+page-room .detailBanner .bannerTitle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #f53d3d;
+  padding: 6px 12px;
+  text-align: right;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+}
+
+page-room .detailUser .item-inner {
+  border: none !important;
+}
+
+page-room .fa {
+  margin-right: 12px;
+}
+
+page-room .reservationButton {
+  background-color: #f53d3d;
+  border-radius: 100%;
+  position: fixed;
+  bottom: 12px;
+  right: 12px;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 12px 9px 10px;
+}
+
+page-room .reservationButton .fa {
+  margin-right: 0;
+}

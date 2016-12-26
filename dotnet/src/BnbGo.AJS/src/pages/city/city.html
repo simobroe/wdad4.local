@@ -38,19 +38,19 @@
             <ion-icon name="thumbs-up"></ion-icon>
             <div>
               <h3 *ngIf="item.ratings.length > 0 && item.ratings[0].ratingTypeId === 1">
-                Rating: Excellent
+                Excellent
               </h3>
               <h3 *ngIf="item.ratings.length > 0 && item.ratings[0].ratingTypeId === 2">
-                Rating: Good
+                Good
               </h3>
               <h3 *ngIf="item.ratings.length > 0 && item.ratings[0].ratingTypeId === 3">
-                Rating: Decent
+                Decent
               </h3>
               <h3 *ngIf="item.ratings.length > 0 && item.ratings[0].ratingTypeId === 4">
-                Rating: Bad
+                Bad
               </h3>
               <h3 *ngIf="item.ratings.length == 0">
-                Rating: N/A
+                N/A
               </h3>
             </div>
         </button>
@@ -59,15 +59,15 @@
         <button ion-button icon-left clear small>
           <ion-icon name="text"></ion-icon>
           <div>
-            <a *ngIf="item.ratings.length > 0 && item.ratings.length != 1">{{ item.ratings.length }} reviews</a>
-            <a *ngIf="item.ratings.length == 1">{{ item.ratings.length }} review</a>
-            <h3 *ngIf="item.ratings.length == 0">No reviews</h3>
+            <a *ngIf="item.ratings.length > 0 && item.ratings.length != 1">{{ item.ratings.length }}</a>
+            <a *ngIf="item.ratings.length == 1">{{ item.ratings.length }}</a>
+            <h3 *ngIf="item.ratings.length == 0">0</h3>
           </div>
         </button>
       </ion-col>
       <ion-col center text-center>
         <ion-note>
-          <a>€{{ item.priceBase }}</a>
+          <a>{{ item.city.region.country.currencyType.description }} {{ item.priceBase }}</a>
         </ion-note>
       </ion-col>
     </ion-row>

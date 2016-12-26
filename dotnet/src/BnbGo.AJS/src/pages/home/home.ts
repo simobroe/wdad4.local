@@ -3,20 +3,22 @@ import { NavController, NavParams } from 'ionic-angular';
 
 // call country service
 import { CityService } from '../../providers/city-service';
+import { AuthenticationService } from '../../providers/authentication-service';
 
 import { CityPage } from '../city/city'
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
-  providers: [CityService]
+  providers: [CityService, AuthenticationService]
 })
 
 export class Home {
   private cityId: string;
   private posts: any;
+  public loggedIn: boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public CityService: CityService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public CityService: CityService, private Authentication: AuthenticationService) {
     this.navCtrl = navCtrl;
     this.loadCities();
   }

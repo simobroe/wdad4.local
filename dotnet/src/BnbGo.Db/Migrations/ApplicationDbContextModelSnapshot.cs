@@ -744,6 +744,8 @@ namespace BnbGo.Db.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed");
 
+                    b.Property<string>("PlainPassword");
+
                     b.Property<int>("RegionId");
 
                     b.Property<string>("SecurityStamp");

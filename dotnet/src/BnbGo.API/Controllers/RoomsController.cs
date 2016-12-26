@@ -49,7 +49,11 @@ namespace BnbGo.API.Controllers
                 .Include(um => um.User.Images)
                 .Include(ret => ret.RentType)
                 .Include(ht => ht.HouseType)
+                .Include(fa => fa.Facilities)
+                .ThenInclude(fc => fc.Facility)
                 .Include(rg => rg.City.Region)
+                .Include(co => co.City.Region.Country)
+                .Include(co => co.City.Region.Country.CurrencyType)
                 .ToListAsync();
             if (model == null)
             {
@@ -72,7 +76,11 @@ namespace BnbGo.API.Controllers
                 .Include(um => um.User.Images)
                 .Include(ret => ret.RentType)
                 .Include(ht => ht.HouseType)
+                .Include(fa => fa.Facilities)
+                .ThenInclude(fc => fc.Facility)
                 .Include(rg => rg.City.Region)
+                .Include(co => co.City.Region.Country)
+                .Include(co => co.City.Region.Country.CurrencyType)
                 .ToListAsync();
             if (model == null)
             {

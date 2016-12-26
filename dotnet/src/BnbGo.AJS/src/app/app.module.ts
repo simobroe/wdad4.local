@@ -7,6 +7,9 @@ import { CountryPage } from '../pages/country/country';
 import { RegionPage } from '../pages/region/region';
 import { CityPage } from '../pages/city/city';
 import { RoomPage } from '../pages/room/room';
+import { LoginPage } from '../pages/login/login';
+import { LogoutPage } from '../pages/logout/logout';
+import { ProfilePage } from '../pages/profile/profile';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { RoomPage } from '../pages/room/room';
     CountryPage,
     RegionPage,
     CityPage,
-    RoomPage
+    RoomPage,
+    LoginPage,
+    LogoutPage,
+    ProfilePage,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -29,7 +35,10 @@ import { RoomPage } from '../pages/room/room';
     CountryPage,
     RegionPage,
     CityPage,
-    RoomPage
+    RoomPage,
+    LoginPage,
+    LogoutPage,
+    ProfilePage,
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

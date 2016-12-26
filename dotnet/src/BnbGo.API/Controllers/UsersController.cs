@@ -34,13 +34,33 @@ namespace BnbGo.API.Controllers
             return new OkObjectResult(model);
         }
 
-        [HttpGet("{UserId:guid}", Name = "GetUserById")]
+        [HttpGet("byId/{UserId:guid}", Name = "GetUserById")]
         public async Task<IActionResult> GetUserById(Guid userId)
         {
-            var model = await ApplicationDbContext.Users.FirstOrDefaultAsync(o => o.Id == userId);
+            var model = await ApplicationDbContext.Users
+                                    .Where(o => o.Id == userId)
+                                    .Include(reg => reg.Region)
+                                    .Include(cit => cit.City)
+                                    .Include(cou => cou.Country)
+                                    .Include(ro => ro.Rooms)
+                                    .Include(im => im.Images)
+                                    .Include(re => re.Reservations)
+                                    .ToListAsync();
             if (model == null)
             {
                 var msg = String.Format(FAILGETENTITYBYID, userId);
+                return NotFound(msg);
+            }
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet("byEmail/{UserEmail}", Name = "GetUserByEmail")]
+        public async Task<IActionResult> GetUserByEmail(string userEmail)
+        {
+            var model = await ApplicationDbContext.Users.FirstOrDefaultAsync(o => o.Email == userEmail);
+            if (model == null)
+            {
+                var msg = String.Format(FAILGETENTITYBYID, userEmail);
                 return NotFound(msg);
             }
             return new OkObjectResult(model);
