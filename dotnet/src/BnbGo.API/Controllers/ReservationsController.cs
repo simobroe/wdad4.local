@@ -34,7 +34,7 @@ namespace BnbGo.API.Controllers
             return new OkObjectResult(model);
         }
 
-        [HttpGet("{reservationId:int}", Name = "GetReservationById")]
+        [HttpGet("byId/{reservationId:int}", Name = "GetReservationById")]
         public async Task<IActionResult> GetReservationById(Int16 reservationId)
         {
             var model = await ApplicationDbContext.Reservations.FirstOrDefaultAsync(o => o.Id == reservationId);
@@ -44,6 +44,17 @@ namespace BnbGo.API.Controllers
                 return NotFound(msg);
             }
             return new OkObjectResult(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateReservation([FromBody] Reservation reservation) {
+            if (reservation == null) {
+                return BadRequest();
+            }
+            ApplicationDbContext.Reservations.Add(reservation);
+            await ApplicationDbContext.SaveChangesAsync();
+
+            return Json("reservation data recieved");
         }
     }
 }

@@ -54,7 +54,7 @@ export class SearchPage {
   pushCountry(id, name) {
     this.countryId = id;
     this.countryName = name;
-    this.navCtrl.push(CountryPage , {countryId: this.countryId, countryName: this.countryName});
+    this.navCtrl.setRoot(CountryPage , {countryId: this.countryId, countryName: this.countryName});
   }
 
 }

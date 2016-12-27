@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Reservation</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form (ngSubmit)="reserve()" #reservationForm="ngForm">
+    <ion-item>
+      <ion-label>Arrival date</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" name="arrival" pickerFormat="DD MMMM YYYY" min="{{ myDate }}" max="2020" [(ngModel)]="reservationCredentials.arrival"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Departure date</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" name="departure" pickerFormat="DD MMMM YYYY" min="{{ myDate }}" max="2020" [(ngModel)]="reservationCredentials.departure"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Amount of guests</ion-label>
+      <ion-input type="number" name="amountOfGuests" [(ngModel)]="reservationCredentials.amountOfGuests" required></ion-input>
+    </ion-item>
+    <button ion-button block type="submit" [disabled]="!reservationForm.form.valid">Make reservation</button>
+  </form>
+</ion-content>

@@ -23972,6 +23972,14 @@ page-home #LosAngeles {
   background-image: url(../../../assets/images/tiles/los-angeles.jpg);
 }
 
+page-profile ion-item {
+  font-size: 18px;
+}
+
+page-profile ion-item span {
+  margin-right: 6px;
+}
+
 page-room .detailBanner {
   position: relative;
 }

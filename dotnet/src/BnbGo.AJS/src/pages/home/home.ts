@@ -38,12 +38,12 @@ export class Home {
   pushCity() {
     this.cityId = '1';
     //this.cityId = this.getRandomInt(1, this.posts.length);
-    this.navCtrl.push(CityPage , {cityId: this.cityId});
+    this.navCtrl.setRoot(CityPage , {cityId: this.cityId});
   }
 
   pushCityById(id, name) {
     this.cityId = id;
     this.cityName = name;
-    this.navCtrl.push(CityPage , {cityId: this.cityId, cityName: this.cityName});
+    this.navCtrl.setRoot(CityPage , {cityId: this.cityId, cityName: this.cityName});
   }
 }

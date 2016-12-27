@@ -15,7 +15,7 @@
       <div class="bannerTitle">{{ item.city.region.country.currencyType.description }} {{ item.priceBase }}</div>   
     </div>  
     <ion-list no-lines>
-      <ion-item>
+      <ion-item (click)="pushProfile(item.user.id)">
         <i class="fa fa-user fa-fw"></i>
         Host: {{ item.user.firstName }} {{ item.user.surName }}
       </ion-item>
@@ -57,7 +57,7 @@
       </div>
       <p *ngIf="item.images.length == 0">No images available</p>
     </ion-item>
-    <button class="reservationButton">
+    <button (click)="pushReservation(item.id, item.priceBase, item.pricePerNight)" class="reservationButton">
       <i class="fa fa-pencil-square-o fa-fw"></i>
     </button>
   </div>

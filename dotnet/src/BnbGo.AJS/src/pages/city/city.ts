@@ -52,6 +52,6 @@ export class CityPage {
 
   pushRoom(id) {
     this.roomId = id;
-    this.navCtrl.push(RoomPage , {roomId: this.roomId});
+    this.navCtrl.setRoot(RoomPage , {roomId: this.roomId});
   }
 }

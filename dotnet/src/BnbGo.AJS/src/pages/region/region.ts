@@ -55,6 +55,6 @@ export class RegionPage {
   pushCity(id, name) {
     this.cityId = id;
     this.cityName = name;
-    this.navCtrl.push(CityPage , {cityId: this.cityId, cityName: this.cityName});
+    this.navCtrl.setRoot(CityPage , {cityId: this.cityId, cityName: this.cityName});
   }
 }

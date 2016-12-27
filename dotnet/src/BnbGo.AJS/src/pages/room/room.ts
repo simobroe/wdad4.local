@@ -3,6 +3,8 @@ import { NavController, NavParams } from 'ionic-angular';
 
 // call country service
 import { RoomService } from '../../providers/room-service';
+import { ReservationPage } from '../reservation/reservation';
+import { ProfilePage } from '../profile/profile';
 
 @Component({
   selector: 'page-room',
@@ -23,5 +25,13 @@ export class RoomPage {
     .then(data => {
       this.items = data;
     });
+  }
+
+  pushReservation(id, priceBase, pricePerNight) {
+    this.navCtrl.setRoot(ReservationPage, {roomId: id, priceBase: priceBase, pricePerNight: pricePerNight})
+  }
+
+  pushProfile(id) {
+    this.navCtrl.setRoot(ProfilePage, {userId: id});
   }
 }

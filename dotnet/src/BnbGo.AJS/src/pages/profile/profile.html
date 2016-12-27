@@ -8,13 +8,61 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card *ngFor="let item of items">
+  <ion-card text-wrap *ngFor="let item of items">
     <ion-item>
       <ion-avatar item-left>
         <img *ngIf="item.images.length > 0" src="{{ item.images[0].link }}">
         <img *ngIf="item.images.length == 0" src="../../assets/icon/userIcon.svg">
       </ion-avatar>
       <h2>{{ item.firstName }} {{ item.surName }}</h2>
+    </ion-item>
+    <ion-list no-lines>
+      <ion-item>
+        <i class="fa fa-envelope fa-fw"></i>
+        {{ item.email }}
+      </ion-item>
+      <ion-item>
+        <i class="fa fa-calendar-o fa-fw"></i>
+        {{ item.dayOfBirth | date:"dd/MM/yyyy" }}
+      </ion-item>
+      <ion-item>
+        <span class="flag-icon flag-icon-{{ item.country.iso2 | lowercase }}"></span>{{ item.city.name }}, {{ item.country.name }}
+      </ion-item>
+    </ion-list>
+    <ion-item>
+      <h2 *ngIf="isMyPage != true">{{ item.firstName }}'s rooms</h2>
+      <h2 *ngIf="isMyPage == true">My rooms</h2>
+      <ion-card (click)="pushRoom(room.id)" *ngFor="let room of item.rooms">
+        <img *ngIf="room.images.length > 0" src="{{ room.images[0].link }}">
+        <img *ngIf="room.images.length == 0" src="../../assets/icon/cityIcon.png">
+        <ion-card-content>
+          <h2>
+            {{ room.name }}
+          </h2>
+          <p>
+            {{ room.city.name }}, {{ room.city.region.name }}
+          </p>
+          <p>
+            {{ room.houseType.name }}, {{ room.rentType.name }}
+          </p>
+          <p>
+            Room for {{ room.roomType.guestAmount }}
+          </p>
+          <p>
+            Room state: {{ room.roomState.name }}
+          </p>
+        </ion-card-content>
+      </ion-card>
+      <p *ngIf="item.rooms.length == 0">No rooms</p>
+    </ion-item>
+    <ion-item *ngIf="isMyPage == true">
+      <h2>My reservations</h2>
+      <ion-card *ngFor="let reservation of item.reservations">
+        <h2>{{ reservation.name }}</h2>
+        <p>Room: {{ reservation.room.name }}</p>
+        <p>{{ reservation.room.city.region.country.currencyType.description }} {{ reservation.priceTotal }}</p>
+        <p>From {{ reservation.arrival | date: "dd/MM/yyyy" }} till {{ reservation.departure | date: "dd/MM/yyyy" }}</p>
+      </ion-card>
     </ion-item>
   </ion-card>
 </ion-content>
