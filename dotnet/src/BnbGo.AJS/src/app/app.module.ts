@@ -11,6 +11,7 @@ import { LoginPage } from '../pages/login/login';
 import { LogoutPage } from '../pages/logout/logout';
 import { ProfilePage } from '../pages/profile/profile';
 import { ReservationPage } from '../pages/reservation/reservation';
+import { RegisterPage } from '../pages/register/register';
 import { ReservationConfirmedPage } from '../pages/reservation-confirmed/reservation-confirmed';
 
 @NgModule({
@@ -27,6 +28,7 @@ import { ReservationConfirmedPage } from '../pages/reservation-confirmed/reserva
     ProfilePage,
     ReservationPage,
     ReservationConfirmedPage,
+    RegisterPage,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -45,6 +47,7 @@ import { ReservationConfirmedPage } from '../pages/reservation-confirmed/reserva
     ProfilePage,
     ReservationPage,
     ReservationConfirmedPage,
+    RegisterPage,
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

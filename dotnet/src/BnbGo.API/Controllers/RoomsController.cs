@@ -39,7 +39,7 @@ namespace BnbGo.API.Controllers
         public async Task<IActionResult> GetRoomById(Int16 Id)
         {
             var model = await ApplicationDbContext.Rooms
-                .Where(o => o.Id == Id && o.RoomStateId == 1)
+                .Where(o => o.Id == Id)
                 .OrderBy(o => o.Name)
                 .Include(loc => loc.Location)
                 .Include(rot => rot.RoomType)
@@ -51,6 +51,7 @@ namespace BnbGo.API.Controllers
                 .Include(ht => ht.HouseType)
                 .Include(fa => fa.Facilities)
                 .ThenInclude(fc => fc.Facility)
+                .Include(rst => rst.RoomState)
                 .Include(rg => rg.City.Region)
                 .Include(co => co.City.Region.Country)
                 .Include(co => co.City.Region.Country.CurrencyType)

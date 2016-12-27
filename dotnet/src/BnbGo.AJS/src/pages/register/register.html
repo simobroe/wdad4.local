@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Register</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form (ngSubmit)="register()" #registerForm="ngForm">
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input type="text" name="email" [(ngModel)]="registerCredentials.email" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password" name="plainPassword" [(ngModel)]="registerCredentials.plainPassword" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>First name</ion-label>
+      <ion-input type="text" name="firstName" [(ngModel)]="registerCredentials.firstName" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Last name</ion-label>
+      <ion-input type="text" name="surName" [(ngModel)]="registerCredentials.surName" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Birth date</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" name="dayOfBirth" pickerFormat="DD MMMM YYYY" [(ngModel)]="registerCredentials.dayOfBirth"></ion-datetime>
+    </ion-item>
+    <button ion-button block type="submit" [disabled]="!registerForm.form.valid">Login</button>
+  </form>
+</ion-content>

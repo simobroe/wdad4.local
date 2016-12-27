@@ -57,7 +57,7 @@
       </div>
       <p *ngIf="item.images.length == 0">No images available</p>
     </ion-item>
-    <button (click)="pushReservation(item.id, item.priceBase, item.pricePerNight)" class="reservationButton">
+    <button *ngIf="item.roomState.id == 1" (click)="pushReservation(item.id, item.priceBase, item.pricePerNight)" class="reservationButton">
       <i class="fa fa-pencil-square-o fa-fw"></i>
     </button>
   </div>

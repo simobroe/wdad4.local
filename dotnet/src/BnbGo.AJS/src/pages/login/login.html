@@ -8,15 +8,16 @@
 </ion-header>
 
 <ion-content padding>
-  <form (ngSubmit)="login()" #registerForm="ngForm">
+  <form (ngSubmit)="login()" #loginForm="ngForm">
     <ion-item>
       <ion-label floating>Email</ion-label>
-      <ion-input type="text" name="email" [(ngModel)]="registerCredentials.email" required></ion-input>
+      <ion-input type="text" name="email" [(ngModel)]="loginCredentials.email" required></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>Password</ion-label>
-      <ion-input type="password" name="password" [(ngModel)]="registerCredentials.password" required></ion-input>
+      <ion-input type="password" name="password" [(ngModel)]="loginCredentials.password" required></ion-input>
     </ion-item>
-    <button ion-button block type="submit" [disabled]="!registerForm.form.valid">Login</button>
+    <button ion-button block type="submit" [disabled]="!loginForm.form.valid">Login</button>
   </form>
+  <p>No account? <span (click)="pushRegister()">register here</span></p>
 </ion-content>

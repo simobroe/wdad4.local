@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Events } from 'ionic-angular';
 
@@ -45,6 +45,25 @@ export class AuthenticationService {
           this.data = data;
           resolve(this.data);
         });
+        
+      });
+    }
+  }
+
+  public register(credentials) {
+    if (credentials.email === null || credentials.plainPassword === null) {
+      console.log("no input given");
+    } else {
+      return new Promise(resolve => {
+
+        let headers = new Headers({"Content-Type":"application/json"});
+        let options = new RequestOptions({ headers: headers});
+
+        this.http.post('http://localhost:5000/api/users/', JSON.stringify(credentials), options)
+          .map(res => res.json())
+          .subscribe(data => {
+            console.log("data recieved");
+          });
         
       });
     }

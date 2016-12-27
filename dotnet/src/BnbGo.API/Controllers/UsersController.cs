@@ -82,5 +82,16 @@ namespace BnbGo.API.Controllers
             }
             return new OkObjectResult(model);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateUser([FromBody] ApplicationUser user) {
+            if (user == null) {
+                return BadRequest();
+            }
+            ApplicationDbContext.Users.Add(user);
+            await ApplicationDbContext.SaveChangesAsync();
+
+            return Json("user data recieved");
+        }
     }
 }
