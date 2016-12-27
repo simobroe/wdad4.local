@@ -12,14 +12,14 @@
     <h1 id="Logo">BnbGo</h1>
     <h2>So, where are we going?</h2>
     <ion-searchbar></ion-searchbar>
-    <button (click)="pushCity()" ion-button color="danger">Surprise me!</button>
+    <button (click)="pushCityById('1', 'Ghent')" ion-button color="danger">Surprise me!</button>
     <button ion-button color="danger">Search</button>
     <a href="#Explore"><ion-icon name="arrow-down" class="botArrow"></ion-icon></a>
   </div>
   <div id="Explore">
     <h1>Explore</h1>
     <ul>
-      <li><a class="exploreTile" id="Ghent" href="#">Ghent</a></li>
+      <li><a class="exploreTile" id="Ghent" (click)="pushCityById('1', 'Ghent')">Ghent</a></li>
       <li><a class="exploreTile"  id="London" href="#">London</a></li>
       <li><a class="exploreTile"  id="Istanbul" href="#">Istanbul</a></li>
       <li><a class="exploreTile"  id="Budapest" href="#">Budapest</a></li>

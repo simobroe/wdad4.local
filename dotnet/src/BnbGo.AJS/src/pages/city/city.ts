@@ -16,8 +16,10 @@ export class CityPage {
   private items: any;
   private roomId: string;
   private city: string;
+  private cityName: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public RoomService: RoomService) {
+    this.navCtrl = navCtrl;
     this.cityId = this.navParams.get("cityId");
     this.city = this.navParams.get("cityName");
     this.loadRooms(this.cityId);
