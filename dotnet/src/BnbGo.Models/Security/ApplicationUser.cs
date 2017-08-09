@@ -34,13 +34,13 @@ namespace BnbGo.Models.Security
         // if user is a renter or landlord
         public List<Room> Rooms { get; set; }
         public List<Reservation> Reservations { get; set; }
-        // basic Create Update and Delete
-        public DateTime CreatedAt { get; set; }
-        public Nullable<DateTime> UpdatedAt { get; set; }
-        public Nullable<DateTime> DeletedAt { get; set; }
         // user Comments
         public List<Comment> Comments { get; set; }
         // ratings
         public List<Rating> Ratings { get; set; }
+        // basic Create Update and Delete
+        public DateTime CreatedAt { get; set; }
+        public Nullable<DateTime> UpdatedAt { get; set; }
+        public Nullable<DateTime> DeletedAt { get; set; }
     }
 }

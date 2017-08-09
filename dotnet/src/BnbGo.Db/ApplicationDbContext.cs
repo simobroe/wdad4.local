@@ -9,7 +9,7 @@ using BnbGo.Models.Security;
 
 namespace BnbGo.Db
 {
-    public class ApplicationDbContext : OpenIddictDbContext<ApplicationUser, ApplicationRole, Guid>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, Guid>
     {
         public DbSet<Country> Countries { get; set; }
         public DbSet<Region> Regions { get; set; }
@@ -36,7 +36,7 @@ namespace BnbGo.Db
         
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
-
+            
         }
 
         protected override void OnModelCreating(ModelBuilder builder)

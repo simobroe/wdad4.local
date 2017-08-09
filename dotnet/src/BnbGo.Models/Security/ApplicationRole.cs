@@ -7,8 +7,9 @@ namespace BnbGo.Models.Security
 {
     public class ApplicationRole : IdentityRole<Guid> 
     {
-        // basic user information
+        // user role name
         public string RoleName { get; set; }
+        // user role description
         public string RoleDescription { get; set; }
         // basic Create Update and Delete
         public DateTime CreatedAt { get; set; }
