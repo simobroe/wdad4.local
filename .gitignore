@@ -1,0 +1,6 @@
+./dotnet/src/BnbGo.Models/obj/Debug/
+./dotnet/src/BnbGo.Models/bin/Debug/
+./dotnet/src/BnbGo.Db/obj/Debug/
+./dotnet/src/BnbGo.Db/bin/Debug/
+./dotnet/src/BnbGo.WWW/obj/Debug/
+./dotnet/src/BnbGo.WWW/bin/Debug/
